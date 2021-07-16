@@ -1,4 +1,4 @@
-# flutter_application_1
+# PICK & BAN SUMULATOR
 
 The Simulator App for League of Legends Pick & Ban System
 
