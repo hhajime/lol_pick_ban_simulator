@@ -1,0 +1,36 @@
+name: flutter_application_1
+description: A new Flutter project.
+publish_to: 'none' 
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  drag_and_drop_gridview: ^1.0.8
+  cupertino_icons: ^1.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+flutter:
+  uses-material-design: true
+
+  fonts:
+    - family: SegoeUI
+      fonts:
+        - asset: fonts/Segoe-UI.ttf
+        - asset: fonts/Segoe-UI-Bold.ttf
+        - asset: fonts/Segoe-UI-Italic.ttf
+        - asset: fonts/Segoe-UI-Bold-Italic.ttf
+  assets:
+    - assets/images/map.jpg
+    - assets/images/champions/TOP/
+    - assets/images/champions/JUG/
+    - assets/images/champions/MID/
+    - assets/images/champions/BOT/
+    - assets/images/champions/SUP/
+
+
