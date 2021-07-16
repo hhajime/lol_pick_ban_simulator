@@ -1,6 +1,6 @@
 # flutter_application_1
 
-A new Flutter project.
+The Simulator App for League of Legends Pick & Ban System
 
 ## Getting Started
 
