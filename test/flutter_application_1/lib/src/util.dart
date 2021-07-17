@@ -1,6 +1,11 @@
 import 'package:drag_and_drop_gridview/devdrag.dart';
 import 'package:flutter/material.dart';
 
+// ignore: non_constant_identifier_names
+Color MainColor = Color(0xff060F14);
+// ignore: non_constant_identifier_names
+Color SubColor = Color(0xFFC8AA6E);
+
 DragAndDropGridView ChampionGrid(List _image) {
   ScrollController _scrollController;
   int variableSet = 0;
@@ -45,4 +50,49 @@ DragAndDropGridView ChampionGrid(List _image) {
       _image[newIndex] = temp;
     },
   );
+}
+
+// ignore: non_constant_identifier_names
+Container BanContainer() {
+  return Container(
+    height: 42,
+    width: 35.1,
+    decoration: myBoxDecoration(),
+  );
+}
+
+BoxDecoration myBoxDecoration() {
+  return BoxDecoration(
+    color: MainColor,
+    border: Border.all(color: SubColor),
+  );
+}
+
+// ignore: non_constant_identifier_names
+Container PlayerContainer() {
+  return Container(
+    height: 65,
+    width: 105.5,
+    decoration: myBoxDecoration(),
+  );
+}
+
+// ignore: non_constant_identifier_names
+TextStyle RedTeam() {
+  return TextStyle(
+      fontFamily: 'SegoeUI',
+      fontWeight: FontWeight.bold,
+      fontStyle: FontStyle.italic,
+      fontSize: 25,
+      color: Colors.red);
+}
+
+// ignore: non_constant_identifier_names
+TextStyle BlueTeam() {
+  return TextStyle(
+      fontFamily: 'SegoeUI',
+      fontWeight: FontWeight.bold,
+      fontStyle: FontStyle.italic,
+      fontSize: 25,
+      color: Colors.blue);
 }
