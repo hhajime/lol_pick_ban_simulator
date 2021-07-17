@@ -140,22 +140,25 @@ class _Home extends State<StatefulWidget> {
                   length: 5,
                   child: Column(
                     children: [
-                      TabBar(
-                        indicator: BoxDecoration(color: SubColor),
-                        labelStyle: RedTeam(),
-                        unselectedLabelColor: SubColor,
-                        indicatorColor: MainColor,
-                        labelColor: Colors.white,
-                        tabs: [
-                          Tab(text: 'TOP'),
-                          Tab(text: 'JG'),
-                          Tab(text: 'MID'),
-                          Tab(text: 'BOT'),
-                          Tab(text: 'SUP')
-                        ],
+                      Container(
+                        child: TabBar(
+                          indicator: BoxDecoration(color: SubColor),
+                          labelStyle: RedTeam(),
+                          unselectedLabelColor: SubColor,
+                          indicatorColor: MainColor,
+                          labelColor: Colors.white,
+                          tabs: [
+                            Tab(text: 'TOP'),
+                            Tab(text: 'JG'),
+                            Tab(text: 'MID'),
+                            Tab(text: 'BOT'),
+                            Tab(text: 'SUP')
+                          ],
+                        ),
+                        decoration: myTabBoxDecoration(),
                       ),
                       Container(
-                        height: 260,
+                        height: 270,
                         child: TabBarView(children: [
                           ChampionGrid(topList),
                           ChampionGrid(jugList),
