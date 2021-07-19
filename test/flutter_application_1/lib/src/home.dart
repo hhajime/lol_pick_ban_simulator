@@ -89,11 +89,11 @@ class _Home extends State<StatefulWidget> {
             ),
             Row(
               children: [
-                BanContainer(),
-                BanContainer(),
-                BanContainer(),
-                BanContainer(),
-                BanContainer(),
+                BanContainer(0),
+                BanContainer(1),
+                BanContainer(2),
+                BanContainer(3),
+                BanContainer(4),
                 Container(
                   height: 44,
                   width: 60,
@@ -104,11 +104,11 @@ class _Home extends State<StatefulWidget> {
                     textAlign: TextAlign.center,
                   ),
                 ),
-                BanContainer(),
-                BanContainer(),
-                BanContainer(),
-                BanContainer(),
-                BanContainer(),
+                BanContainer(5),
+                BanContainer(6),
+                BanContainer(7),
+                BanContainer(8),
+                BanContainer(9),
               ],
             ),
             Row(

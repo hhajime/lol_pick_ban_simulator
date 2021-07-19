@@ -8,7 +8,7 @@ Color SubColor = Color(0xFFC8AA6E);
 
 ScrollController _scrollController;
 Color caughtColor = Colors.red;
-String _targetImage;
+List _targetImage = List<String>.filled(10, null, growable: false);
 int variableSet = 0;
 double width;
 double height;
@@ -23,7 +23,7 @@ Container ChampionGrid(List _image) {
         itemCount: _image.length,
         itemBuilder: (context, index) => GridTile(
               child: LongPressDraggable(
-                data: Image.asset(_image[index]),
+                data: _image[index],
                 feedback: Container(
                   child: Image.asset(_image[index],
                       fit: BoxFit.cover, height: 100, width: 80),
@@ -40,24 +40,21 @@ Container ChampionGrid(List _image) {
 }
 
 // ignore: non_constant_identifier_names
-Container BanContainer() {
+Container BanContainer(int n) {
   return Container(
       child: DragTarget<String>(
         onAccept: (value) {
-          print("check");
-          _targetImage = value;
+          _targetImage[n] = value;
         },
         builder: (_, candidateData, rejectedData) {
-          print("builder");
-          print(_targetImage);
+          print(_targetImage[n]);
           return Container(
             width: 35.1,
-            height: 45,
-            color: Colors.red,
+            height: 48,
             alignment: Alignment.center,
-            child: _targetImage != null
+            child: _targetImage[n] != null
                 ? Image.asset(
-                    _targetImage,
+                    _targetImage[n],
                     fit: BoxFit.cover,
                   )
                 : Container(),
@@ -68,38 +65,6 @@ Container BanContainer() {
       height: 45,
       alignment: Alignment.center,
       decoration: myBoxDecoration());
-}
-
-Container BanContainer2() {
-  return Container(
-      width: 35.1,
-      height: 45,
-      alignment: Alignment.center,
-      child: Image.asset(_targetImage, fit: BoxFit.cover),
-      decoration: myBoxDecoration());
-}
-
-Container BanContainer3() {
-  return Container(
-    width: 35.1,
-    height: 45,
-    alignment: Alignment.center,
-    color: Colors.green,
-  );
-}
-
-Container BanContainer4() {
-  return Container(
-      width: 35.1,
-      height: 45,
-      alignment: Alignment.center,
-      color: Colors.red,
-      child: _targetImage != null
-          ? Image.asset(
-              _targetImage,
-              fit: BoxFit.cover,
-            )
-          : Container());
 }
 
 BoxDecoration myBoxDecoration() {
