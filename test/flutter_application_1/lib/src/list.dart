@@ -180,4 +180,12 @@ class Champions {
     "assets/images/champions/SUP/RiotX_ChampionList_zilean.jpg",
     "assets/images/champions/SUP/RiotX_ChampionList_zyra.jpg",
   ];
+
+  static List<String> lines = [
+    "assets/images/lines/top.png",
+    "assets/images/lines/jug.png",
+    "assets/images/lines/mid.png",
+    "assets/images/lines/bot.png",
+    "assets/images/lines/sup.png"
+  ];
 }

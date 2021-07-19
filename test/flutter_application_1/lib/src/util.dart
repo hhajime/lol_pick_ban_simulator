@@ -1,5 +1,6 @@
 import 'package:drag_and_drop_gridview/devdrag.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/src/list.dart';
 
 // ignore: non_constant_identifier_names
 Color MainColor = Color(0xff060F14);
@@ -79,11 +80,34 @@ BoxDecoration myTabBoxDecoration() {
 }
 
 // ignore: non_constant_identifier_names
-Container PlayerContainer() {
+Container PlayerContainer(int n) {
   return Container(
     height: 65,
-    width: 105.5,
-    decoration: myBoxDecoration(),
+    width: 105.7,
+    child: Stack(
+      children: [
+        Container(
+            decoration: BoxDecoration(
+                color: MainColor,
+                border: Border.all(color: SubColor),
+                image: DecorationImage(
+                    image: new AssetImage('assets/images/champion_icon.jpg'),
+                    fit: BoxFit.scaleDown))),
+        Positioned(
+          right: 5,
+          bottom: 15,
+          child: Container(
+            padding: EdgeInsets.all(10),
+            height: 20,
+            width: 20,
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: new AssetImage(Champions.lines[n]),
+                    fit: BoxFit.scaleDown)),
+          ),
+        )
+      ],
+    ),
   );
 }
 

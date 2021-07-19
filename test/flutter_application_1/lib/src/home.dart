@@ -115,11 +115,11 @@ class _Home extends State<StatefulWidget> {
               children: [
                 Column(
                   children: [
-                    PlayerContainer(),
-                    PlayerContainer(),
-                    PlayerContainer(),
-                    PlayerContainer(),
-                    PlayerContainer()
+                    PlayerContainer(0),
+                    PlayerContainer(1),
+                    PlayerContainer(2),
+                    PlayerContainer(3),
+                    PlayerContainer(4)
                   ],
                 ),
                 Container(
@@ -134,11 +134,11 @@ class _Home extends State<StatefulWidget> {
                 ),
                 Column(
                   children: [
-                    PlayerContainer(),
-                    PlayerContainer(),
-                    PlayerContainer(),
-                    PlayerContainer(),
-                    PlayerContainer()
+                    PlayerContainer(0),
+                    PlayerContainer(1),
+                    PlayerContainer(2),
+                    PlayerContainer(3),
+                    PlayerContainer(4)
                   ],
                 )
               ],

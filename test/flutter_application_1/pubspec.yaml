@@ -26,7 +26,14 @@ flutter:
         - asset: fonts/Segoe-UI-Italic.ttf
         - asset: fonts/Segoe-UI-Bold-Italic.ttf
   assets:
+    - assets/images/lines/top.png
+    - assets/images/lines/jug.png
+    - assets/images/lines/mid.png
+    - assets/images/lines/bot.png
+    - assets/images/lines/sup.png
     - assets/images/map.jpg
+    - assets/images/champion_icon.jpg
+    - assets/images/champion_icon2.png
     - assets/images/champions/TOP/
     - assets/images/champions/JUG/
     - assets/images/champions/MID/
