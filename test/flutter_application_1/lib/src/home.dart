@@ -58,7 +58,7 @@ class _Home extends State<StatefulWidget> {
                         border: InputBorder.none,
                         hintStyle: BlueTeam(),
                         hintText: 'Team Blue'),
-                    style: BlueTeam(),
+                    style: RedTeam(),
                   ),
                 ),
                 Container(
