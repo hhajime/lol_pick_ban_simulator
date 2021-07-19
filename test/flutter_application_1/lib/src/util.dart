@@ -7,6 +7,8 @@ Color MainColor = Color(0xff060F14);
 Color SubColor = Color(0xFFC8AA6E);
 
 ScrollController _scrollController;
+String _tempImage;
+Container _tempContainer;
 int variableSet = 0;
 double width;
 double height;
@@ -44,11 +46,14 @@ DragAndDropGridView ChampionGrid(List _image) {
     itemCount: _image.length,
     onWillAccept: (oldIndex, newIndex) {
       if (_image[newIndex] == "something") {
+        print("onwillaccept");
         return false;
       }
+      _tempImage = _image[oldIndex];
       return true;
     },
     onReorder: (oldIndex, newIndex) {
+      print("onreorder+${DateTime.now()}");
       final temp = _image[oldIndex];
       _image[oldIndex] = _image[newIndex];
       _image[newIndex] = temp;
@@ -58,41 +63,59 @@ DragAndDropGridView ChampionGrid(List _image) {
 
 // ignore: non_constant_identifier_names
 Container BanContainer() {
-  ScrollController _scrollController;
-  int variableSet = 0;
+  return new Container(
+      child: DragTarget(
+        builder: (context, List<int> candidateData, rejectedData) {
+          print("dragged");
+          return BanContainer4();
+        },
+        onAccept: (data) {
+          print("data recieved1");
+          return BanContainer3();
+        },
+        onWillAccept: (data) {
+          print("data recieved2");
+          return true;
+        },
+        onMove: (data) {
+          print("data recieved3");
+          return BanContainer3();
+        },
+        onLeave: (data) {
+          print("data recieved4");
+          return BanContainer3();
+        },
+      ),
+      width: 35.1,
+      height: 45,
+      alignment: Alignment.center,
+      decoration: myBoxDecoration());
+}
+
+Container BanContainer2() {
   return Container(
-    child: DragAndDropGridView(
-      controller: _scrollController,
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 5,
-        childAspectRatio: 4 / 4.5,
-      ),
-      padding: EdgeInsets.all(0),
-      itemBuilder: (context, index) => Card(
-        elevation: 2,
-        child: LayoutBuilder(
-          builder: (context, costrains) {
-            if (variableSet == 0) {
-              height = 45;
-              width = 35.1;
-              variableSet++;
-            }
-            return GridTile(
-                child: Container(
-              decoration: myBoxDecoration(),
-            ));
-          },
-        ),
-      ),
-      itemCount: 5,
-      onWillAccept: (oldIndex, newIndex) {
-        return true;
-      },
-      onReorder: (oldIndex, newIndex) {},
-    ),
-    height: 42,
-    width: 175.5,
-    decoration: myBoxDecoration(),
+      width: 35.1,
+      height: 45,
+      alignment: Alignment.center,
+      child: Image.asset(_tempImage, fit: BoxFit.cover),
+      decoration: myBoxDecoration());
+}
+
+Container BanContainer3() {
+  return Container(
+    width: 35.1,
+    height: 45,
+    alignment: Alignment.center,
+    color: Colors.green,
+  );
+}
+
+Container BanContainer4() {
+  return Container(
+    width: 35.1,
+    height: 45,
+    alignment: Alignment.center,
+    color: Colors.red,
   );
 }
 

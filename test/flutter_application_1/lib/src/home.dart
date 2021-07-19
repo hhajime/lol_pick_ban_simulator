@@ -42,6 +42,7 @@ class _Home extends State<StatefulWidget> {
         ),
       ),
       body: SingleChildScrollView(
+        physics: NeverScrollableScrollPhysics(),
         child: Column(
           children: [
             Row(
@@ -55,9 +56,9 @@ class _Home extends State<StatefulWidget> {
                     decoration: InputDecoration(
                         isCollapsed: true,
                         border: InputBorder.none,
-                        hintStyle: RedTeam(),
-                        hintText: 'Team Red'),
-                    style: RedTeam(),
+                        hintStyle: BlueTeam(),
+                        hintText: 'Team Blue'),
+                    style: BlueTeam(),
                   ),
                 ),
                 Container(
@@ -77,11 +78,11 @@ class _Home extends State<StatefulWidget> {
                   child: TextField(
                     textAlign: TextAlign.center,
                     decoration: InputDecoration(
-                        hintStyle: BlueTeam(),
-                        hintText: 'Team Blue',
+                        hintStyle: RedTeam(),
+                        hintText: 'Team Red',
                         contentPadding: EdgeInsets.all(6),
                         border: InputBorder.none),
-                    style: BlueTeam(),
+                    style: RedTeam(),
                   ),
                 ),
               ],
@@ -89,8 +90,12 @@ class _Home extends State<StatefulWidget> {
             Row(
               children: [
                 BanContainer(),
+                BanContainer(),
+                BanContainer(),
+                BanContainer(),
+                BanContainer(),
                 Container(
-                  height: 42,
+                  height: 44,
                   width: 60,
                   decoration: myBoxDecoration(),
                   child: Text(
@@ -99,6 +104,10 @@ class _Home extends State<StatefulWidget> {
                     textAlign: TextAlign.center,
                   ),
                 ),
+                BanContainer(),
+                BanContainer(),
+                BanContainer(),
+                BanContainer(),
                 BanContainer(),
               ],
             ),
