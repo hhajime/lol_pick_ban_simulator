@@ -9,7 +9,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  drag_and_drop_gridview: ^1.0.8
   flutter_svg: ^0.22.0
   cupertino_icons: ^1.0.2
 

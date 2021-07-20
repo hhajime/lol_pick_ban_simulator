@@ -1,4 +1,3 @@
-import 'package:drag_and_drop_gridview/devdrag.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/src/list.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -43,7 +42,6 @@ Container ChampionGrid(List _image) {
                   ),
                   childWhenDragging: ChampContainer2(),
                   onDragCompleted: () {
-                    state = 1;
                     print("onDragCompleted");
                   },
                   onDragEnd: (data) {},
@@ -121,11 +119,7 @@ Container PlayerContainer(int n, String team, String savedTeam) {
     width: 105.7,
     height: 65,
     child: DragTarget<String>(onWillAccept: (value) {
-      if (team != temp) {
-        print("temp != temp"); // 이 부분에 추가
-        return true;
-      } else
-        return true;
+      return true;
     }, onAccept: (value) {
       team = value;
       savedTeam = team;
@@ -149,8 +143,12 @@ Container PlayerContainer(int n, String team, String savedTeam) {
                       height: 65,
                       width: 105.7)),
               childWhenDragging: ChampContainer2(),
-              onDragCompleted: () {},
+              onDragCompleted: () {
+                //여기에 추가
+                print("onDragCompleted_player");
+              },
               onDragEnd: (data) {
+                // 여기에 추가
                 print("onDragEnd");
               },
               onDragStarted: () {
