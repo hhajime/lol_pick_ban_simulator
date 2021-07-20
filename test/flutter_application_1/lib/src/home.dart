@@ -16,8 +16,10 @@ List _bluPlayer =
     List<String>.filled(5, "assets/images/champion_icon.jpg", growable: false);
 List _redPlayer =
     List<String>.filled(5, "assets/images/champion_icon.jpg", growable: false);
-List redTeam = List<String>.filled(5, null, growable: false);
-List bluTeam = List<String>.filled(5, null, growable: false);
+List redTeam =
+    List<String>.filled(5, "assets/images/champion_icon.jpg", growable: false);
+List bluTeam =
+    List<String>.filled(5, "assets/images/champion_icon.jpg", growable: false);
 
 class Home extends StatefulWidget {
   @override

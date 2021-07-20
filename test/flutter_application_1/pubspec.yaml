@@ -10,6 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   drag_and_drop_gridview: ^1.0.8
+  flutter_svg: ^0.22.0
   cupertino_icons: ^1.0.2
 
 dev_dependencies:
@@ -26,11 +27,11 @@ flutter:
         - asset: fonts/Segoe-UI-Italic.ttf
         - asset: fonts/Segoe-UI-Bold-Italic.ttf
   assets:
-    - assets/images/lines/top.png
-    - assets/images/lines/jug.png
-    - assets/images/lines/mid.png
-    - assets/images/lines/bot.png
-    - assets/images/lines/sup.png
+    - assets/images/lines/top.svg
+    - assets/images/lines/jug.svg
+    - assets/images/lines/mid.svg
+    - assets/images/lines/bot.svg
+    - assets/images/lines/sup.svg
     - assets/images/map.jpg
     - assets/images/champion_icon.jpg
     - assets/images/champion_icon2.png
