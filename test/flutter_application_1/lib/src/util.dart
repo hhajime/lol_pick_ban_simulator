@@ -10,8 +10,12 @@ Color SubColor = Color(0xFFC8AA6E);
 ScrollController _scrollController;
 Color caughtColor = Colors.red;
 List _targetImage = List<String>.filled(10, null, growable: false);
-List _bluPlayer = List<String>.filled(5, null, growable: false);
-List _redPlayer = List<String>.filled(5, null, growable: false);
+List _bluPlayer =
+    List<String>.filled(5, "assets/images/champion_icon.jpg", growable: false);
+List _redPlayer =
+    List<String>.filled(5, "assets/images/champion_icon.jpg", growable: false);
+List redTeam = List<String>.filled(5, null, growable: false);
+List bluTeam = List<String>.filled(5, null, growable: false);
 int variableSet = 0;
 double width;
 double height;
@@ -81,89 +85,84 @@ BoxDecoration myTabBoxDecoration() {
   return BoxDecoration(border: Border.all(color: SubColor));
 }
 
-// ignore: non_constant_identifier_names
-Container PlayerContainer(int n) {
+Container ChampContainer() {
   return Container(
-      width: 105.7,
-      height: 65,
-      decoration: myBoxDecoration(),
-      child: DragTarget<String>(onAccept: (value) {
-        _bluPlayer[n] = value;
-      }, builder: (_, candidateData, rejectedData) {
-        return Stack(
-          children: [
-            Container(
-                width: 105.7,
-                height: 65,
-                alignment: Alignment.center,
-                child: _bluPlayer[n] != null //1)
-                    ? Image.asset(
-                        "assets/images/champions/TOP/RiotX_ChampionList_aatrox.jpg",
-                        fit: BoxFit.cover)
-                    : Container()),
-            Container(
-              child: LongPressDraggable(
-                data: _bluPlayer[n],
-                feedback: Container(
-                  child: Image.asset(
-                      "assets/images/champions/TOP/RiotX_ChampionList_aatrox.jpg", //2)
+      decoration: BoxDecoration(
+          color: MainColor,
+          border: Border.all(color: SubColor),
+          image: DecorationImage(
+              image: new AssetImage('assets/images/champion_icon.jpg'),
+              fit: BoxFit.scaleDown)));
+}
+
+// ignore: non_constant_identifier_names
+Container PlayerContainer(int n, String team, savedTeam) {
+  return Container(
+    width: 105.7,
+    height: 65,
+    child: DragTarget<String>(onAccept: (value) {
+      team = value;
+      savedTeam = value;
+    }, builder: (_, candidateData, rejectedData) {
+      return Stack(
+        children: [
+          ChampContainer(),
+          Container(
+              width: 105.7,
+              height: 65,
+              alignment: Alignment.center,
+              child: team != null //1)
+                  ? Image.asset(team, fit: BoxFit.cover)
+                  : Container()),
+          Container(
+            child: LongPressDraggable(
+              data: team,
+              feedback: Container(
+                child: Image.asset(team, //2)
+                    fit: BoxFit.cover,
+                    height: 65,
+                    width: 105.7),
+              ),
+              child: Container(
+                  child: Image.asset(team, //3)
                       fit: BoxFit.cover,
                       height: 65,
-                      width: 105.7),
-                  decoration: myBoxDecoration(),
-                ),
-                child: Container(
-                    child: Image.asset(
-                        "assets/images/champions/TOP/RiotX_ChampionList_aatrox.jpg", //3)
-                        fit: BoxFit.cover,
-                        height: 65,
-                        width: 105.7),
-                    decoration: myBoxDecoration()),
-              ),
-              decoration: myBoxDecoration(),
+                      width: 105.7)),
+              onDragCompleted: () {
+                if (team != savedTeam) {
+                  print("hello");
+                } else
+                  print("object");
+                return ChampContainer();
+              },
             ),
-            Container(
-                decoration: BoxDecoration(
-                    color: MainColor,
-                    border: Border.all(color: SubColor),
-                    image: DecorationImage(
-                        image:
-                            new AssetImage('assets/images/champion_icon.jpg'),
-                        fit: BoxFit.scaleDown))),
-            Positioned(
-              right: 5,
-              bottom: 15,
-              child: Container(
-                padding: EdgeInsets.all(10),
-                height: 20,
-                width: 20,
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: new AssetImage(Champions.lines[n]),
-                        fit: BoxFit.scaleDown)),
-              ),
-            )
-          ],
-        );
-      }));
+          ),
+          Positioned(
+            right: 5,
+            bottom: 15,
+            child: Container(
+              padding: EdgeInsets.all(10),
+              height: 20,
+              width: 20,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: new AssetImage(Champions.lines[n]),
+                      fit: BoxFit.scaleDown)),
+            ),
+          )
+        ],
+      );
+    }),
+    decoration: myBoxDecoration(),
+  );
 }
 
 // ignore: non_constant_identifier_names
-TextStyle RedTeam() {
+TextStyle TeamColor(Color selectedColor) {
   return TextStyle(
       fontFamily: 'SegoeUI',
       fontWeight: FontWeight.bold,
       fontStyle: FontStyle.italic,
       fontSize: 25,
-      color: Colors.red);
-}
-
-// ignore: non_constant_identifier_names
-TextStyle BlueTeam() {
-  return TextStyle(
-      fontFamily: 'SegoeUI',
-      fontWeight: FontWeight.bold,
-      fontStyle: FontStyle.italic,
-      fontSize: 25,
-      color: Colors.blue);
+      color: selectedColor);
 }

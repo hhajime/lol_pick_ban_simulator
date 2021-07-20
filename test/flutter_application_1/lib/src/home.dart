@@ -12,6 +12,13 @@ List midList = Champions.mid;
 List botList = Champions.bot;
 List supList = Champions.sup;
 
+List _bluPlayer =
+    List<String>.filled(5, "assets/images/champion_icon.jpg", growable: false);
+List _redPlayer =
+    List<String>.filled(5, "assets/images/champion_icon.jpg", growable: false);
+List redTeam = List<String>.filled(5, null, growable: false);
+List bluTeam = List<String>.filled(5, null, growable: false);
+
 class Home extends StatefulWidget {
   @override
   State createState() => _Home();
@@ -56,9 +63,9 @@ class _Home extends State<StatefulWidget> {
                     decoration: InputDecoration(
                         isCollapsed: true,
                         border: InputBorder.none,
-                        hintStyle: BlueTeam(),
+                        hintStyle: TeamColor(Colors.blue),
                         hintText: 'Team Blue'),
-                    style: RedTeam(),
+                    style: TeamColor(Colors.blue),
                   ),
                 ),
                 Container(
@@ -78,11 +85,11 @@ class _Home extends State<StatefulWidget> {
                   child: TextField(
                     textAlign: TextAlign.center,
                     decoration: InputDecoration(
-                        hintStyle: RedTeam(),
+                        hintStyle: TeamColor(Colors.red),
                         hintText: 'Team Red',
                         contentPadding: EdgeInsets.all(6),
                         border: InputBorder.none),
-                    style: RedTeam(),
+                    style: TeamColor(Colors.red),
                   ),
                 ),
               ],
@@ -115,11 +122,11 @@ class _Home extends State<StatefulWidget> {
               children: [
                 Column(
                   children: [
-                    PlayerContainer(0),
-                    PlayerContainer(1),
-                    PlayerContainer(2),
-                    PlayerContainer(3),
-                    PlayerContainer(4)
+                    PlayerContainer(0, _bluPlayer[0], bluTeam[0]),
+                    PlayerContainer(1, _bluPlayer[1], bluTeam[1]),
+                    PlayerContainer(2, _bluPlayer[2], bluTeam[2]),
+                    PlayerContainer(3, _bluPlayer[3], bluTeam[3]),
+                    PlayerContainer(4, _bluPlayer[4], bluTeam[4])
                   ],
                 ),
                 Container(
@@ -134,11 +141,11 @@ class _Home extends State<StatefulWidget> {
                 ),
                 Column(
                   children: [
-                    PlayerContainer(0),
-                    PlayerContainer(1),
-                    PlayerContainer(2),
-                    PlayerContainer(3),
-                    PlayerContainer(4)
+                    PlayerContainer(0, _redPlayer[0], redTeam[0]),
+                    PlayerContainer(1, _redPlayer[1], redTeam[1]),
+                    PlayerContainer(2, _redPlayer[2], redTeam[2]),
+                    PlayerContainer(3, _redPlayer[3], redTeam[3]),
+                    PlayerContainer(4, _redPlayer[4], redTeam[4])
                   ],
                 )
               ],
@@ -152,7 +159,7 @@ class _Home extends State<StatefulWidget> {
                       Container(
                         child: TabBar(
                           indicator: BoxDecoration(color: SubColor),
-                          labelStyle: RedTeam(),
+                          labelStyle: TeamColor(Colors.red),
                           unselectedLabelColor: SubColor,
                           indicatorColor: MainColor,
                           labelColor: Colors.white,
