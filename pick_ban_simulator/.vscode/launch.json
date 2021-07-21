@@ -16,6 +16,21 @@
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
+        },{
+            "name": "Android_Pixel_4",
+            "request": "launch",
+            "type": "dart",
+            "deviceId": "emulator-5554"
+          },{
+            "name": "Android_Galaxy_20",
+            "request": "launch",
+            "type": "dart",
+            "deviceId": "emulator-5556"
+          },
+    ],"compounds": [
+        {
+          "name": "All Devices",
+          "configurations": ["Android_Pixel_4", "Android_Galaxy_20"]
         }
-    ]
+      ]
 }
