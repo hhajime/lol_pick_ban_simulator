@@ -23,38 +23,6 @@ int variableSet = 0;
 double width;
 double height;
 
-Container ChampionGrid(List _image) {
-  return Container(
-    child: GridView.builder(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 5,
-          childAspectRatio: 4 / 4.5,
-        ),
-        itemCount: _image.length,
-        itemBuilder: (context, index) => GridTile(
-              child: LongPressDraggable(
-                  data: _image[index],
-                  feedback: Container(
-                    child: Image.asset(_image[index],
-                        fit: BoxFit.cover, height: 100, width: 80),
-                    decoration: myBoxDecoration(),
-                  ),
-                  childWhenDragging: ChampContainer2(),
-                  onDragCompleted: () {
-                    print("onDragCompleted");
-                  },
-                  onDragEnd: (data) {},
-                  onDragStarted: () {
-                    temp = _image[index];
-                    print("onDragStarted");
-                  },
-                  onDragUpdate: (data) {},
-                  child: gridContainer(_image, index)),
-            )),
-    decoration: myBoxDecoration(),
-  );
-}
-
 // ignore: non_constant_identifier_names
 Container BanContainer(int n) {
   return Container(
@@ -93,6 +61,7 @@ BoxDecoration myTabBoxDecoration() {
   return BoxDecoration(border: Border.all(color: SubColor));
 }
 
+// ignore: non_constant_identifier_names
 Container ChampContainer2() {
   return Container(
       decoration: BoxDecoration(
@@ -116,7 +85,6 @@ Container PlayerContainer(int n, String team, String savedTeam) {
     }, builder: (_, candidateData, rejectedData) {
       return Stack(
         children: [
-          ChampContainer2(),
           Container(
               width: displayRatio * 40,
               height: displayRatio * 60,
@@ -166,22 +134,7 @@ Container PlayerContainer(int n, String team, String savedTeam) {
                       height: displayRatio * 30,
                       width: 105.7))),
           Positioned(
-            right: 0,
-            bottom: displayRatio * 1,
-            child: Container(
-              height: 30,
-              width: displayRatio * 40,
-              child: TextField(
-                textAlign: TextAlign.right,
-                decoration: InputDecoration(
-                    hintStyle: NameTextField(),
-                    hintText: 'PLAYER NAME',
-                    contentPadding: EdgeInsets.all(4),
-                    border: InputBorder.none),
-                style: NameTextField(),
-              ),
-            ),
-          ),
+              right: 0, bottom: displayRatio * 2, child: PlayerName("PLAYER")),
           Positioned(
             right: 5,
             bottom: 15,
@@ -199,12 +152,45 @@ Container PlayerContainer(int n, String team, String savedTeam) {
 }
 
 // ignore: non_constant_identifier_names
+Container ChampionGrid(List _image) {
+  return Container(
+    child: GridView.builder(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 5,
+          childAspectRatio: 4 / 4.5,
+        ),
+        itemCount: _image.length,
+        itemBuilder: (context, index) => GridTile(
+              child: LongPressDraggable(
+                  data: _image[index],
+                  feedback: Container(
+                    child: Image.asset(_image[index],
+                        fit: BoxFit.cover, height: 100, width: 80),
+                    decoration: myBoxDecoration(),
+                  ),
+                  childWhenDragging: ChampContainer2(),
+                  onDragCompleted: () {
+                    print("onDragCompleted");
+                  },
+                  onDragEnd: (data) {},
+                  onDragStarted: () {
+                    temp = _image[index];
+                    print("onDragStarted");
+                  },
+                  onDragUpdate: (data) {},
+                  child: gridContainer(_image, index)),
+            )),
+    decoration: myBoxDecoration(),
+  );
+}
+
+// ignore: non_constant_identifier_names
 TextStyle TeamColor(Color selectedColor) {
   return TextStyle(
       fontFamily: 'SegoeUI',
       fontWeight: FontWeight.bold,
       fontStyle: FontStyle.italic,
-      fontSize: displayRatio * 10,
+      fontSize: displayRatio * 9,
       color: selectedColor);
 }
 
@@ -223,4 +209,35 @@ Container gridContainer(gridList, index) {
       child: Image.asset(gridList[index],
           fit: BoxFit.cover, height: height, width: width),
       decoration: myBoxDecoration());
+}
+
+// ignore: non_constant_identifier_names
+Container TeamName(Color teamColor, String hintText) {
+  return Container(
+    width: displayWidth * 0.427,
+    height: displayHeight * 0.05,
+    decoration: myBoxDecoration(),
+    child: TextField(
+      textAlign: TextAlign.center,
+      decoration: InputDecoration(
+          isCollapsed: true,
+          border: InputBorder.none,
+          hintStyle: TeamColor(teamColor),
+          hintText: hintText,
+          contentPadding: EdgeInsets.all(7)),
+      style: TeamColor(Colors.blue),
+    ),
+  );
+}
+
+Container PlayerName(String text) {
+  return Container(
+    height: 11,
+    width: displayRatio * 40,
+    child: Text(
+      text,
+      textAlign: TextAlign.right,
+      style: NameTextField(),
+    ),
+  );
 }
