@@ -20,7 +20,6 @@ List bluTeam =
     List<String>.filled(5, "assets/images/champion_icon.jpg", growable: false);
 String temp;
 int variableSet = 0;
-int state = 0;
 double width;
 double height;
 
@@ -46,7 +45,7 @@ Container ChampionGrid(List _image) {
                   },
                   onDragEnd: (data) {},
                   onDragStarted: () {
-                    state = 0;
+                    temp = _image[index];
                     print("onDragStarted");
                   },
                   onDragUpdate: (data) {},
@@ -121,6 +120,7 @@ Container PlayerContainer(int n, String team, String savedTeam) {
     child: DragTarget<String>(onWillAccept: (value) {
       return true;
     }, onAccept: (value) {
+      print("onAccept");
       team = value;
       savedTeam = team;
     }, builder: (_, candidateData, rejectedData) {
@@ -136,13 +136,16 @@ Container PlayerContainer(int n, String team, String savedTeam) {
                   : Container()),
           Container(
             child: LongPressDraggable(
-              data: savedTeam,
+              data: team,
               feedback: Container(
-                  child: Image.asset(savedTeam, //2)
+                  child: Image.asset(team, //2)
                       fit: BoxFit.cover,
                       height: 65,
                       width: 105.7)),
               childWhenDragging: ChampContainer2(),
+              onDragUpdate: (team) {
+                print("onDragUpdated");
+              },
               onDragCompleted: () {
                 //여기에 추가
                 print("onDragCompleted_player");
@@ -152,27 +155,52 @@ Container PlayerContainer(int n, String team, String savedTeam) {
                 print("onDragEnd");
               },
               onDragStarted: () {
-                state = 1;
                 print("onDragStarted");
-                temp = 'assets/images/champion_icon.jpg';
               },
               child: Container(
-                  child: Image.asset(savedTeam, //3)
+                  child: Image.asset(
+                      team == temp
+                          ? savedTeam
+                          : 'assets/images/champion_icon.jpg', //3)
                       fit: BoxFit.cover,
                       height: 65,
                       width: 105.7)),
+            ),
+          ),
+          Container(
+              child: Opacity(
+                  opacity: 0.5,
+                  child: SvgPicture.asset(
+                      'assets/images/player_background.svg', //3)
+                      fit: BoxFit.fitWidth,
+                      height: 65,
+                      width: 105.7))),
+          Positioned(
+            right: 0,
+            bottom: 2,
+            child: Container(
+              height: 30,
+              width: 70,
+              child: TextField(
+                textAlign: TextAlign.right,
+                decoration: InputDecoration(
+                    hintStyle: NameTextField(),
+                    hintText: 'PLAYER NAME',
+                    contentPadding: EdgeInsets.all(4),
+                    border: InputBorder.none),
+                style: NameTextField(),
+              ),
             ),
           ),
           Positioned(
             right: 5,
             bottom: 15,
             child: Container(
-              padding: EdgeInsets.all(10),
-              height: 20,
-              width: 20,
+              height: 15,
+              width: 15,
               child: SvgPicture.asset(lines[n]),
             ),
-          )
+          ),
         ],
       );
     }),
@@ -190,18 +218,19 @@ TextStyle TeamColor(Color selectedColor) {
       color: selectedColor);
 }
 
+// ignore: non_constant_identifier_names
+TextStyle NameTextField() {
+  return TextStyle(
+      fontFamily: 'SegoeUI',
+      fontWeight: FontWeight.bold,
+      fontStyle: FontStyle.italic,
+      fontSize: 9,
+      color: SubColor);
+}
+
 Container gridContainer(gridList, index) {
   return Container(
       child: Image.asset(gridList[index],
           fit: BoxFit.cover, height: height, width: width),
       decoration: myBoxDecoration());
-}
-
-Widget getContainter(List image, int index) {
-  if (state == 0) {
-    print("s");
-    return gridContainer(image, index);
-  } else
-    print("s2");
-  return ChampContainer2();
 }

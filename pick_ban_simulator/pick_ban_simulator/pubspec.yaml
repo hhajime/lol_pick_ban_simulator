@@ -31,6 +31,7 @@ flutter:
     - assets/images/lines/mid.svg
     - assets/images/lines/bot.svg
     - assets/images/lines/sup.svg
+    - assets/images/player_background.svg
     - assets/images/map.jpg
     - assets/images/champion_icon.jpg
     - assets/images/champion_icon2.png
