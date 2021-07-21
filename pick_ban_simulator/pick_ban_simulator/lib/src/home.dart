@@ -56,7 +56,6 @@ class _Home extends State<StatefulWidget> {
                 Size(constraints.maxWidth, constraints.maxHeight);
             return Container(
                 width: constraints.maxWidth,
-                height: constraints.maxHeight,
                 child: Column(
                   children: [
                     Row(
