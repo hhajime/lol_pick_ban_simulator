@@ -50,7 +50,7 @@ class _Home extends State<StatefulWidget> {
       ),
       body: SingleChildScrollView(
           physics: NeverScrollableScrollPhysics(),
-          child: Expanded(child: LayoutBuilder(
+          child: LayoutBuilder(
               builder: (BuildContext context, BoxConstraints constraints) {
             final localWidgetSize =
                 Size(constraints.maxWidth, constraints.maxHeight);
@@ -195,7 +195,7 @@ class _Home extends State<StatefulWidget> {
                     ),
                   ],
                 ));
-          }))),
+          })),
     );
   }
 }
