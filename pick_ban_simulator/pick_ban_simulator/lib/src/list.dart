@@ -1,6 +1,10 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 
+double displayHeight;
+double displayWidth;
+double displayRatio;
+
 class Champions {
   Future _listAssets(context) async {
     // Load as String

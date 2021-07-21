@@ -27,6 +27,9 @@ class Home extends StatefulWidget {
 class _Home extends State<StatefulWidget> {
   @override
   Widget build(BuildContext context) {
+    displayHeight = MediaQuery.of(context).size.height;
+    displayWidth = MediaQuery.of(context).size.width;
+    displayRatio = displayHeight / displayWidth;
     return Scaffold(
       appBar: AppBar(
           title: Text("PICK BAN SIMULATOR"),
@@ -52,17 +55,16 @@ class _Home extends State<StatefulWidget> {
           physics: NeverScrollableScrollPhysics(),
           child: LayoutBuilder(
               builder: (BuildContext context, BoxConstraints constraints) {
-            final localWidgetSize =
-                Size(constraints.maxWidth, constraints.maxHeight);
             return Container(
-                width: constraints.maxWidth,
+                width: displayWidth,
+                height: displayHeight,
                 child: Column(
                   children: [
                     Row(
                       children: [
                         Container(
-                          width: constraints.maxWidth * 0.426,
-                          height: constraints.maxWidth * 0.097,
+                          width: displayWidth * 0.426,
+                          height: displayHeight * 0.05,
                           decoration: myBoxDecoration(),
                           child: TextField(
                             textAlign: TextAlign.center,
@@ -75,18 +77,18 @@ class _Home extends State<StatefulWidget> {
                           ),
                         ),
                         Container(
-                          height: constraints.maxWidth * 0.097,
+                          height: displayHeight * 0.05,
                           decoration: myBoxDecoration(),
                           child: Text(
                             'Patch 11.12',
                             style: TextStyle(fontSize: 8, color: Colors.white),
                             textAlign: TextAlign.center,
                           ),
-                          width: constraints.maxWidth * 0.146,
+                          width: displayWidth * 0.146,
                         ),
                         Container(
-                          height: constraints.maxWidth * 0.097,
-                          width: constraints.maxWidth * 0.428,
+                          width: displayWidth * 0.428,
+                          height: displayHeight * 0.05,
                           decoration: myBoxDecoration(),
                           child: TextField(
                             textAlign: TextAlign.center,
@@ -108,8 +110,8 @@ class _Home extends State<StatefulWidget> {
                         BanContainer(3),
                         BanContainer(4),
                         Container(
-                          height: constraints.maxWidth * 0.11,
-                          width: constraints.maxWidth * 0.1465,
+                          width: displayWidth * 0.1465,
+                          height: displayHeight * 0.05,
                           decoration: myBoxDecoration(),
                           child: Text(
                             'BAN',
@@ -136,8 +138,8 @@ class _Home extends State<StatefulWidget> {
                           ],
                         ),
                         Container(
-                          height: constraints.maxWidth * 0.79,
-                          width: constraints.maxWidth * 0.486,
+                          height: displayHeight * 0.32,
+                          width: displayWidth * 0.486,
                           decoration: BoxDecoration(
                               color: MainColor,
                               border: Border.all(color: SubColor),
@@ -181,7 +183,7 @@ class _Home extends State<StatefulWidget> {
                                 decoration: myTabBoxDecoration(),
                               ),
                               Container(
-                                height: constraints.maxWidth * 0.62,
+                                height: displayHeight * 0.5,
                                 child: TabBarView(children: [
                                   ChampionGrid(topList),
                                   ChampionGrid(jugList),

@@ -76,8 +76,8 @@ Container BanContainer(int n) {
           );
         },
       ),
-      width: 35.1,
-      height: 45,
+      width: displayWidth * 0.0853,
+      height: displayHeight * 0.05,
       alignment: Alignment.center,
       decoration: myBoxDecoration());
 }
@@ -93,16 +93,6 @@ BoxDecoration myTabBoxDecoration() {
   return BoxDecoration(border: Border.all(color: SubColor));
 }
 
-Container ChampContainer() {
-  return Container(
-      decoration: BoxDecoration(
-          color: MainColor,
-          border: Border.all(color: SubColor),
-          image: DecorationImage(
-              image: new AssetImage('assets/images/champion_icon.jpg'),
-              fit: BoxFit.scaleDown)));
-}
-
 Container ChampContainer2() {
   return Container(
       decoration: BoxDecoration(
@@ -115,8 +105,8 @@ Container ChampContainer2() {
 // ignore: non_constant_identifier_names
 Container PlayerContainer(int n, String team, String savedTeam) {
   return Container(
-    width: 105.7,
-    height: 65,
+    width: displayWidth * 0.257,
+    height: displayHeight * 0.0641,
     child: DragTarget<String>(onWillAccept: (value) {
       return true;
     }, onAccept: (value) {
@@ -128,8 +118,8 @@ Container PlayerContainer(int n, String team, String savedTeam) {
         children: [
           ChampContainer2(),
           Container(
-              width: 105.7,
-              height: 65,
+              width: displayRatio * 40,
+              height: displayRatio * 60,
               alignment: Alignment.center,
               child: team != null //1)
                   ? Image.asset(team, fit: BoxFit.cover)
@@ -163,7 +153,7 @@ Container PlayerContainer(int n, String team, String savedTeam) {
                           ? savedTeam
                           : 'assets/images/champion_icon.jpg', //3)
                       fit: BoxFit.cover,
-                      height: 65,
+                      height: displayRatio * 30,
                       width: 105.7)),
             ),
           ),
@@ -173,14 +163,14 @@ Container PlayerContainer(int n, String team, String savedTeam) {
                   child: SvgPicture.asset(
                       'assets/images/player_background.svg', //3)
                       fit: BoxFit.fitWidth,
-                      height: 65,
+                      height: displayRatio * 30,
                       width: 105.7))),
           Positioned(
             right: 0,
-            bottom: 2,
+            bottom: displayRatio * 1,
             child: Container(
               height: 30,
-              width: 70,
+              width: displayRatio * 40,
               child: TextField(
                 textAlign: TextAlign.right,
                 decoration: InputDecoration(
@@ -214,7 +204,7 @@ TextStyle TeamColor(Color selectedColor) {
       fontFamily: 'SegoeUI',
       fontWeight: FontWeight.bold,
       fontStyle: FontStyle.italic,
-      fontSize: 25,
+      fontSize: displayRatio * 10,
       color: selectedColor);
 }
 
@@ -224,7 +214,7 @@ TextStyle NameTextField() {
       fontFamily: 'SegoeUI',
       fontWeight: FontWeight.bold,
       fontStyle: FontStyle.italic,
-      fontSize: 9,
+      fontSize: displayRatio * 4,
       color: SubColor);
 }
 
