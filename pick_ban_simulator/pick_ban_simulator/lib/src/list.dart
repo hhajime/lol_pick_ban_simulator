@@ -1,9 +1,35 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 
+ScrollController _scrollController;
+
+Color mainColor = Color(0xff060F14);
+Color subColor = Color(0xFFC8AA6E);
+Color caughtColor = Colors.red;
+
+String temp;
+String champName;
+
+int variableSet = 0;
+
+double width;
+double height;
 double displayHeight;
 double displayWidth;
 double displayRatio;
+
+List targetImage = List<String>.filled(10, null, growable: false);
+List player =
+    List<String>.filled(5, "assets/images/champion_icon.jpg", growable: false);
+List bluPlayer = player;
+List redPlayer = player;
+List redTeam = player;
+List bluTeam = player;
+List topList = Champions.top;
+List jugList = Champions.jug;
+List midList = Champions.mid;
+List botList = Champions.bot;
+List supList = Champions.sup;
 
 class Champions {
   Future _listAssets(context) async {

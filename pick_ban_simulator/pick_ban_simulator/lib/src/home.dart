@@ -4,21 +4,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_application_1/src/list.dart';
 import 'package:flutter_application_1/src/util.dart';
 
-List topList = Champions.top;
-List jugList = Champions.jug;
-List midList = Champions.mid;
-List botList = Champions.bot;
-List supList = Champions.sup;
-
-List _bluPlayer =
-    List<String>.filled(5, "assets/images/champion_icon.jpg", growable: false);
-List _redPlayer =
-    List<String>.filled(5, "assets/images/champion_icon.jpg", growable: false);
-List redTeam =
-    List<String>.filled(5, "assets/images/champion_icon.jpg", growable: false);
-List bluTeam =
-    List<String>.filled(5, "assets/images/champion_icon.jpg", growable: false);
-
 class Home extends StatefulWidget {
   @override
   State createState() => _Home();
@@ -43,14 +28,14 @@ class _Home extends State<StatefulWidget> {
             appBar: AppBar(
                 title: Text("PICK BAN SIMULATOR"),
                 brightness: Brightness.dark,
-                backgroundColor: MainColor),
+                backgroundColor: mainColor),
             drawer: Drawer(
               child: ListView(
                 padding: EdgeInsets.zero,
                 children: [
                   DrawerHeader(
                       child: Text('Drawer Header'),
-                      decoration: BoxDecoration(color: MainColor)),
+                      decoration: BoxDecoration(color: mainColor)),
                   ListTile(
                     title: Text('Item 1'),
                     onTap: () {
@@ -97,7 +82,7 @@ class _Home extends State<StatefulWidget> {
                               decoration: myBoxDecoration(),
                               child: Text(
                                 'BAN',
-                                style: TeamColor(SubColor),
+                                style: TeamColor(subColor),
                                 textAlign: TextAlign.center,
                               ),
                             ),
@@ -112,19 +97,19 @@ class _Home extends State<StatefulWidget> {
                           children: [
                             Column(
                               children: [
-                                PlayerContainer(_bluPlayer, 0),
-                                PlayerContainer(_bluPlayer, 1),
-                                PlayerContainer(_bluPlayer, 2),
-                                PlayerContainer(_bluPlayer, 3),
-                                PlayerContainer(_bluPlayer, 4)
+                                PlayerContainer(bluPlayer, 0),
+                                PlayerContainer(bluPlayer, 1),
+                                PlayerContainer(bluPlayer, 2),
+                                PlayerContainer(bluPlayer, 3),
+                                PlayerContainer(bluPlayer, 4)
                               ],
                             ),
                             Container(
                               height: displayHeight * 0.32,
                               width: displayWidth * 0.486,
                               decoration: BoxDecoration(
-                                  color: MainColor,
-                                  border: Border.all(color: SubColor),
+                                  color: mainColor,
+                                  border: Border.all(color: subColor),
                                   image: DecorationImage(
                                       image: new AssetImage(
                                           'assets/images/map.jpg'),
@@ -132,27 +117,27 @@ class _Home extends State<StatefulWidget> {
                             ),
                             Column(
                               children: [
-                                PlayerContainer(_redPlayer, 0),
-                                PlayerContainer(_redPlayer, 1),
-                                PlayerContainer(_redPlayer, 2),
-                                PlayerContainer(_redPlayer, 3),
-                                PlayerContainer(_redPlayer, 4)
+                                PlayerContainer(redPlayer, 0),
+                                PlayerContainer(redPlayer, 1),
+                                PlayerContainer(redPlayer, 2),
+                                PlayerContainer(redPlayer, 3),
+                                PlayerContainer(redPlayer, 4)
                               ],
                             )
                           ],
                         ),
                         Container(
-                          color: MainColor,
+                          color: mainColor,
                           child: DefaultTabController(
                               length: 5,
                               child: Column(
                                 children: [
                                   Container(
                                     child: TabBar(
-                                      indicator: BoxDecoration(color: SubColor),
-                                      labelStyle: TeamColor(SubColor),
-                                      unselectedLabelColor: SubColor,
-                                      indicatorColor: MainColor,
+                                      indicator: BoxDecoration(color: subColor),
+                                      labelStyle: TeamColor(subColor),
+                                      unselectedLabelColor: subColor,
+                                      indicatorColor: mainColor,
                                       labelColor: Colors.white,
                                       tabs: [
                                         Tab(text: 'TOP'),
@@ -165,7 +150,7 @@ class _Home extends State<StatefulWidget> {
                                     decoration: myTabBoxDecoration(),
                                   ),
                                   Container(
-                                    height: displayHeight * 0.455,
+                                    height: displayHeight * 0.452,
                                     child: TabBarView(children: [
                                       ChampionGrid(topList),
                                       ChampionGrid(jugList),

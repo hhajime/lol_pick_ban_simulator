@@ -4,20 +4,6 @@ import 'package:flutter_application_1/src/list.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 // ignore: non_constant_identifier_names
-Color MainColor = Color(0xff060F14);
-// ignore: non_constant_identifier_names
-Color SubColor = Color(0xFFC8AA6E);
-
-ScrollController _scrollController;
-Color caughtColor = Colors.red;
-List _targetImage = List<String>.filled(10, null, growable: false);
-String temp;
-String champName;
-int variableSet = 0;
-double width;
-double height;
-
-// ignore: non_constant_identifier_names
 Container BanContainer(List BanList, int n) {
   return Container(
     width: displayWidth * 0.0853,
@@ -74,27 +60,6 @@ Container BanContainer(List BanList, int n) {
       },
     ),
   );
-}
-
-BoxDecoration myBoxDecoration() {
-  return BoxDecoration(
-    color: MainColor,
-    border: Border.all(color: SubColor),
-  );
-}
-
-BoxDecoration myTabBoxDecoration() {
-  return BoxDecoration(border: Border.all(color: SubColor));
-}
-
-// ignore: non_constant_identifier_names
-Container ChampContainer2() {
-  return Container(
-      decoration: BoxDecoration(
-          color: MainColor,
-          image: DecorationImage(
-              image: new AssetImage('assets/images/champion_icon.jpg'),
-              fit: BoxFit.scaleDown)));
 }
 
 // ignore: non_constant_identifier_names
@@ -195,11 +160,11 @@ Widget ChampionGrid(List _image) {
                 child: gridContainer(_image, index)),
             footer: Container(
               child: GridTileBar(
-                backgroundColor: MainColor,
+                backgroundColor: mainColor,
                 subtitle: Text(
                   '$champName',
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 8, color: SubColor),
+                  style: TextStyle(fontSize: 8, color: subColor),
                 ),
               ),
               height: 16,
@@ -226,7 +191,7 @@ TextStyle NameTextField() {
       fontWeight: FontWeight.bold,
       fontStyle: FontStyle.italic,
       fontSize: displayRatio * 4,
-      color: SubColor);
+      color: subColor);
 }
 
 Widget gridContainer(gridList, index) {
@@ -273,8 +238,29 @@ Widget feedbackContainer(dynamic com) {
       width: 80,
       height: 90,
       decoration: new BoxDecoration(
-        color: MainColor,
-        border: Border.all(color: SubColor, width: 3),
+        color: mainColor,
+        border: Border.all(color: subColor, width: 3),
         image: DecorationImage(image: AssetImage(com), fit: BoxFit.cover),
       ));
+}
+
+BoxDecoration myBoxDecoration() {
+  return BoxDecoration(
+    color: mainColor,
+    border: Border.all(color: subColor),
+  );
+}
+
+BoxDecoration myTabBoxDecoration() {
+  return BoxDecoration(border: Border.all(color: subColor));
+}
+
+// ignore: non_constant_identifier_names
+Widget ChampContainer2() {
+  return Container(
+      decoration: BoxDecoration(
+          color: mainColor,
+          image: DecorationImage(
+              image: new AssetImage('assets/images/champion_icon.jpg'),
+              fit: BoxFit.scaleDown)));
 }
