@@ -3,8 +3,7 @@ import 'package:flutter_application_1/src/home.dart';
 import 'package:flutter_application_1/src/list.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-// ignore: non_constant_identifier_names
-Container BanContainer(List BanList, int n) {
+Widget banContainer(List banList, int n) {
   return Container(
     width: displayWidth * 0.0853,
     height: displayHeight * 0.05,
@@ -15,7 +14,7 @@ Container BanContainer(List BanList, int n) {
         return true;
       },
       onAccept: (value) {
-        BanList[n] = value;
+        banList[n] = value;
       },
       builder: (_, candidateData, rejectedData) {
         return Stack(children: [
@@ -23,17 +22,17 @@ Container BanContainer(List BanList, int n) {
             width: 35.1,
             height: 48,
             alignment: Alignment.center,
-            child: BanList[n] != null
+            child: banList[n] != null
                 ? Image.asset(
-                    BanList[n],
+                    banList[n],
                     fit: BoxFit.cover,
                   )
                 : Container(),
           ),
           Container(
             child: LongPressDraggable(
-              data: BanList[n],
-              feedback: feedbackContainer(BanList[n]),
+              data: banList[n],
+              feedback: feedbackContainer(banList[n]),
               childWhenDragging: ChampContainer2(),
               onDragUpdate: (team) {
                 print("onDragUpdated");
@@ -50,7 +49,7 @@ Container BanContainer(List BanList, int n) {
                 temp = 'assets/images/champion_icon.jpg';
               },
               child: Container(
-                  child: Image.asset(BanList[n], //3)
+                  child: Image.asset(banList[n], //3)
                       fit: BoxFit.cover,
                       height: displayRatio * 30,
                       width: 105.7)),
@@ -62,15 +61,14 @@ Container BanContainer(List BanList, int n) {
   );
 }
 
-// ignore: non_constant_identifier_names
-Container PlayerContainer(List PlayerList, int n) {
+Widget playerContainer(List playerList, int n) {
   return Container(
     width: displayWidth * 0.257,
     height: displayHeight * 0.0641,
     child: DragTarget<String>(onWillAccept: (value) {
       return true;
     }, onAccept: (value) {
-      PlayerList[n] = value;
+      playerList[n] = value;
     }, builder: (_, candidateData, rejectedData) {
       return Stack(
         children: [
@@ -78,13 +76,13 @@ Container PlayerContainer(List PlayerList, int n) {
               width: displayRatio * 40,
               height: displayRatio * 60,
               alignment: Alignment.center,
-              child: PlayerList[n] != null //1)
-                  ? Image.asset(PlayerList[n], fit: BoxFit.cover)
+              child: playerList[n] != null //1)
+                  ? Image.asset(playerList[n], fit: BoxFit.cover)
                   : Container()),
           Container(
             child: LongPressDraggable(
-              data: PlayerList[n],
-              feedback: feedbackContainer(PlayerList[n]),
+              data: playerList[n],
+              feedback: feedbackContainer(playerList[n]),
               childWhenDragging: ChampContainer2(),
               onDragUpdate: (team) {
                 print("onDragUpdated");
@@ -101,7 +99,7 @@ Container PlayerContainer(List PlayerList, int n) {
                 temp = 'assets/images/champion_icon.jpg';
               },
               child: Container(
-                  child: Image.asset(PlayerList[n], //3)
+                  child: Image.asset(playerList[n], //3)
                       fit: BoxFit.cover,
                       height: displayRatio * 30,
                       width: 105.7)),
@@ -117,7 +115,7 @@ Container PlayerContainer(List PlayerList, int n) {
                           height: displayRatio * 30,
                           width: 105.7)))),
           Positioned(
-              right: 0, bottom: displayRatio * 2, child: PlayerName("PLAYER")),
+              right: 0, bottom: displayRatio * 2, child: playerName("PLAYER")),
           Positioned(
             right: 5,
             bottom: 15,
@@ -134,8 +132,7 @@ Container PlayerContainer(List PlayerList, int n) {
   );
 }
 
-// ignore: non_constant_identifier_names
-Widget ChampionGrid(List _image) {
+Widget championGrid(List _image) {
   return Container(
     child: GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -174,8 +171,7 @@ Widget ChampionGrid(List _image) {
   );
 }
 
-// ignore: non_constant_identifier_names
-TextStyle TeamColor(Color selectedColor) {
+TextStyle teamColor(Color selectedColor) {
   return TextStyle(
       fontFamily: 'SegoeUI',
       fontWeight: FontWeight.bold,
@@ -184,8 +180,7 @@ TextStyle TeamColor(Color selectedColor) {
       color: selectedColor);
 }
 
-// ignore: non_constant_identifier_names
-TextStyle NameTextField() {
+TextStyle nameTextField() {
   return TextStyle(
       fontFamily: 'SegoeUI',
       fontWeight: FontWeight.bold,
@@ -202,8 +197,7 @@ Widget gridContainer(gridList, index) {
       decoration: myBoxDecoration());
 }
 
-// ignore: non_constant_identifier_names
-Widget TeamName(Color teamColor, String hintText) {
+Widget teamName(Color selectColors, String hintText) {
   return Container(
     width: displayWidth * 0.427,
     height: displayHeight * 0.05,
@@ -213,22 +207,22 @@ Widget TeamName(Color teamColor, String hintText) {
       decoration: InputDecoration(
           isCollapsed: true,
           border: InputBorder.none,
-          hintStyle: TeamColor(teamColor),
+          hintStyle: teamColor(selectColors),
           hintText: hintText,
           contentPadding: EdgeInsets.all(7)),
-      style: TeamColor(teamColor),
+      style: teamColor(selectColors),
     ),
   );
 }
 
-Widget PlayerName(String text) {
+Widget playerName(String text) {
   return Container(
     height: 11,
     width: displayRatio * 40,
     child: Text(
       text,
       textAlign: TextAlign.right,
-      style: NameTextField(),
+      style: nameTextField(),
     ),
   );
 }
