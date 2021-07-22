@@ -165,7 +165,7 @@ class _Home extends State<StatefulWidget> {
                                     decoration: myTabBoxDecoration(),
                                   ),
                                   Container(
-                                    height: displayHeight * 0.5,
+                                    height: displayHeight * 0.455,
                                     child: TabBarView(children: [
                                       ChampionGrid(topList),
                                       ChampionGrid(jugList),

@@ -17,6 +17,11 @@
             "type": "dart",
             "flutterMode": "profile"
         },{
+          "name": "s9",
+          "request": "launch",
+          "type": "dart",
+          "deviceId": "2163e91005017ece"
+      },{
             "name": "Android_Pixel_4",
             "request": "launch",
             "type": "dart",
@@ -30,7 +35,7 @@
     ],"compounds": [
         {
           "name": "All Devices",
-          "configurations": ["Android_Pixel_4", "Android_Galaxy_21"]
+          "configurations": ["s9","Android_Pixel_4", "Android_Galaxy_21"]
         }
       ]
 }

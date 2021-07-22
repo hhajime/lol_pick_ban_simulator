@@ -12,6 +12,7 @@ ScrollController _scrollController;
 Color caughtColor = Colors.red;
 List _targetImage = List<String>.filled(10, null, growable: false);
 String temp;
+String champName;
 int variableSet = 0;
 double width;
 double height;
@@ -169,30 +170,41 @@ Container PlayerContainer(List PlayerList, int n) {
 }
 
 // ignore: non_constant_identifier_names
-Container ChampionGrid(List _image) {
+Widget ChampionGrid(List _image) {
   return Container(
     child: GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 5,
-          childAspectRatio: 4 / 4.5,
+          childAspectRatio: displayHeight / 1000,
         ),
         itemCount: _image.length,
         itemBuilder: (context, index) => GridTile(
-              child: LongPressDraggable(
-                  data: _image[index],
-                  feedback: feedbackContainer(_image[index]),
-                  childWhenDragging: ChampContainer2(),
-                  onDragCompleted: () {
-                    print("onDragCompleted");
-                  },
-                  onDragEnd: (data) {},
-                  onDragStarted: () {
-                    temp = _image[index];
-                    print("onDragStarted");
-                  },
-                  onDragUpdate: (data) {},
-                  child: gridContainer(_image, index)),
-            )),
+            child: LongPressDraggable(
+                data: _image[index],
+                feedback: feedbackContainer(_image[index]),
+                childWhenDragging: ChampContainer2(),
+                onDragCompleted: () {
+                  print("onDragCompleted");
+                },
+                onDragEnd: (data) {},
+                onDragStarted: () {
+                  temp = _image[index];
+                  print("onDragStarted");
+                },
+                onDragUpdate: (data) {},
+                child: gridContainer(_image, index)),
+            footer: Container(
+              child: GridTileBar(
+                backgroundColor: MainColor,
+                subtitle: Text(
+                  '$champName',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 8, color: SubColor),
+                ),
+              ),
+              height: 16,
+              decoration: myBoxDecoration(),
+            ))),
     decoration: myBoxDecoration(),
   );
 }
@@ -217,7 +229,8 @@ TextStyle NameTextField() {
       color: SubColor);
 }
 
-Container gridContainer(gridList, index) {
+Widget gridContainer(gridList, index) {
+  champName = gridList[index].substring(47).replaceAll('.jpg', '');
   return Container(
       child: Image.asset(gridList[index],
           fit: BoxFit.cover, height: height, width: width),
@@ -225,7 +238,7 @@ Container gridContainer(gridList, index) {
 }
 
 // ignore: non_constant_identifier_names
-Container TeamName(Color teamColor, String hintText) {
+Widget TeamName(Color teamColor, String hintText) {
   return Container(
     width: displayWidth * 0.427,
     height: displayHeight * 0.05,
@@ -243,7 +256,7 @@ Container TeamName(Color teamColor, String hintText) {
   );
 }
 
-Container PlayerName(String text) {
+Widget PlayerName(String text) {
   return Container(
     height: 11,
     width: displayRatio * 40,
@@ -255,7 +268,7 @@ Container PlayerName(String text) {
   );
 }
 
-Container feedbackContainer(dynamic com) {
+Widget feedbackContainer(dynamic com) {
   return Container(
       width: 80,
       height: 90,
