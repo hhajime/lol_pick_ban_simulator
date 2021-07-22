@@ -21,10 +21,14 @@ double displayRatio;
 List targetImage = List<String>.filled(10, null, growable: false);
 List player =
     List<String>.filled(5, "assets/images/champion_icon.jpg", growable: false);
-List bluPlayer = player;
-List redPlayer = player;
-List redTeam = player;
-List bluTeam = player;
+List bluPlayer =
+    List<String>.filled(5, "assets/images/champion_icon.jpg", growable: false);
+List redPlayer =
+    List<String>.filled(5, "assets/images/champion_icon.jpg", growable: false);
+List redTeam =
+    List<String>.filled(5, "assets/images/champion_icon.jpg", growable: false);
+List bluTeam =
+    List<String>.filled(5, "assets/images/champion_icon.jpg", growable: false);
 List topList = Champions.top;
 List jugList = Champions.jug;
 List midList = Champions.mid;

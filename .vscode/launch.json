@@ -25,12 +25,12 @@
             "name": "Android_Pixel_4",
             "request": "launch",
             "type": "dart",
-            "deviceId": "emulator-5554"
+            "deviceId": "emulator-5556"
           },{
             "name": "Android_Galaxy_21",
             "request": "launch",
             "type": "dart",
-            "deviceId": "emulator-5556"
+            "deviceId": "emulator-5554"
           },
     ],"compounds": [
         {
