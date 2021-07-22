@@ -10,6 +10,15 @@ Widget banContainer(List banList, int n) {
     decoration: myBoxDecoration(),
     child: DragTarget<String>(
       onWillAccept: (value) {
+        //현재 들고있는 카드 보여줌
+        debugPrint('draggable is hovering on banContainer $n');
+        debugPrint('current value is $value');
+        debugPrint('banTemp value is $banTemp');
+        if ((value == banTemp) || (value == temp)) {
+          debugPrint("NEED CHANGE!!");
+        } else if (value == null) {
+          debugPrint("target is null");
+        }
         return true;
       },
       onAccept: (value) {
@@ -46,6 +55,7 @@ Widget banContainer(List banList, int n) {
               onDragStarted: () {
                 print("onDragStarted");
                 temp = 'assets/images/champion_icon.jpg';
+                banTemp = banList[n];
               },
               child: Container(
                   child: Image.asset(banList[n], //3)
@@ -95,7 +105,7 @@ Widget playerContainer(List playerList, int n) {
               },
               onDragStarted: () {
                 print("onDragStarted");
-                temp = 'assets/images/champion_icon.jpg';
+                temp = playerList[n];
               },
               child: Container(
                   child: Image.asset(playerList[n], //3)

@@ -9,7 +9,7 @@ Color caughtColor = Colors.red;
 
 String temp;
 String champName;
-
+String banTemp;
 int variableSet = 0;
 
 double width;
