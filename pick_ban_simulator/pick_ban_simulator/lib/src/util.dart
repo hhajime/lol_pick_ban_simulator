@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/src/home.dart';
 import 'package:flutter_application_1/src/list.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -10,44 +11,68 @@ Color SubColor = Color(0xFFC8AA6E);
 ScrollController _scrollController;
 Color caughtColor = Colors.red;
 List _targetImage = List<String>.filled(10, null, growable: false);
-List _bluPlayer =
-    List<String>.filled(5, "assets/images/champion_icon.jpg", growable: false);
-List _redPlayer =
-    List<String>.filled(5, "assets/images/champion_icon.jpg", growable: false);
-List redTeam =
-    List<String>.filled(5, "assets/images/champion_icon.jpg", growable: false);
-List bluTeam =
-    List<String>.filled(5, "assets/images/champion_icon.jpg", growable: false);
 String temp;
 int variableSet = 0;
 double width;
 double height;
 
 // ignore: non_constant_identifier_names
-Container BanContainer(int n) {
+Container BanContainer(List BanList, int n) {
   return Container(
-      child: DragTarget<String>(
-        onAccept: (value) {
-          _targetImage[n] = value;
-        },
-        builder: (_, candidateData, rejectedData) {
-          return Container(
+    width: displayWidth * 0.0853,
+    height: displayHeight * 0.05,
+    alignment: Alignment.center,
+    decoration: myBoxDecoration(),
+    child: DragTarget<String>(
+      onWillAccept: (value) {
+        return true;
+      },
+      onAccept: (value) {
+        BanList[n] = value;
+      },
+      builder: (_, candidateData, rejectedData) {
+        return Stack(children: [
+          Container(
             width: 35.1,
             height: 48,
             alignment: Alignment.center,
-            child: _targetImage[n] != null
+            child: BanList[n] != null
                 ? Image.asset(
-                    _targetImage[n],
+                    BanList[n],
                     fit: BoxFit.cover,
                   )
                 : Container(),
-          );
-        },
-      ),
-      width: displayWidth * 0.0853,
-      height: displayHeight * 0.05,
-      alignment: Alignment.center,
-      decoration: myBoxDecoration());
+          ),
+          Container(
+            child: LongPressDraggable(
+              data: BanList[n],
+              feedback: feedbackContainer(BanList[n]),
+              childWhenDragging: ChampContainer2(),
+              onDragUpdate: (team) {
+                print("onDragUpdated");
+              },
+              onDragCompleted: () {
+                // 여기에 추가
+                print("onDragCompleted_player");
+              },
+              onDragEnd: (data) {
+                print("onDragEnd");
+              },
+              onDragStarted: () {
+                print("onDragStarted");
+                temp = 'assets/images/champion_icon.jpg';
+              },
+              child: Container(
+                  child: Image.asset(BanList[n], //3)
+                      fit: BoxFit.cover,
+                      height: displayRatio * 30,
+                      width: 105.7)),
+            ),
+          ),
+        ]);
+      },
+    ),
+  );
 }
 
 BoxDecoration myBoxDecoration() {
@@ -72,16 +97,14 @@ Container ChampContainer2() {
 }
 
 // ignore: non_constant_identifier_names
-Container PlayerContainer(int n, String team, String savedTeam) {
+Container PlayerContainer(List PlayerList, int n) {
   return Container(
     width: displayWidth * 0.257,
     height: displayHeight * 0.0641,
     child: DragTarget<String>(onWillAccept: (value) {
       return true;
     }, onAccept: (value) {
-      print("onAccept");
-      team = value;
-      savedTeam = team;
+      PlayerList[n] = value;
     }, builder: (_, candidateData, rejectedData) {
       return Stack(
         children: [
@@ -89,50 +112,44 @@ Container PlayerContainer(int n, String team, String savedTeam) {
               width: displayRatio * 40,
               height: displayRatio * 60,
               alignment: Alignment.center,
-              child: team != null //1)
-                  ? Image.asset(team, fit: BoxFit.cover)
+              child: PlayerList[n] != null //1)
+                  ? Image.asset(PlayerList[n], fit: BoxFit.cover)
                   : Container()),
           Container(
             child: LongPressDraggable(
-              data: team,
-              feedback: Container(
-                  child: Image.asset(team, //2)
-                      fit: BoxFit.cover,
-                      height: 65,
-                      width: 105.7)),
+              data: PlayerList[n],
+              feedback: feedbackContainer(PlayerList[n]),
               childWhenDragging: ChampContainer2(),
               onDragUpdate: (team) {
                 print("onDragUpdated");
               },
               onDragCompleted: () {
-                //여기에 추가
+                // 여기에 추가
                 print("onDragCompleted_player");
               },
               onDragEnd: (data) {
-                // 여기에 추가
                 print("onDragEnd");
               },
               onDragStarted: () {
                 print("onDragStarted");
+                temp = 'assets/images/champion_icon.jpg';
               },
               child: Container(
-                  child: Image.asset(
-                      team == temp
-                          ? savedTeam
-                          : 'assets/images/champion_icon.jpg', //3)
+                  child: Image.asset(PlayerList[n], //3)
                       fit: BoxFit.cover,
                       height: displayRatio * 30,
                       width: 105.7)),
             ),
           ),
-          Container(
-              child: Opacity(
-                  opacity: 0.5,
-                  child: SvgPicture.asset(
-                      'assets/images/player_background.svg', //3)
-                      fit: BoxFit.fitWidth,
-                      height: displayRatio * 30,
-                      width: 105.7))),
+          IgnorePointer(
+              child: Container(
+                  child: Opacity(
+                      opacity: 0.5,
+                      child: SvgPicture.asset(
+                          'assets/images/player_background.svg', //3)
+                          fit: BoxFit.fitWidth,
+                          height: displayRatio * 30,
+                          width: 105.7)))),
           Positioned(
               right: 0, bottom: displayRatio * 2, child: PlayerName("PLAYER")),
           Positioned(
@@ -163,11 +180,7 @@ Container ChampionGrid(List _image) {
         itemBuilder: (context, index) => GridTile(
               child: LongPressDraggable(
                   data: _image[index],
-                  feedback: Container(
-                    child: Image.asset(_image[index],
-                        fit: BoxFit.cover, height: 100, width: 80),
-                    decoration: myBoxDecoration(),
-                  ),
+                  feedback: feedbackContainer(_image[index]),
                   childWhenDragging: ChampContainer2(),
                   onDragCompleted: () {
                     print("onDragCompleted");
@@ -225,7 +238,7 @@ Container TeamName(Color teamColor, String hintText) {
           hintStyle: TeamColor(teamColor),
           hintText: hintText,
           contentPadding: EdgeInsets.all(7)),
-      style: TeamColor(Colors.blue),
+      style: TeamColor(teamColor),
     ),
   );
 }
@@ -240,4 +253,15 @@ Container PlayerName(String text) {
       style: NameTextField(),
     ),
   );
+}
+
+Container feedbackContainer(dynamic com) {
+  return Container(
+      width: 80,
+      height: 90,
+      decoration: new BoxDecoration(
+        color: MainColor,
+        border: Border.all(color: SubColor, width: 3),
+        image: DecorationImage(image: AssetImage(com), fit: BoxFit.cover),
+      ));
 }
