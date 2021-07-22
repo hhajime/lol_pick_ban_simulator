@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 
-ScrollController _scrollController;
+ScrollController scrollController;
 
 Color mainColor = Color(0xff060F14);
 Color subColor = Color(0xFFC8AA6E);
