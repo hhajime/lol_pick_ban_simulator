@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/src/home.dart';
-import 'package:flutter_application_1/src/provider/ban_provider.dart';
+import 'package:flutter_application_1/src/provider/pickban_provider.dart';
 import 'package:provider/provider.dart';
 
 void main() => runApp(MyApp());
@@ -16,7 +16,7 @@ class TestState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       title: 'LOL PICK & BAN SIMULATOR',
       home: ChangeNotifierProvider(
-          create: (BuildContext context) => BanProvider(), child: Home()),
+          create: (BuildContext context) => PickBanProvider(), child: Home()),
     );
   }
 }

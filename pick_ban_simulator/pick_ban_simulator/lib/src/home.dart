@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_application_1/src/list.dart';
+import 'package:flutter_application_1/src/provider/pickban_provider.dart';
 import 'package:flutter_application_1/src/util.dart';
+import 'package:provider/provider.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -10,8 +12,10 @@ class Home extends StatefulWidget {
 }
 
 class _Home extends State<StatefulWidget> {
+  PickBanProvider _PickBanProvider;
   @override
   Widget build(BuildContext context) {
+    _PickBanProvider = Provider.of<PickBanProvider>(context);
     displayHeight = MediaQuery.of(context).size.height;
     displayWidth = MediaQuery.of(context).size.width;
     displayRatio = displayHeight / displayWidth;
