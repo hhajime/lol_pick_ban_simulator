@@ -7,10 +7,13 @@ Color mainColor = Color(0xff060F14);
 Color subColor = Color(0xFFC8AA6E);
 Color caughtColor = Colors.red;
 
+String champIcon = "assets/images/champion_icon.jpg";
 String temp;
 String champName;
 String banTemp;
+
 int variableSet = 0;
+int tempNum;
 
 double width;
 double height;
@@ -19,16 +22,11 @@ double displayWidth;
 double displayRatio;
 
 List targetImage = List<String>.filled(10, null, growable: false);
-List player =
-    List<String>.filled(5, "assets/images/champion_icon.jpg", growable: false);
-List bluPlayer =
-    List<String>.filled(5, "assets/images/champion_icon.jpg", growable: false);
-List redPlayer =
-    List<String>.filled(5, "assets/images/champion_icon.jpg", growable: false);
-List redTeam =
-    List<String>.filled(5, "assets/images/champion_icon.jpg", growable: false);
-List bluTeam =
-    List<String>.filled(5, "assets/images/champion_icon.jpg", growable: false);
+List player = List<String>.filled(5, champIcon, growable: false);
+List bluPlayer = List<String>.filled(5, champIcon, growable: false);
+List redPlayer = List<String>.filled(5, champIcon, growable: false);
+List redTeam = List<String>.filled(5, champIcon, growable: false);
+List bluTeam = List<String>.filled(5, champIcon, growable: false);
 List topList = Champions.top;
 List jugList = Champions.jug;
 List midList = Champions.mid;
