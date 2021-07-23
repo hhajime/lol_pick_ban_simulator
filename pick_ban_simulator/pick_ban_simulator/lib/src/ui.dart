@@ -230,67 +230,76 @@ Widget banContainer(List banList, int n) {
 }
 
 Widget playerContainer(List playerList, int n) {
-  return Container(
-    width: displayWidth * 0.257,
-    height: displayHeight * 0.0641,
-    child: DragTarget<String>(onWillAccept: (value) {
-      return true;
-    }, onAccept: (value) {
-      playerList[n] = value;
-    }, builder: (_, candidateData, rejectedData) {
-      return Stack(
-        children: [
-          Container(
-              width: displayRatio * 40,
-              height: displayRatio * 60,
-              alignment: Alignment.center,
-              child: playerList[n] != null //1)
-                  ? Image.asset(playerList[n], fit: BoxFit.cover)
-                  : Container()),
-          Container(
-            child: LongPressDraggable(
-              data: playerList[n],
-              feedback: feedbackContainer(playerList[n]),
-              childWhenDragging: ChampContainer2(),
-              onDragUpdate: (team) {},
-              onDragCompleted: () {},
-              onDragEnd: (data) {},
-              onDragStarted: () {
-                trigger = 2;
-                dragging = playerList[n];
-              },
-              child: Container(
-                  child: Image.asset(playerList[n], //3)
-                      fit: BoxFit.cover,
-                      height: displayRatio * 30,
-                      width: 105.7)),
+  return Consumer<PickBanProvider>(builder: (context, provider, child) {
+    return Container(
+      width: displayWidth * 0.257,
+      height: displayHeight * 0.0641,
+      child: DragTarget<String>(onWillAccept: (value) {
+        return true;
+      }, onAccept: (value) {
+        if (trigger == 2) {
+          playerList[tempNum] = playerList[n];
+          provider.PlayerAdd();
+        }
+        playerList[n] = dragging;
+      }, builder: (_, candidateData, rejectedData) {
+        return Stack(
+          children: [
+            Container(
+                width: displayRatio * 40,
+                height: displayRatio * 60,
+                alignment: Alignment.center,
+                child: playerList[n] != null //1)
+                    ? Image.asset(playerList[n], fit: BoxFit.cover)
+                    : Container()),
+            Container(
+              child: LongPressDraggable(
+                data: playerList[n],
+                feedback: feedbackContainer(playerList[n]),
+                childWhenDragging: ChampContainer2(),
+                onDragUpdate: (team) {},
+                onDragCompleted: () {},
+                onDragEnd: (data) {},
+                onDragStarted: () {
+                  trigger = 2;
+                  dragging = playerList[n];
+                  tempNum = n;
+                },
+                child: Container(
+                    child: Image.asset(playerList[n], //3)
+                        fit: BoxFit.cover,
+                        height: displayRatio * 30,
+                        width: 105.7)),
+              ),
             ),
-          ),
-          IgnorePointer(
+            IgnorePointer(
+                child: Container(
+                    child: Opacity(
+                        opacity: 0.5,
+                        child: SvgPicture.asset(
+                            'assets/images/player_background.svg', //3)
+                            fit: BoxFit.fitWidth,
+                            height: displayRatio * 30,
+                            width: 105.7)))),
+            Positioned(
+                right: 0,
+                bottom: displayRatio * 2,
+                child: playerName("PLAYER")),
+            Positioned(
+              right: 5,
+              bottom: 15,
               child: Container(
-                  child: Opacity(
-                      opacity: 0.5,
-                      child: SvgPicture.asset(
-                          'assets/images/player_background.svg', //3)
-                          fit: BoxFit.fitWidth,
-                          height: displayRatio * 30,
-                          width: 105.7)))),
-          Positioned(
-              right: 0, bottom: displayRatio * 2, child: playerName("PLAYER")),
-          Positioned(
-            right: 5,
-            bottom: 15,
-            child: Container(
-              height: 15,
-              width: 15,
-              child: SvgPicture.asset(lines[n]),
+                height: 15,
+                width: 15,
+                child: SvgPicture.asset(lines[n]),
+              ),
             ),
-          ),
-        ],
-      );
-    }),
-    decoration: myBoxDecoration(),
-  );
+          ],
+        );
+      }),
+      decoration: myBoxDecoration(),
+    );
+  });
 }
 
 Widget championGrid(List _image) {
@@ -305,15 +314,17 @@ Widget championGrid(List _image) {
             child: LongPressDraggable(
                 data: _image[index],
                 feedback: feedbackContainer(_image[index]),
-                childWhenDragging: ChampContainer2(),
-                onDragCompleted: () {},
+                childWhenDragging: greyOutChampContainer(_image[index]),
+                onDragCompleted: () {
+                  debugPrint('complerte');
+                },
                 onDragEnd: (data) {},
                 onDragStarted: () {
                   trigger = 3;
                   dragging = _image[index];
                 },
                 onDragUpdate: (data) {},
-                child: gridContainer(_image, index)),
+                child: gridContainer(_image[index])),
             footer: Container(
               child: GridTileBar(
                 backgroundColor: mainColor,
@@ -348,11 +359,10 @@ TextStyle nameTextField() {
       color: subColor);
 }
 
-Widget gridContainer(gridList, index) {
-  champName = gridList[index].substring(47).replaceAll('.jpg', '');
+Widget gridContainer(con) {
+  champName = con.substring(47).replaceAll('.jpg', '');
   return Container(
-      child: Image.asset(gridList[index],
-          fit: BoxFit.cover, height: height, width: width),
+      child: Image.asset(con, fit: BoxFit.cover, height: height, width: width),
       decoration: myBoxDecoration());
 }
 
@@ -414,5 +424,21 @@ Widget ChampContainer2() {
       decoration: BoxDecoration(
           color: mainColor,
           image: DecorationImage(
-              image: new AssetImage(champIcon), fit: BoxFit.scaleDown)));
+            image: new AssetImage(champIcon),
+            fit: BoxFit.scaleDown,
+          )));
+}
+
+Widget greyOutChampContainer(dynamic champ) {
+  return Container(
+      foregroundDecoration: BoxDecoration(
+        color: Colors.grey,
+        backgroundBlendMode: BlendMode.saturation,
+      ),
+      decoration: BoxDecoration(
+          color: mainColor,
+          image: DecorationImage(
+            image: new AssetImage(champ),
+            fit: BoxFit.cover,
+          )));
 }
