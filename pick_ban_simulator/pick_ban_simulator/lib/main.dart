@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/src/home.dart';
+import 'package:flutter_application_1/src/ui.dart';
 import 'package:flutter_application_1/src/provider/pickban_provider.dart';
 import 'package:provider/provider.dart';
 
