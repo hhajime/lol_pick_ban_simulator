@@ -10,10 +10,19 @@ Widget banContainer(List banList, int n) {
     decoration: myBoxDecoration(),
     child: DragTarget<String>(
       onWillAccept: (value) {
+        debugPrint(
+            'target : ${banList[n]} // trigger : ${trigger} //tempNum : ${tempNum} //on hover ${n}');
         return true;
       },
       onAccept: (value) {
-        banList[n] = value;
+        if (trigger == 1) {
+          debugPrint(
+              'before ${banList[n]}// ${banList[tempNum]}, ${n},${tempNum}');
+          banList[tempNum] = banList[n];
+          debugPrint(
+              'after ${banList[n]}// ${banList[tempNum]}, ${n},${tempNum}');
+        }
+        banList[n] = dragging;
       },
       builder: (_, candidateData, rejectedData) {
         return Stack(children: [
@@ -37,9 +46,11 @@ Widget banContainer(List banList, int n) {
               onDragCompleted: () {},
               onDragEnd: (data) {},
               onDragStarted: () {
-                temp = champIcon;
-                banTemp = banList[n];
+                trigger = 1;
+                dragging = banList[n];
                 tempNum = n;
+                debugPrint('tempNum is ${tempNum}');
+                debugPrint('n is ${n}');
               },
               child: Container(
                   child: Image.asset(banList[n], //3)
@@ -81,7 +92,8 @@ Widget playerContainer(List playerList, int n) {
               onDragCompleted: () {},
               onDragEnd: (data) {},
               onDragStarted: () {
-                temp = playerList[n];
+                trigger = 2;
+                dragging = playerList[n];
               },
               child: Container(
                   child: Image.asset(playerList[n], //3)
@@ -133,7 +145,8 @@ Widget championGrid(List _image) {
                 onDragCompleted: () {},
                 onDragEnd: (data) {},
                 onDragStarted: () {
-                  temp = _image[index];
+                  trigger = 3;
+                  dragging = _image[index];
                 },
                 onDragUpdate: (data) {},
                 child: gridContainer(_image, index)),

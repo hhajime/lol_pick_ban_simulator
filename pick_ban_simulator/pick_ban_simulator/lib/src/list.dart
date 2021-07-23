@@ -8,12 +8,13 @@ Color subColor = Color(0xFFC8AA6E);
 Color caughtColor = Colors.red;
 
 String champIcon = "assets/images/champion_icon.jpg";
-String temp;
+String dragging;
 String champName;
 String banTemp;
 
 int variableSet = 0;
 int tempNum;
+int trigger;
 
 double width;
 double height;
