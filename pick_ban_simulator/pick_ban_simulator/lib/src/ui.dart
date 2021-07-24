@@ -75,11 +75,11 @@ class _Home extends State<StatefulWidget> {
                         ),
                         Row(
                           children: [
-                            banContainer(bluTeam, 0),
-                            banContainer(bluTeam, 1),
-                            banContainer(bluTeam, 2),
-                            banContainer(bluTeam, 3),
-                            banContainer(bluTeam, 4),
+                            banContainer(bluTeam, bluTeam_out, 0),
+                            banContainer(bluTeam, bluTeam_out, 1),
+                            banContainer(bluTeam, bluTeam_out, 2),
+                            banContainer(bluTeam, bluTeam_out, 3),
+                            banContainer(bluTeam, bluTeam_out, 4),
                             Container(
                               width: displayWidth * 0.1465,
                               height: displayHeight * 0.05,
@@ -90,22 +90,22 @@ class _Home extends State<StatefulWidget> {
                                 textAlign: TextAlign.center,
                               ),
                             ),
-                            banContainer(redTeam, 0),
-                            banContainer(redTeam, 1),
-                            banContainer(redTeam, 2),
-                            banContainer(redTeam, 3),
-                            banContainer(redTeam, 4),
+                            banContainer(redTeam, redTeam_out, 0),
+                            banContainer(redTeam, redTeam_out, 1),
+                            banContainer(redTeam, redTeam_out, 2),
+                            banContainer(redTeam, redTeam_out, 3),
+                            banContainer(redTeam, redTeam_out, 4),
                           ],
                         ),
                         Row(
                           children: [
                             Column(
                               children: [
-                                playerContainer(bluPlayer, 0),
-                                playerContainer(bluPlayer, 1),
-                                playerContainer(bluPlayer, 2),
-                                playerContainer(bluPlayer, 3),
-                                playerContainer(bluPlayer, 4)
+                                playerContainer(bluPlayer, bluPlayer_out, 0),
+                                playerContainer(bluPlayer, bluPlayer_out, 1),
+                                playerContainer(bluPlayer, bluPlayer_out, 2),
+                                playerContainer(bluPlayer, bluPlayer_out, 3),
+                                playerContainer(bluPlayer, bluPlayer_out, 4)
                               ],
                             ),
                             Container(
@@ -121,11 +121,11 @@ class _Home extends State<StatefulWidget> {
                             ),
                             Column(
                               children: [
-                                playerContainer(redPlayer, 0),
-                                playerContainer(redPlayer, 1),
-                                playerContainer(redPlayer, 2),
-                                playerContainer(redPlayer, 3),
-                                playerContainer(redPlayer, 4)
+                                playerContainer(redPlayer, redPlayer_out, 0),
+                                playerContainer(redPlayer, redPlayer_out, 1),
+                                playerContainer(redPlayer, redPlayer_out, 2),
+                                playerContainer(redPlayer, redPlayer_out, 3),
+                                playerContainer(redPlayer, redPlayer_out, 4)
                               ],
                             )
                           ],
@@ -156,11 +156,11 @@ class _Home extends State<StatefulWidget> {
                                   Container(
                                     height: displayHeight * 0.452,
                                     child: TabBarView(children: [
-                                      championGrid(topList),
-                                      championGrid(jugList),
-                                      championGrid(midList),
-                                      championGrid(botList),
-                                      championGrid(supList),
+                                      championGrid(topList, topPlayerList),
+                                      championGrid(jugList, jugPlayerList),
+                                      championGrid(midList, midPlayerList),
+                                      championGrid(botList, botPlayerList),
+                                      championGrid(supList, supPlayerList),
                                     ]),
                                   )
                                 ],
@@ -171,7 +171,7 @@ class _Home extends State<StatefulWidget> {
   }
 }
 
-Widget banContainer(List banList, int n) {
+Widget banContainer(List banList, List out, int n) {
   return Consumer<PickBanProvider>(builder: (context, provider, child) {
     return Container(
       width: displayWidth * 0.0853,
@@ -229,7 +229,7 @@ Widget banContainer(List banList, int n) {
   });
 }
 
-Widget playerContainer(List playerList, int n) {
+Widget playerContainer(List playerList, List playerList_out, int n) {
   return Consumer<PickBanProvider>(builder: (context, provider, child) {
     return Container(
       width: displayWidth * 0.257,
@@ -241,7 +241,7 @@ Widget playerContainer(List playerList, int n) {
           playerList[tempNum] = playerList[n];
           provider.PlayerAdd();
         }
-        playerList[n] = dragging;
+        playerList[n] = dragging2;
       }, builder: (_, candidateData, rejectedData) {
         return Stack(
           children: [
@@ -302,43 +302,47 @@ Widget playerContainer(List playerList, int n) {
   });
 }
 
-Widget championGrid(List _image) {
-  return Container(
-    child: GridView.builder(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 5,
-          childAspectRatio: displayHeight / 1000,
-        ),
-        itemCount: _image.length,
-        itemBuilder: (context, index) => GridTile(
-            child: LongPressDraggable(
-                data: _image[index],
-                feedback: feedbackContainer(_image[index]),
-                childWhenDragging: greyOutChampContainer(_image[index]),
-                onDragCompleted: () {
-                  debugPrint('complerte');
-                },
-                onDragEnd: (data) {},
-                onDragStarted: () {
-                  trigger = 3;
-                  dragging = _image[index];
-                },
-                onDragUpdate: (data) {},
-                child: gridContainer(_image[index])),
-            footer: Container(
-              child: GridTileBar(
-                backgroundColor: mainColor,
-                subtitle: Text(
-                  '$champName',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 8, color: subColor),
+Widget championGrid(List _image, List _image2) {
+  return Consumer<PickBanProvider>(builder: (context, provider, child) {
+    return Container(
+      child: GridView.builder(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 5,
+            childAspectRatio: displayHeight / 1000,
+          ),
+          itemCount: (_image.length),
+          itemBuilder: (context, index) => GridTile(
+              child: LongPressDraggable(
+                  data: _image[index],
+                  feedback: feedbackContainer(_image[index]),
+                  childWhenDragging: greyOutChampContainer(_image[index]),
+                  onDragCompleted: () {
+                    debugPrint('complerte');
+                    provider.GridAdd();
+                  },
+                  onDragEnd: (data) {},
+                  onDragStarted: () {
+                    trigger = 3;
+                    dragging = _image[index];
+                    dragging2 = _image2[index];
+                  },
+                  onDragUpdate: (data) {},
+                  child: gridContainer(_image[index])),
+              footer: Container(
+                child: GridTileBar(
+                  backgroundColor: mainColor,
+                  subtitle: Text(
+                    '$champName',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 8, color: subColor),
+                  ),
                 ),
-              ),
-              height: 16,
-              decoration: myBoxDecoration(),
-            ))),
-    decoration: myBoxDecoration(),
-  );
+                height: 16,
+                decoration: myBoxDecoration(),
+              ))),
+      decoration: myBoxDecoration(),
+    );
+  });
 }
 
 TextStyle teamColor(Color selectedColor) {

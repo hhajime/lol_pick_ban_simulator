@@ -8,4 +8,8 @@ class PickBanProvider extends ChangeNotifier {
   void PlayerAdd() {
     notifyListeners();
   }
+
+  void GridAdd() {
+    notifyListeners();
+  }
 }

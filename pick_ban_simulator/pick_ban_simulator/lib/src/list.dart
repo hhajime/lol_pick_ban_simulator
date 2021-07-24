@@ -9,9 +9,9 @@ Color caughtColor = Colors.red;
 
 String champIcon = "assets/images/champion_icon.jpg";
 String dragging;
+String dragging2;
 String champName;
 String banTemp;
-
 int variableSet = 0;
 int tempNum;
 int trigger;
@@ -26,13 +26,24 @@ List targetImage = List<String>.filled(10, null, growable: false);
 List player = List<String>.filled(5, champIcon, growable: false);
 List bluPlayer = List<String>.filled(5, champIcon, growable: false);
 List redPlayer = List<String>.filled(5, champIcon, growable: false);
-List redTeam = List<String>.filled(5, champIcon, growable: false);
+List bluPlayer_out = List<String>.filled(5, champIcon, growable: false);
+List redPlayer_out = List<String>.filled(5, champIcon, growable: false);
 List bluTeam = List<String>.filled(5, champIcon, growable: false);
+List redTeam = List<String>.filled(5, champIcon, growable: false);
+List redTeam_out = List<String>.filled(5, champIcon, growable: false);
+List bluTeam_out = List<String>.filled(5, champIcon, growable: false);
+
 List topList = Champions.top;
 List jugList = Champions.jug;
 List midList = Champions.mid;
 List botList = Champions.bot;
 List supList = Champions.sup;
+
+List topPlayerList = Champions.top_player;
+List jugPlayerList = Champions.jug_player;
+List midPlayerList = Champions.mid_player;
+List botPlayerList = Champions.bot_player;
+List supPlayerList = Champions.sup_player;
 
 class Champions {
   Future _listAssets(context) async {
@@ -212,6 +223,173 @@ class Champions {
     "assets/images/champions/SUP/RiotX_ChampionList_yuumi.jpg",
     "assets/images/champions/SUP/RiotX_ChampionList_zilean.jpg",
     "assets/images/champions/SUP/RiotX_ChampionList_zyra.jpg",
+  ];
+
+  static List<String> top_player = [
+    "assets/images/champions/TOP/RiotX_ChampionList_aatrox_player.jpg",
+    "assets/images/champions/TOP/RiotX_ChampionList_akali_player.jpg",
+    "assets/images/champions/TOP/RiotX_ChampionList_camille_player.jpg",
+    "assets/images/champions/TOP/RiotX_ChampionList_chogath_player.jpg",
+    "assets/images/champions/TOP/RiotX_ChampionList_darius_player.jpg",
+    "assets/images/champions/TOP/RiotX_ChampionList_drmundo_player.png",
+    "assets/images/champions/TOP/RiotX_ChampionList_fiora_player.jpg",
+    "assets/images/champions/TOP/RiotX_ChampionList_gangplank_player.jpg",
+    "assets/images/champions/TOP/RiotX_ChampionList_garen_player.jpg",
+    "assets/images/champions/TOP/RiotX_ChampionList_gnar_player.jpg",
+    "assets/images/champions/TOP/RiotX_ChampionList_gwen_player.jpg",
+    "assets/images/champions/TOP/RiotX_ChampionList_heimerdinger_player.jpg",
+    "assets/images/champions/TOP/RiotX_ChampionList_illaoi_player.jpg",
+    "assets/images/champions/TOP/RiotX_ChampionList_irelia_player.jpg",
+    "assets/images/champions/TOP/RiotX_ChampionList_jax_player.jpg",
+    "assets/images/champions/TOP/RiotX_ChampionList_jayce_player.jpg",
+    "assets/images/champions/TOP/RiotX_ChampionList_kayle_player.jpg",
+    "assets/images/champions/TOP/RiotX_ChampionList_kennen_player.jpg",
+    "assets/images/champions/TOP/RiotX_ChampionList_kled_player.jpg",
+    "assets/images/champions/TOP/RiotX_ChampionList_malaphite_player.jpg",
+    "assets/images/champions/TOP/RiotX_ChampionList_maokai_player.jpg",
+    "assets/images/champions/TOP/RiotX_ChampionList_monkeyking_player.jpg",
+    "assets/images/champions/TOP/RiotX_ChampionList_mordekaiser_player.jpg",
+    "assets/images/champions/TOP/RiotX_ChampionList_nasus_player.jpg",
+    "assets/images/champions/TOP/RiotX_ChampionList_ornn_player.jpg",
+    "assets/images/champions/TOP/RiotX_ChampionList_poppy_player.jpg",
+    "assets/images/champions/TOP/RiotX_ChampionList_quinn_player.jpg",
+    "assets/images/champions/TOP/RiotX_ChampionList_renekton_player.jpg",
+    "assets/images/champions/TOP/RiotX_ChampionList_rengar_player.jpg",
+    "assets/images/champions/TOP/RiotX_ChampionList_riven_player.jpg",
+    "assets/images/champions/TOP/RiotX_ChampionList_sett_player.png",
+    "assets/images/champions/TOP/RiotX_ChampionList_shen_player.jpg",
+    "assets/images/champions/TOP/RiotX_ChampionList_teemo_player.jpg",
+    "assets/images/champions/TOP/RiotX_ChampionList_tryndamere_player.jpg",
+    "assets/images/champions/TOP/RiotX_ChampionList_urgot_player.jpg",
+    "assets/images/champions/TOP/RiotX_ChampionList_vladimir_player.jpg",
+    "assets/images/champions/TOP/RiotX_ChampionList_volibear_player.png",
+    "assets/images/champions/TOP/RiotX_ChampionList_yorick_player.jpg",
+  ];
+
+  static List<String> jug_player = [
+    "assets/images/champions/JUG/RiotX_ChampionList_amumu_player.jpg",
+    "assets/images/champions/JUG/RiotX_ChampionList_diana_player.jpg",
+    "assets/images/champions/JUG/RiotX_ChampionList_elise_player.jpg",
+    "assets/images/champions/JUG/RiotX_ChampionList_evelynn_player.jpg",
+    "assets/images/champions/JUG/RiotX_ChampionList_fiddlesticks_player.jpeg",
+    "assets/images/champions/JUG/RiotX_ChampionList_gragas_player.jpg",
+    "assets/images/champions/JUG/RiotX_ChampionList_graves-cigar_player.jpg",
+    "assets/images/champions/JUG/RiotX_ChampionList_hecarim_player.jpg",
+    "assets/images/champions/JUG/RiotX_ChampionList_ivern_player.jpg",
+    "assets/images/champions/JUG/RiotX_ChampionList_jarvaniv_player.jpg",
+    "assets/images/champions/JUG/RiotX_ChampionList_karthus_player.jpg",
+    "assets/images/champions/JUG/RiotX_ChampionList_kayn_player.jpg",
+    "assets/images/champions/JUG/RiotX_ChampionList_khazix_player.jpg",
+    "assets/images/champions/JUG/RiotX_ChampionList_kindred_player.jpg",
+    "assets/images/champions/JUG/RiotX_ChampionList_leesin_player.jpg",
+    "assets/images/champions/JUG/RiotX_ChampionList_lillia_player.jpg",
+    "assets/images/champions/JUG/RiotX_ChampionList_masteryi_player.jpg",
+    "assets/images/champions/JUG/RiotX_ChampionList_nidalee_player.jpg",
+    "assets/images/champions/JUG/RiotX_ChampionList_nunu_player.jpg",
+    "assets/images/champions/JUG/RiotX_ChampionList_olaf_player.jpg",
+    "assets/images/champions/JUG/RiotX_ChampionList_rammus_player.jpg",
+    "assets/images/champions/JUG/RiotX_ChampionList_reksai_player.jpg",
+    "assets/images/champions/JUG/RiotX_ChampionList_rumble_player.jpg",
+    "assets/images/champions/JUG/RiotX_ChampionList_sejuani_player.jpg",
+    "assets/images/champions/JUG/RiotX_ChampionList_shaco_player.jpg",
+    "assets/images/champions/JUG/RiotX_ChampionList_shyvana_player.jpg",
+    "assets/images/champions/JUG/RiotX_ChampionList_skarner_player.jpg",
+    "assets/images/champions/JUG/RiotX_ChampionList_trundle_player.jpg",
+    "assets/images/champions/JUG/RiotX_ChampionList_udyr_player.jpg",
+    "assets/images/champions/JUG/RiotX_ChampionList_vi_player.jpg",
+    "assets/images/champions/JUG/RiotX_ChampionList_viego_player.jpg",
+    "assets/images/champions/JUG/RiotX_ChampionList_warwick_player.jpg",
+    "assets/images/champions/JUG/RiotX_ChampionList_xinzhao_player.jpg",
+    "assets/images/champions/JUG/RiotX_ChampionList_zac_player.jpg",
+  ];
+
+  static List<String> mid_player = [
+    "assets/images/champions/MID/RiotX_ChampionList_ahri_player.jpg",
+    "assets/images/champions/MID/RiotX_ChampionList_anivia_player.jpg",
+    "assets/images/champions/MID/RiotX_ChampionList_annie_player.jpg",
+    "assets/images/champions/MID/RiotX_ChampionList_aurelionsol_player.jpg",
+    "assets/images/champions/MID/RiotX_ChampionList_azir_player.jpg",
+    "assets/images/champions/MID/RiotX_ChampionList_cassiopeia_player.jpg",
+    "assets/images/champions/MID/RiotX_ChampionList_corki_player.jpg",
+    "assets/images/champions/MID/RiotX_ChampionList_ekko_player.jpg",
+    "assets/images/champions/MID/RiotX_ChampionList_fizz_player.jpg",
+    "assets/images/champions/MID/RiotX_ChampionList_galio_player.jpg",
+    "assets/images/champions/MID/RiotX_ChampionList_ialiyah_player.jpg",
+    "assets/images/champions/MID/RiotX_ChampionList_kassadin_player.jpg",
+    "assets/images/champions/MID/RiotX_ChampionList_katarina_player.jpg",
+    "assets/images/champions/MID/RiotX_ChampionList_leblanc_player.jpg",
+    "assets/images/champions/MID/RiotX_ChampionList_lissandra_player.jpg",
+    "assets/images/champions/MID/RiotX_ChampionList_malzahar_player.jpg",
+    "assets/images/champions/MID/RiotX_ChampionList_neeko_player.jpg",
+    "assets/images/champions/MID/RiotX_ChampionList_nocturne_player.jpg",
+    "assets/images/champions/MID/RiotX_ChampionList_orianna_player.jpg",
+    "assets/images/champions/MID/RiotX_ChampionList_pantheon_player.jpg",
+    "assets/images/champions/MID/RiotX_ChampionList_qiyana_player.jpg",
+    "assets/images/champions/MID/RiotX_ChampionList_ryze_player.jpg",
+    "assets/images/champions/MID/RiotX_ChampionList_sylas_player.jpg",
+    "assets/images/champions/MID/RiotX_ChampionList_talon_player.jpg",
+    "assets/images/champions/MID/RiotX_ChampionList_twistedfate_player.jpg",
+    "assets/images/champions/MID/RiotX_ChampionList_veigar_player.jpg",
+    "assets/images/champions/MID/RiotX_ChampionList_viktor_player.jpg",
+    "assets/images/champions/MID/RiotX_ChampionList_xeratth_player.jpg",
+    "assets/images/champions/MID/RiotX_ChampionList_yasuo_player.jpg",
+    "assets/images/champions/MID/RiotX_ChampionList_yone_player.jpg",
+    "assets/images/champions/MID/RiotX_ChampionList_zed_player.jpg",
+    "assets/images/champions/MID/RiotX_ChampionList_zoe_player.jpg",
+  ];
+
+  static List<String> bot_player = [
+    "assets/images/champions/BOT/RiotX_ChampionList_aphelios_player.jpg",
+    "assets/images/champions/BOT/RiotX_ChampionList_ashe_player.jpg",
+    "assets/images/champions/BOT/RiotX_ChampionList_caitlyn_player.jpg",
+    "assets/images/champions/BOT/RiotX_ChampionList_draven_player.jpg",
+    "assets/images/champions/BOT/RiotX_ChampionList_ezreal_player.jpg",
+    "assets/images/champions/BOT/RiotX_ChampionList_jhin_player.jpg",
+    "assets/images/champions/BOT/RiotX_ChampionList_jinx_player.jpg",
+    "assets/images/champions/BOT/RiotX_ChampionList_kaisa_player.jpg",
+    "assets/images/champions/BOT/RiotX_ChampionList_kalista_player.jpg",
+    "assets/images/champions/BOT/RiotX_ChampionList_kogmaw_player.jpg",
+    "assets/images/champions/BOT/RiotX_ChampionList_lucian_player.jpg",
+    "assets/images/champions/BOT/RiotX_ChampionList_missfortune_player.jpg",
+    "assets/images/champions/BOT/RiotX_ChampionList_samira_player.jpg",
+    "assets/images/champions/BOT/RiotX_ChampionList_sivir_player.jpg",
+    "assets/images/champions/BOT/RiotX_ChampionList_tristana_player.jpg",
+    "assets/images/champions/BOT/RiotX_ChampionList_twitch_player.jpg",
+    "assets/images/champions/BOT/RiotX_ChampionList_varus_player.jpg",
+    "assets/images/champions/BOT/RiotX_ChampionList_vayne_player.jpg",
+    "assets/images/champions/BOT/RiotX_ChampionList_xayah_player.jpg",
+    "assets/images/champions/BOT/RiotX_ChampionList_ziggs_player.jpg",
+  ];
+
+  static List<String> sup_player = [
+    "assets/images/champions/SUP/RiotX_ChampionList_alistar_player.jpg",
+    "assets/images/champions/SUP/RiotX_ChampionList_bard_player.jpg",
+    "assets/images/champions/SUP/RiotX_ChampionList_blitzcrank_player.jpg",
+    "assets/images/champions/SUP/RiotX_ChampionList_brand_player.jpg",
+    "assets/images/champions/SUP/RiotX_ChampionList_braum_player.jpg",
+    "assets/images/champions/SUP/RiotX_ChampionList_janna_player.jpg",
+    "assets/images/champions/SUP/RiotX_ChampionList_karma_player.jpg",
+    "assets/images/champions/SUP/RiotX_ChampionList_leona_player.jpg",
+    "assets/images/champions/SUP/RiotX_ChampionList_lulu_player.jpg",
+    "assets/images/champions/SUP/RiotX_ChampionList_lux_player.jpg",
+    "assets/images/champions/SUP/RiotX_ChampionList_morgana_player.jpg",
+    "assets/images/champions/SUP/RiotX_ChampionList_nami_player.jpg",
+    "assets/images/champions/SUP/RiotX_ChampionList_nautilus_player.jpg",
+    "assets/images/champions/SUP/RiotX_ChampionList_pyke_player.jpg",
+    "assets/images/champions/SUP/RiotX_ChampionList_rakan_player.jpg",
+    "assets/images/champions/SUP/RiotX_ChampionList_Rell_v2_player.jpg",
+    "assets/images/champions/SUP/RiotX_ChampionList_senna_player.jpg",
+    "assets/images/champions/SUP/RiotX_ChampionList_seraphine_player.jpg",
+    "assets/images/champions/SUP/RiotX_ChampionList_sona_player.jpg",
+    "assets/images/champions/SUP/RiotX_ChampionList_soraka_player.jpg",
+    "assets/images/champions/SUP/RiotX_ChampionList_swain_player.jpg",
+    "assets/images/champions/SUP/RiotX_ChampionList_tahmkench_player.jpg",
+    "assets/images/champions/SUP/RiotX_ChampionList_taric_player.jpg",
+    "assets/images/champions/SUP/RiotX_ChampionList_thresh_player.jpg",
+    "assets/images/champions/SUP/RiotX_ChampionList_velkoz_player.jpg",
+    "assets/images/champions/SUP/RiotX_ChampionList_yuumi_player.jpg",
+    "assets/images/champions/SUP/RiotX_ChampionList_zilean_player.jpg",
+    "assets/images/champions/SUP/RiotX_ChampionList_zyra_player.jpg",
   ];
 }
 

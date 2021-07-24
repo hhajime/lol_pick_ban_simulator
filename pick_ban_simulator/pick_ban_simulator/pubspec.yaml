@@ -48,5 +48,10 @@ flutter:
     - assets/images/champions/MID/
     - assets/images/champions/BOT/
     - assets/images/champions/SUP/
+    - assets/images/champions_player/TOP/
+    - assets/images/champions_player/JUG/
+    - assets/images/champions_player/MID/
+    - assets/images/champions_player/BOT/
+    - assets/images/champions_player/SUP/
 
 
