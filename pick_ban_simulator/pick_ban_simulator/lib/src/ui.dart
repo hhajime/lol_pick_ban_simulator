@@ -262,7 +262,7 @@ Widget playerContainer(List playerList, List playerList_out, int n) {
                 onDragEnd: (data) {},
                 onDragStarted: () {
                   trigger = 2;
-                  dragging = playerList[n];
+                  dragging2 = playerList[n];
                   tempNum = n;
                 },
                 child: Container(
@@ -365,9 +365,13 @@ TextStyle nameTextField() {
 
 Widget gridContainer(con) {
   champName = con.substring(47).replaceAll('.jpg', '');
-  return Container(
-      child: Image.asset(con, fit: BoxFit.cover, height: height, width: width),
-      decoration: myBoxDecoration());
+  return Stack(children: [
+    greyOutChampContainer(con),
+    Container(
+        child:
+            Image.asset(con, fit: BoxFit.cover, height: height, width: width),
+        decoration: myBoxDecoration())
+  ]);
 }
 
 Widget teamName(Color selectColors, String hintText) {
