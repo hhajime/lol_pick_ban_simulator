@@ -171,7 +171,7 @@ class _Home extends State<StatefulWidget> {
   }
 }
 
-Widget banContainer(List banList, List out, int n) {
+Widget banContainer(List banList, List playerList_out, int n) {
   return Consumer<PickBanProvider>(builder: (context, provider, child) {
     return Container(
       width: displayWidth * 0.0853,
@@ -218,10 +218,13 @@ Widget banContainer(List banList, List out, int n) {
                 childWhenDragging: ChampContainer2(),
                 onDragUpdate: (team) {},
                 onDragCompleted: () {},
-                onDragEnd: (data) {},
+                onDraggableCanceled: (v, f) =>
+                    {banList[n] = champIcon, provider.BanAdd()},
                 onDragStarted: () {
                   trigger = 1;
                   dragging = banList[n];
+                  dragging2 = banList[n];
+                  dragging3 = banList[n];
                   tempNum = n;
                 },
                 child: Container(
@@ -277,6 +280,8 @@ Widget playerContainer(List playerList, List playerList_out, int n) {
                 childWhenDragging: ChampContainer2(),
                 onDragUpdate: (team) {},
                 onDragCompleted: () {},
+                onDraggableCanceled: (v, f) =>
+                    {playerList[n] = champIcon, provider.PlayerAdd()},
                 onDragEnd: (data) {},
                 onDragStarted: () {
                   trigger = 2;
@@ -336,6 +341,7 @@ Widget championGrid(List _image, List _image2) {
                   childWhenDragging: greyOutChampContainer(_image[index]),
                   onDragCompleted: () {
                     debugPrint('complerte');
+
                     provider.GridAdd();
                   },
                   onDragEnd: (data) {},
