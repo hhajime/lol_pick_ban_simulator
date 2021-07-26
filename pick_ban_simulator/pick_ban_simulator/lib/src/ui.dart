@@ -184,10 +184,19 @@ Widget banContainer(List banList, List out, int n) {
         },
         onAccept: (value) {
           if (trigger == 1) {
+            debugPrint("[banContainer][onAccept][trigger = ${trigger}]");
             banList[tempNum] = banList[n];
-            provider.BanAdd();
+            banList[n] = dragging;
+            provider.PlayerAdd();
+          } else if (trigger == 2) {
+            debugPrint("[banContainer][onAccept][trigger = ${trigger}]");
+            banList[n] = dragging;
+            provider.PlayerAdd();
+          } else if (trigger == 3) {
+            debugPrint("[banContainer][onAccept][trigger = ${trigger}]");
+            banList[n] = dragging;
+            provider.PlayerAdd();
           }
-          banList[n] = dragging;
         },
         builder: (_, candidateData, rejectedData) {
           return Stack(children: [
@@ -237,11 +246,20 @@ Widget playerContainer(List playerList, List playerList_out, int n) {
       child: DragTarget<String>(onWillAccept: (value) {
         return true;
       }, onAccept: (value) {
-        if (trigger == 2) {
+        if (trigger == 1) {
+          debugPrint("[playerContainer][onAccept][trigger = ${trigger}]");
+          playerList[n] = dragging;
+          provider.PlayerAdd();
+        } else if (trigger == 2) {
+          debugPrint("[playerContainer][onAccept][trigger = ${trigger}]");
           playerList[tempNum] = playerList[n];
+          playerList[n] = dragging2;
+          provider.PlayerAdd();
+        } else if (trigger == 3) {
+          debugPrint("[playerContainer][onAccept][trigger = ${trigger}]");
+          playerList[n] = dragging2;
           provider.PlayerAdd();
         }
-        playerList[n] = dragging2;
       }, builder: (_, candidateData, rejectedData) {
         return Stack(
           children: [
@@ -325,6 +343,7 @@ Widget championGrid(List _image, List _image2) {
                     trigger = 3;
                     dragging = _image[index];
                     dragging2 = _image2[index];
+                    dragging3 = _image[index];
                   },
                   onDragUpdate: (data) {},
                   child: gridContainer(_image[index])),

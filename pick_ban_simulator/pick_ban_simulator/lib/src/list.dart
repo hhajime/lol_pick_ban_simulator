@@ -10,6 +10,7 @@ Color caughtColor = Colors.red;
 String champIcon = "assets/images/champion_icon.jpg";
 String dragging;
 String dragging2;
+String dragging3;
 String champName;
 String banTemp;
 int variableSet = 0;
