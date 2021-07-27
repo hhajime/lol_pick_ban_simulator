@@ -266,13 +266,26 @@ Widget playerContainer(List playerList, String team, int n) {
       child: DragTarget<String>(onWillAccept: (value) {
         return true;
       }, onAccept: (value) {
+        targetTeam = team;
         if (trigger == 1) {
           debugPrint("[playerContainer][onAccept][trigger = ${trigger}]");
           playerList[n] = dragging;
           provider.PlayerAdd();
         } else if (trigger == 2) {
           debugPrint("[playerContainer][onAccept][trigger = ${trigger}]");
-          playerList[tempNum] = playerList[n];
+          if (draggingTeam == targetTeam) {
+            playerList[tempNum] = playerList[n];
+            debugPrint('teamside is same');
+          } else {
+            debugPrint('teamside is opponent');
+            if (team == 'red') {
+              bluPlayer[tempNum] = playerList[n];
+            } else {
+              redPlayer[tempNum] = playerList[n];
+            }
+            debugPrint(" Target is " + playerList[tempNum]);
+          }
+          ;
           playerList[n] = dragging2;
           provider.PlayerAdd();
         } else if (trigger == 3) {
@@ -301,6 +314,7 @@ Widget playerContainer(List playerList, String team, int n) {
                     {playerList[n] = champIcon, provider.PlayerAdd()},
                 onDragEnd: (data) {},
                 onDragStarted: () {
+                  draggingTeam = team;
                   trigger = 2;
                   dragging2 = playerList[n];
                   tempNum = n;
