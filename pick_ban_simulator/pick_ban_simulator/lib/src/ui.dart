@@ -257,8 +257,6 @@ Widget banContainer(List banList, String team, int n) {
                   debugPrint("dragging team is " + draggingTeam);
                   trigger = 1;
                   dragging = banList[n];
-                  dragging2 = banList[n];
-                  dragging3 = banList[n];
                   tempNum = n;
                 },
                 child: Container(
@@ -320,11 +318,11 @@ Widget playerContainer(List playerList, String team, int n) {
             debugPrint(" Target is " + playerList[tempNum]);
           }
           ;
-          playerList[n] = dragging2;
+          playerList[n] = dragging;
           provider.PlayerAdd();
         } else if (trigger == 3) {
           debugPrint("[playerContainer][onAccept][trigger = ${trigger}]");
-          playerList[n] = dragging2;
+          playerList[n] = dragging;
           provider.PlayerAdd();
         }
       }, builder: (_, candidateData, rejectedData) {
@@ -350,7 +348,7 @@ Widget playerContainer(List playerList, String team, int n) {
                 onDragStarted: () {
                   draggingTeam = team;
                   trigger = 2;
-                  dragging2 = playerList[n];
+                  dragging = playerList[n];
                   tempNum = n;
                 },
                 child: Container(

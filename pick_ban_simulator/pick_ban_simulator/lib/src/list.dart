@@ -17,9 +17,6 @@ String champName;
 String banTemp;
 String targetTeam;
 String draggingTeam;
-String redSide;
-String blueSide;
-String side;
 
 int tempNum;
 int trigger;
@@ -30,7 +27,6 @@ double displayHeight;
 double displayWidth;
 double displayRatio;
 
-List player = List<String>.filled(5, champIcon, growable: false);
 List bluPlayer = List<String>.filled(5, champIcon, growable: false);
 List redPlayer = List<String>.filled(5, champIcon, growable: false);
 List blueBan = List<String>.filled(5, champIcon, growable: false);
