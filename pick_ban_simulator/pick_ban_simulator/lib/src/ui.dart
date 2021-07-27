@@ -201,7 +201,7 @@ Widget banContainer(List banList, String team, int n) {
               debugPrint(" Target is " + banList[tempNum]);
             }
             ;
-            banList[n] = dragging;
+            banList[n] = dragging1;
             provider.BanAdd();
           } else if (trigger == 2) {
             debugPrint("[banContainer][onAccept][trigger = ${trigger}]");
@@ -222,11 +222,11 @@ Widget banContainer(List banList, String team, int n) {
               debugPrint(" Target is " + banList[tempNum]);
             }
             ;
-            banList[n] = dragging;
+            banList[n] = dragging1;
             provider.BanAdd();
           } else if (trigger == 3) {
             debugPrint("[banContainer][onAccept][trigger = ${trigger}]");
-            banList[n] = dragging;
+            banList[n] = dragging1;
             provider.BanAdd();
           }
         },
@@ -256,7 +256,7 @@ Widget banContainer(List banList, String team, int n) {
                   draggingTeam = team;
                   debugPrint("dragging team is " + draggingTeam);
                   trigger = 1;
-                  dragging = banList[n];
+                  dragging1 = banList[n];
                   tempNum = n;
                 },
                 child: Container(
@@ -301,7 +301,7 @@ Widget playerContainer(List playerList, String team, int n) {
             debugPrint(" Target is " + playerList[tempNum]);
           }
           ;
-          playerList[n] = dragging;
+          playerList[n] = dragging1;
           provider.PlayerAdd();
         } else if (trigger == 2) {
           debugPrint("[playerContainer][onAccept][trigger = ${trigger}]");
@@ -318,11 +318,11 @@ Widget playerContainer(List playerList, String team, int n) {
             debugPrint(" Target is " + playerList[tempNum]);
           }
           ;
-          playerList[n] = dragging;
+          playerList[n] = dragging1;
           provider.PlayerAdd();
         } else if (trigger == 3) {
           debugPrint("[playerContainer][onAccept][trigger = ${trigger}]");
-          playerList[n] = dragging;
+          playerList[n] = dragging1;
           provider.PlayerAdd();
         }
       }, builder: (_, candidateData, rejectedData) {
@@ -332,9 +332,7 @@ Widget playerContainer(List playerList, String team, int n) {
                 width: displayRatio * 40,
                 height: displayRatio * 60,
                 alignment: Alignment.center,
-                child: playerList[n] != null //1)
-                    ? Image.asset(playerList[n], fit: BoxFit.cover)
-                    : Container()),
+                child: Container()),
             Container(
               child: LongPressDraggable(
                 data: playerList[n],
@@ -348,7 +346,7 @@ Widget playerContainer(List playerList, String team, int n) {
                 onDragStarted: () {
                   draggingTeam = team;
                   trigger = 2;
-                  dragging = playerList[n];
+                  dragging1 = playerList[n];
                   tempNum = n;
                 },
                 child: Container(
@@ -413,7 +411,7 @@ Widget championGrid(List _image, List _image2) {
                       onDragStarted: () {
                         debugPrint(draggableState.toString());
                         trigger = 3;
-                        dragging = _image[index];
+                        dragging1 = _image[index];
                         dragging2 = _image2[index];
                         dragging3 = _image[index];
                       },

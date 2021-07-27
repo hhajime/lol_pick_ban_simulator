@@ -10,7 +10,7 @@ Color caughtColor = Colors.red;
 
 bool draggableState = false;
 String champIcon = "assets/images/champion_icon.jpg";
-String dragging;
+String dragging1;
 String dragging2;
 String dragging3;
 String champName;
