@@ -205,6 +205,23 @@ Widget banContainer(List banList, String team, int n) {
             provider.BanAdd();
           } else if (trigger == 2) {
             debugPrint("[banContainer][onAccept][trigger = ${trigger}]");
+            if (draggingTeam == targetTeam) {
+              debugPrint('teamside is same ' + team);
+              if (team == 'red') {
+                redPlayer[tempNum] = banList[n];
+              } else {
+                bluPlayer[tempNum] = banList[n];
+              }
+            } else {
+              debugPrint('teamside is opponent');
+              if (team == 'red') {
+                bluPlayer[tempNum] = banList[n];
+              } else {
+                redPlayer[tempNum] = banList[n];
+              }
+              debugPrint(" Target is " + banList[tempNum]);
+            }
+            ;
             banList[n] = dragging;
             provider.BanAdd();
           } else if (trigger == 3) {
@@ -269,6 +286,23 @@ Widget playerContainer(List playerList, String team, int n) {
         targetTeam = team;
         if (trigger == 1) {
           debugPrint("[playerContainer][onAccept][trigger = ${trigger}]");
+          if (draggingTeam == targetTeam) {
+            debugPrint('teamside is same ' + team);
+            if (team == 'red') {
+              redBan[tempNum] = playerList[n];
+            } else {
+              blueBan[tempNum] = playerList[n];
+            }
+          } else {
+            debugPrint('teamside is opponent');
+            if (team == 'red') {
+              blueBan[tempNum] = playerList[n];
+            } else {
+              redBan[tempNum] = playerList[n];
+            }
+            debugPrint(" Target is " + playerList[tempNum]);
+          }
+          ;
           playerList[n] = dragging;
           provider.PlayerAdd();
         } else if (trigger == 2) {
