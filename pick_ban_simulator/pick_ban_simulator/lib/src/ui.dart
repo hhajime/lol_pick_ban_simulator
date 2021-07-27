@@ -58,7 +58,7 @@ class _Home extends State<StatefulWidget> {
                       children: [
                         Row(
                           children: [
-                            teamName(Colors.red, "SKT T1"),
+                            teamName(Colors.blue, "DAMWON"),
                             Container(
                               height: displayHeight * 0.05,
                               decoration: myBoxDecoration(),
@@ -70,16 +70,16 @@ class _Home extends State<StatefulWidget> {
                               ),
                               width: displayWidth * 0.146,
                             ),
-                            teamName(Colors.blue, "DAMWON"),
+                            teamName(Colors.red, "SKT T1"),
                           ],
                         ),
                         Row(
                           children: [
-                            banContainer(bluTeam, bluTeam_out, 0),
-                            banContainer(bluTeam, bluTeam_out, 1),
-                            banContainer(bluTeam, bluTeam_out, 2),
-                            banContainer(bluTeam, bluTeam_out, 3),
-                            banContainer(bluTeam, bluTeam_out, 4),
+                            banContainer(blueBan, 'blue', 0),
+                            banContainer(blueBan, 'blue', 1),
+                            banContainer(blueBan, 'blue', 2),
+                            banContainer(blueBan, 'blue', 3),
+                            banContainer(blueBan, 'blue', 4),
                             Container(
                               width: displayWidth * 0.1465,
                               height: displayHeight * 0.05,
@@ -90,22 +90,22 @@ class _Home extends State<StatefulWidget> {
                                 textAlign: TextAlign.center,
                               ),
                             ),
-                            banContainer(redTeam, redTeam_out, 0),
-                            banContainer(redTeam, redTeam_out, 1),
-                            banContainer(redTeam, redTeam_out, 2),
-                            banContainer(redTeam, redTeam_out, 3),
-                            banContainer(redTeam, redTeam_out, 4),
+                            banContainer(redBan, 'red', 0),
+                            banContainer(redBan, 'red', 1),
+                            banContainer(redBan, 'red', 2),
+                            banContainer(redBan, 'red', 3),
+                            banContainer(redBan, 'red', 4),
                           ],
                         ),
                         Row(
                           children: [
                             Column(
                               children: [
-                                playerContainer(bluPlayer, bluPlayer_out, 0),
-                                playerContainer(bluPlayer, bluPlayer_out, 1),
-                                playerContainer(bluPlayer, bluPlayer_out, 2),
-                                playerContainer(bluPlayer, bluPlayer_out, 3),
-                                playerContainer(bluPlayer, bluPlayer_out, 4)
+                                playerContainer(bluPlayer, 'blue', 0),
+                                playerContainer(bluPlayer, 'blue', 1),
+                                playerContainer(bluPlayer, 'blue', 2),
+                                playerContainer(bluPlayer, 'blue', 3),
+                                playerContainer(bluPlayer, 'blue', 4)
                               ],
                             ),
                             Container(
@@ -121,11 +121,11 @@ class _Home extends State<StatefulWidget> {
                             ),
                             Column(
                               children: [
-                                playerContainer(redPlayer, redPlayer_out, 0),
-                                playerContainer(redPlayer, redPlayer_out, 1),
-                                playerContainer(redPlayer, redPlayer_out, 2),
-                                playerContainer(redPlayer, redPlayer_out, 3),
-                                playerContainer(redPlayer, redPlayer_out, 4)
+                                playerContainer(redPlayer, 'red', 0),
+                                playerContainer(redPlayer, 'red', 1),
+                                playerContainer(redPlayer, 'red', 2),
+                                playerContainer(redPlayer, 'red', 3),
+                                playerContainer(redPlayer, 'red', 4)
                               ],
                             )
                           ],
@@ -171,7 +171,7 @@ class _Home extends State<StatefulWidget> {
   }
 }
 
-Widget banContainer(List banList, List playerList_out, int n) {
+Widget banContainer(List banList, String team, int n) {
   return Consumer<PickBanProvider>(builder: (context, provider, child) {
     return Container(
       width: displayWidth * 0.0853,
@@ -180,22 +180,37 @@ Widget banContainer(List banList, List playerList_out, int n) {
       decoration: myBoxDecoration(),
       child: DragTarget<String>(
         onWillAccept: (value) {
+          banTemp = value;
+          debugPrint(' dragtarget is ' + banList[n]);
           return true;
         },
         onAccept: (value) {
+          targetTeam = team;
           if (trigger == 1) {
             debugPrint("[banContainer][onAccept][trigger = ${trigger}]");
-            banList[tempNum] = banList[n];
+            if (draggingTeam == targetTeam) {
+              banList[tempNum] = banList[n];
+              debugPrint('teamside is same');
+            } else {
+              debugPrint('teamside is opponent');
+              if (team == 'red') {
+                blueBan[tempNum] = banList[n];
+              } else {
+                redBan[tempNum] = banList[n];
+              }
+              debugPrint(" Target is " + banList[tempNum]);
+            }
+            ;
             banList[n] = dragging;
-            provider.PlayerAdd();
+            provider.BanAdd();
           } else if (trigger == 2) {
             debugPrint("[banContainer][onAccept][trigger = ${trigger}]");
             banList[n] = dragging;
-            provider.PlayerAdd();
+            provider.BanAdd();
           } else if (trigger == 3) {
             debugPrint("[banContainer][onAccept][trigger = ${trigger}]");
             banList[n] = dragging;
-            provider.PlayerAdd();
+            provider.BanAdd();
           }
         },
         builder: (_, candidateData, rejectedData) {
@@ -216,11 +231,13 @@ Widget banContainer(List banList, List playerList_out, int n) {
                 data: banList[n],
                 feedback: feedbackContainer(banList[n]),
                 childWhenDragging: ChampContainer2(),
-                onDragUpdate: (team) {},
+                onDragUpdate: (update) {},
                 onDragCompleted: () {},
                 onDraggableCanceled: (v, f) =>
                     {banList[n] = champIcon, provider.BanAdd()},
                 onDragStarted: () {
+                  draggingTeam = team;
+                  debugPrint("dragging team is " + draggingTeam);
                   trigger = 1;
                   dragging = banList[n];
                   dragging2 = banList[n];
@@ -241,7 +258,7 @@ Widget banContainer(List banList, List playerList_out, int n) {
   });
 }
 
-Widget playerContainer(List playerList, List playerList_out, int n) {
+Widget playerContainer(List playerList, String team, int n) {
   return Consumer<PickBanProvider>(builder: (context, provider, child) {
     return Container(
       width: displayWidth * 0.257,
@@ -335,24 +352,27 @@ Widget championGrid(List _image, List _image2) {
           ),
           itemCount: (_image.length),
           itemBuilder: (context, index) => GridTile(
-              child: LongPressDraggable(
-                  data: _image[index],
-                  feedback: feedbackContainer(_image[index]),
-                  childWhenDragging: greyOutChampContainer(_image[index]),
-                  onDragCompleted: () {
-                    debugPrint('complerte');
-
-                    provider.GridAdd();
-                  },
-                  onDragEnd: (data) {},
-                  onDragStarted: () {
-                    trigger = 3;
-                    dragging = _image[index];
-                    dragging2 = _image2[index];
-                    dragging3 = _image[index];
-                  },
-                  onDragUpdate: (data) {},
-                  child: gridContainer(_image[index])),
+              child: AbsorbPointer(
+                  absorbing: false,
+                  child: LongPressDraggable(
+                      data: _image[index],
+                      feedback: feedbackContainer(_image[index]),
+                      childWhenDragging: greyOutChampContainer(_image[index]),
+                      onDragCompleted: () {
+                        debugPrint('complerte');
+                        draggableState = true;
+                        provider.GridAdd();
+                      },
+                      onDragEnd: (data) {},
+                      onDragStarted: () {
+                        debugPrint(draggableState.toString());
+                        trigger = 3;
+                        dragging = _image[index];
+                        dragging2 = _image2[index];
+                        dragging3 = _image[index];
+                      },
+                      onDragUpdate: (data) {},
+                      child: gridContainer(_image[index]))),
               footer: Container(
                 child: GridTileBar(
                   backgroundColor: mainColor,
@@ -389,12 +409,13 @@ TextStyle nameTextField() {
 }
 
 Widget gridContainer(con) {
-  champName = con.substring(47).replaceAll('.jpg', '');
+  if (con != champIcon) {
+    champName = con.substring(47).replaceAll('.jpg', '');
+  }
   return Stack(children: [
     greyOutChampContainer(con),
     Container(
-        child:
-            Image.asset(con, fit: BoxFit.cover, height: height, width: width),
+        child: Image.asset(con, fit: BoxFit.cover),
         decoration: myBoxDecoration())
   ]);
 }
@@ -474,4 +495,8 @@ Widget greyOutChampContainer(dynamic champ) {
             image: new AssetImage(champ),
             fit: BoxFit.cover,
           )));
+}
+
+DecorationImage imageMaker(dynamic champ) {
+  return DecorationImage(image: new AssetImage(champ), fit: BoxFit.cover);
 }

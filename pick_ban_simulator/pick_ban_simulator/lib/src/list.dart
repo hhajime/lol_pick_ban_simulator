@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:ffi';
 import 'package:flutter/material.dart';
 
 ScrollController scrollController;
@@ -7,13 +8,19 @@ Color mainColor = Color(0xff060F14);
 Color subColor = Color(0xFFC8AA6E);
 Color caughtColor = Colors.red;
 
+bool draggableState = false;
 String champIcon = "assets/images/champion_icon.jpg";
 String dragging;
 String dragging2;
 String dragging3;
 String champName;
 String banTemp;
-int variableSet = 0;
+String targetTeam;
+String draggingTeam;
+String redSide;
+String blueSide;
+String side;
+
 int tempNum;
 int trigger;
 
@@ -23,17 +30,11 @@ double displayHeight;
 double displayWidth;
 double displayRatio;
 
-List targetImage = List<String>.filled(10, null, growable: false);
 List player = List<String>.filled(5, champIcon, growable: false);
 List bluPlayer = List<String>.filled(5, champIcon, growable: false);
 List redPlayer = List<String>.filled(5, champIcon, growable: false);
-List bluPlayer_out = List<String>.filled(5, champIcon, growable: false);
-List redPlayer_out = List<String>.filled(5, champIcon, growable: false);
-List bluTeam = List<String>.filled(5, champIcon, growable: false);
-List redTeam = List<String>.filled(5, champIcon, growable: false);
-List redTeam_out = List<String>.filled(5, champIcon, growable: false);
-List bluTeam_out = List<String>.filled(5, champIcon, growable: false);
-
+List blueBan = List<String>.filled(5, champIcon, growable: false);
+List redBan = List<String>.filled(5, champIcon, growable: false);
 List topList = Champions.top;
 List jugList = Champions.jug;
 List midList = Champions.mid;
