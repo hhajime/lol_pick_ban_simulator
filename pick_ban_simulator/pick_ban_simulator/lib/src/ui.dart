@@ -391,7 +391,7 @@ Widget playerContainer(List playerList, String team, int n) {
 
 Widget championGrid(List _image, List _image2) {
   return Consumer<PickBanProvider>(builder: (context, provider, child) {
-    return Container(
+    return Scrollbar(
       child: GridView.builder(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 5,
@@ -437,7 +437,6 @@ Widget championGrid(List _image, List _image2) {
                 height: 15,
                 decoration: myBoxDecoration(),
               ))),
-      decoration: myBoxDecoration(),
     );
   });
 }
