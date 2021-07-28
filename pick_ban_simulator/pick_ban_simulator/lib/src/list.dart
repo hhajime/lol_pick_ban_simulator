@@ -36,7 +36,6 @@ List jugList = Champions.jug;
 List midList = Champions.mid;
 List botList = Champions.bot;
 List supList = Champions.sup;
-
 List topPlayerList = Champions.top_player;
 List jugPlayerList = Champions.jug_player;
 List midPlayerList = Champions.mid_player;

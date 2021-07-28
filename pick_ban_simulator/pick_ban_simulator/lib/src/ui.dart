@@ -25,7 +25,7 @@ class _Home extends State<StatefulWidget> {
           if (!currentFocus.hasPrimaryFocus) {
             currentFocus.unfocus();
           }
-          FocusManager.instance.primaryFocus.unfocus(); // drawer시 textfield선택 x
+          FocusManager.instance.primaryFocus.unfocus();
           new TextEditingController().clear();
         },
         child: Scaffold(
@@ -109,15 +109,19 @@ class _Home extends State<StatefulWidget> {
                               ],
                             ),
                             Container(
-                              height: displayHeight * 0.4,
-                              width: displayWidth * 0.66,
-                              decoration: BoxDecoration(
-                                  color: mainColor,
-                                  border: Border.all(color: subColor),
-                                  image: DecorationImage(
-                                      image: new AssetImage(
-                                          'assets/images/map.jpg'),
-                                      fit: BoxFit.fitWidth)),
+                              child: InteractiveViewer(
+                                child: Container(
+                                  height: displayHeight * 0.43,
+                                  width: displayWidth * 0.66,
+                                  decoration: BoxDecoration(
+                                      color: mainColor,
+                                      border: Border.all(color: subColor),
+                                      image: DecorationImage(
+                                          image: new AssetImage(
+                                              'assets/images/map.jpg'),
+                                          fit: BoxFit.fitWidth)),
+                                ),
+                              ),
                             ),
                             Column(
                               children: [
@@ -155,7 +159,7 @@ class _Home extends State<StatefulWidget> {
                                   ),
                                   Container(
                                     height: displayHeight *
-                                        0.344, // Here to Change Height
+                                        0.342, // Here to Change Height 0.281
                                     child: TabBarView(children: [
                                       championGrid(topList, topPlayerList),
                                       championGrid(jugList, jugPlayerList),
@@ -278,7 +282,7 @@ Widget playerContainer(List playerList, String team, int n) {
   return Consumer<PickBanProvider>(builder: (context, provider, child) {
     return Container(
       width: displayWidth * 0.17,
-      height: displayHeight * 0.08,
+      height: displayHeight * 0.086,
       child: DragTarget<String>(onWillAccept: (value) {
         return true;
       }, onAccept: (value) {
@@ -351,7 +355,7 @@ Widget playerContainer(List playerList, String team, int n) {
                   playerList[n], //3)
                   fit: BoxFit.cover,
                   width: displayWidth * 0.17,
-                  height: displayHeight * 0.08,
+                  height: displayHeight * 0.086,
                 )),
               ),
             ),
@@ -363,7 +367,7 @@ Widget playerContainer(List playerList, String team, int n) {
                             'assets/images/player_background.svg', //3)
                             fit: BoxFit.fitWidth,
                             width: displayWidth * 0.17,
-                            height: displayHeight * 0.08)))),
+                            height: displayHeight * 0.086)))),
             Positioned(
                 right: 0,
                 bottom: displayRatio * 2,
@@ -391,7 +395,7 @@ Widget championGrid(List _image, List _image2) {
       child: GridView.builder(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 5,
-            childAspectRatio: displayHeight / 1000,
+            childAspectRatio: displayHeight / 980, // here2
           ),
           itemCount: (_image.length),
           itemBuilder: (context, index) => GridTile(
@@ -422,10 +426,15 @@ Widget championGrid(List _image, List _image2) {
                   subtitle: Text(
                     '$champName',
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 8, color: subColor),
+                    style: TextStyle(
+                        fontSize: 9,
+                        color: subColor,
+                        fontFamily: 'SegoeUI',
+                        fontWeight: FontWeight.bold,
+                        fontStyle: FontStyle.italic),
                   ),
                 ),
-                height: 16,
+                height: 15,
                 decoration: myBoxDecoration(),
               ))),
       decoration: myBoxDecoration(),
@@ -459,7 +468,7 @@ Widget gridContainer(con) {
     greyOutChampContainer(con),
     Container(
         width: displayWidth * 0.2,
-        height: displayHeight * 0.12,
+        height: displayHeight * 0.1,
         child: Image.asset(con, fit: BoxFit.cover),
         decoration: myBoxDecoration())
   ]);
