@@ -109,8 +109,8 @@ class _Home extends State<StatefulWidget> {
                               ],
                             ),
                             Container(
-                              height: displayHeight * 0.32,
-                              width: displayWidth * 0.486,
+                              height: displayHeight * 0.4,
+                              width: displayWidth * 0.66,
                               decoration: BoxDecoration(
                                   color: mainColor,
                                   border: Border.all(color: subColor),
@@ -154,7 +154,8 @@ class _Home extends State<StatefulWidget> {
                                     decoration: myTabBoxDecoration(),
                                   ),
                                   Container(
-                                    height: displayHeight * 0.452,
+                                    height: displayHeight *
+                                        0.344, // Here to Change Height
                                     child: TabBarView(children: [
                                       championGrid(topList, topPlayerList),
                                       championGrid(jugList, jugPlayerList),
@@ -233,8 +234,8 @@ Widget banContainer(List banList, String team, int n) {
         builder: (_, candidateData, rejectedData) {
           return Stack(children: [
             Container(
-              width: 35.1,
-              height: 48,
+              width: displayWidth * 0.0853,
+              height: displayHeight * 0.05,
               alignment: Alignment.center,
               child: banList[n] != null
                   ? Image.asset(
@@ -262,8 +263,8 @@ Widget banContainer(List banList, String team, int n) {
                 child: Container(
                     child: Image.asset(banList[n], //3)
                         fit: BoxFit.cover,
-                        height: displayRatio * 30,
-                        width: 105.7)),
+                        width: displayWidth * 0.0853,
+                        height: displayHeight * 0.05)),
               ),
             ),
           ]);
@@ -276,8 +277,8 @@ Widget banContainer(List banList, String team, int n) {
 Widget playerContainer(List playerList, String team, int n) {
   return Consumer<PickBanProvider>(builder: (context, provider, child) {
     return Container(
-      width: displayWidth * 0.257,
-      height: displayHeight * 0.0641,
+      width: displayWidth * 0.17,
+      height: displayHeight * 0.08,
       child: DragTarget<String>(onWillAccept: (value) {
         return true;
       }, onAccept: (value) {
@@ -328,11 +329,7 @@ Widget playerContainer(List playerList, String team, int n) {
       }, builder: (_, candidateData, rejectedData) {
         return Stack(
           children: [
-            Container(
-                width: displayRatio * 40,
-                height: displayRatio * 60,
-                alignment: Alignment.center,
-                child: Container()),
+            Container(alignment: Alignment.center, child: Container()),
             Container(
               child: LongPressDraggable(
                 data: playerList[n],
@@ -350,10 +347,12 @@ Widget playerContainer(List playerList, String team, int n) {
                   tempNum = n;
                 },
                 child: Container(
-                    child: Image.asset(playerList[n], //3)
-                        fit: BoxFit.cover,
-                        height: displayRatio * 30,
-                        width: 105.7)),
+                    child: Image.asset(
+                  playerList[n], //3)
+                  fit: BoxFit.cover,
+                  width: displayWidth * 0.17,
+                  height: displayHeight * 0.08,
+                )),
               ),
             ),
             IgnorePointer(
@@ -363,8 +362,8 @@ Widget playerContainer(List playerList, String team, int n) {
                         child: SvgPicture.asset(
                             'assets/images/player_background.svg', //3)
                             fit: BoxFit.fitWidth,
-                            height: displayRatio * 30,
-                            width: 105.7)))),
+                            width: displayWidth * 0.17,
+                            height: displayHeight * 0.08)))),
             Positioned(
                 right: 0,
                 bottom: displayRatio * 2,
@@ -459,6 +458,8 @@ Widget gridContainer(con) {
   return Stack(children: [
     greyOutChampContainer(con),
     Container(
+        width: displayWidth * 0.2,
+        height: displayHeight * 0.12,
         child: Image.asset(con, fit: BoxFit.cover),
         decoration: myBoxDecoration())
   ]);
@@ -496,8 +497,8 @@ Widget playerName(String text) {
 
 Widget feedbackContainer(dynamic com) {
   return Container(
-      width: 80,
-      height: 90,
+      width: displayWidth * 0.2,
+      height: displayHeight * 0.12,
       decoration: new BoxDecoration(
         color: mainColor,
         border: Border.all(color: subColor, width: 3),
