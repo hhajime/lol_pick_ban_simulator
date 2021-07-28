@@ -2,7 +2,8 @@
 - Provider Pattern 적용
 - 외부데이터 구성(Provider)
 - responsive 최적화(Here 부분)
-
+ -> expanded로 묶기?
+ - 챔피언 텍스트부분 padding LRTB
 [자유 밴픽모드(전략구성)]
 - 챔피언 grid bottom drawer로 접을 수 있게 
 - 챔피언 검색가능하게
