@@ -5,6 +5,7 @@ import 'package:flutter_application_1/src/list.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_application_1/src/provider/pickban_provider.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -45,9 +46,57 @@ class _Home extends State<StatefulWidget> {
                     child: Text('Drawer Header'),
                     decoration: BoxDecoration(color: mainColor)),
                 ListTile(
-                  title: Text('Item 1'),
+                  leading: Icon(
+                    Icons.delete_forever_outlined,
+                    size: displayRatio * 20,
+                    color: mainColor,
+                  ),
+                  title: Text(
+                    'Delete All',
+                    style: teamColor(mainColor),
+                  ),
+                  trailing: Icon(
+                    Icons.drag_handle,
+                    size: displayRatio * 20,
+                    color: mainColor,
+                  ),
+                  dense: true,
                   onTap: () {
                     Navigator.pop(context);
+                    for (int i = 0; i < 5; i++) {
+                      bluPlayer[i] = champIcon;
+                      blueBan[i] = champIcon;
+                      redPlayer[i] = champIcon;
+                      redBan[i] = champIcon;
+                    }
+                    setState(() {});
+                  },
+                ),
+                ListTile(
+                  leading: Icon(
+                    Icons.delete_forever_outlined,
+                    size: displayRatio * 20,
+                    color: mainColor,
+                  ),
+                  title: Text(
+                    'Delete All',
+                    style: teamColor(mainColor),
+                  ),
+                  trailing: Icon(
+                    Icons.drag_handle,
+                    size: displayRatio * 20,
+                    color: mainColor,
+                  ),
+                  dense: true,
+                  onTap: () {
+                    Navigator.pop(context);
+                    for (int i = 0; i < 5; i++) {
+                      bluPlayer[i] = champIcon;
+                      blueBan[i] = champIcon;
+                      redPlayer[i] = champIcon;
+                      redBan[i] = champIcon;
+                    }
+                    setState(() {});
                   },
                 )
               ],
@@ -64,10 +113,14 @@ class _Home extends State<StatefulWidget> {
                       Container(
                         height: displayHeight * 0.05,
                         decoration: myBoxDecoration(),
-                        child: Text(
-                          'Patch 11.12',
-                          style: TextStyle(fontSize: 8, color: Colors.white),
-                          textAlign: TextAlign.center,
+                        child: Container(
+                          margin: EdgeInsets.fromLTRB(
+                              0, displayHeight * 0.035, 0, 0),
+                          child: Text(
+                            'Patch 11.12',
+                            style: TextStyle(fontSize: 8, color: Colors.white),
+                            textAlign: TextAlign.center,
+                          ),
                         ),
                         width: displayWidth * 0.146,
                       ),
@@ -82,15 +135,18 @@ class _Home extends State<StatefulWidget> {
                       banContainer(blueBan, 'blue', 3),
                       banContainer(blueBan, 'blue', 4),
                       Container(
-                        width: displayWidth * 0.1465,
-                        height: displayHeight * 0.05,
-                        decoration: myBoxDecoration(),
-                        child: Text(
-                          'BAN',
-                          style: teamColor(subColor),
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
+                          width: displayWidth * 0.1465,
+                          height: displayHeight * 0.05,
+                          decoration: myBoxDecoration(),
+                          child: Container(
+                            margin: EdgeInsets.fromLTRB(
+                                0, displayHeight * 0.01, 0, 0),
+                            child: Text(
+                              'BANS',
+                              style: teamColor(subColor),
+                              textAlign: TextAlign.center,
+                            ),
+                          )),
                       banContainer(redBan, 'red', 0),
                       banContainer(redBan, 'red', 1),
                       banContainer(redBan, 'red', 2),

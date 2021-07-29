@@ -7,7 +7,7 @@
 - map 이미지에 간단한 draw 가능*
 - 밴 테이블, 팀 테이블에 올려진 카드는 비활성화(그레이 이펙트)*
  → 제자리 되돌려 놓을시/erase시 , 해당 카드 재활성화(이펙트제거)*
-
+ → grid List 신규 생성, ban,player 옮겨질때 기존 List 활용
 [필요개선점]
 - Provider Pattern 적용
 - 외부데이터 구성(Provider)
@@ -24,5 +24,27 @@
 [in-Game]
 롤 밴픽, 조합, 전략, 전술 등을 꾸밀수 있게 UI
 돌진>포킹>장판>돌진
+선수경매(이적시장)
+선수 스탯 매 시즌 초기화
+밴픽, 상대팀 분석, 피드백같은 코치의 역할
+스크림 상대, 시간잡고 선수들 전반적인 생활이나 건강관리, 선수단 운영에 필요한 예산이나 프론트와 선수단 사이의 관계조율같은거 하겠지.
+스폰 따오거나 선수 영입, 계약같은 프론트의 역할하는 감독도있음
+- 로딩화면
+- 환영합니다! League of Legends e-sports manager를 다운로드해 주셔서 감사합니다.  
+  저희 게임은 기본적으로 리그오브레전드 이스포츠 리그의 전지적 감독시점을 
+  배경으로 게임을 진행하도록 설계되었습니다.
+  각 국가에 속해있는 수많은 리그와 그 안에 포함되어 있는 다양한 선수(헌역 및 은퇴선수)들을 수집하고 
+  경기를 위한 전력을 분석해 스크림 및 밴픽을 진행하여 경기를 치루게 됩니다.
+  선수들의 스탯은 현실 리그에 영향을 받아 매 시즌마다 업데이트 되며, 
+  이는 상승 또는 하락이 될 수 있습니다. 또한 스탯을 직접적으로 조정할 수는 없으나, 
+  코칭을 포함한 전반적인 생활이나 건강관리를 진행하여 스탯을 보정할 수 있습니다. 경기뿐만이 아닌 각 선수의 특성에 맞는 
+  선수단 운영에 필요한 예산과 프론트와 선수단 사이에서의 관계를 조율하고 
+  구단에 명성에 걸맞는 스폰서와 계약을 체결하는 등의 방식으로 구단에 필요한 예산을 확보할 수 있습니다.
+  이외에도 다양한 컨텐츠를 준비하고 지속적인 업데이트로 발전하는 게임을 보여드림을 약속드리며
+  감사의 인사를 마칩니다. 
+  
 
 
+LOL Manager is not endorsed by Riot Games and does not reflect the views or opinions of those who produce or manage Riot
+Games or the League of Legends officially. League of Legends and Riot Games are trademarks or registered trademarks of Riot Games. Inc.
+League of Legends © Riot Games. Inc.
