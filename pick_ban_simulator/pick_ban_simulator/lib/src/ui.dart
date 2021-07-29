@@ -134,8 +134,7 @@ class _Home extends State<StatefulWidget> {
                         )
                       ],
                     ),
-                    Container(
-                      color: mainColor,
+                    Expanded(
                       child: DefaultTabController(
                           length: 5,
                           child: Column(
@@ -157,9 +156,8 @@ class _Home extends State<StatefulWidget> {
                                 ),
                                 decoration: myTabBoxDecoration(),
                               ),
-                              Container(
-                                height: displayHeight *
-                                    0.299, // Here to Change Height 0.281
+                              Expanded(
+                                flex: 1,
                                 child: TabBarView(children: [
                                   championGrid(topList, topPlayerList),
                                   championGrid(jugList, jugPlayerList),
@@ -371,49 +369,52 @@ Widget playerContainer(List playerList, String team, int n) {
 
 Widget championGrid(List _image, List _image2) {
   return Consumer<PickBanProvider>(builder: (context, provider, child) {
-    return Scrollbar(
-      child: GridView.builder(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 5,
-            childAspectRatio: displayHeight / 980, // here2
-          ),
-          itemCount: (_image.length),
-          itemBuilder: (context, index) => GridTile(
-              child: AbsorbPointer(
-                  absorbing: false,
-                  child: LongPressDraggable(
-                      data: _image[index],
-                      feedback: feedbackContainer(_image[index]),
-                      childWhenDragging: greyOutChampContainer(_image[index]),
-                      onDragCompleted: () {
-                        draggableState = true;
-                        provider.GridAdd();
-                      },
-                      onDragEnd: (data) {},
-                      onDragStarted: () {
-                        trigger = 3;
-                        dragging1 = _image[index];
-                        dragging2 = _image2[index];
-                        dragging3 = _image[index];
-                      },
-                      onDragUpdate: (data) {},
-                      child: gridContainer(_image[index]))),
-              footer: Container(
-                child: GridTileBar(
-                  backgroundColor: mainColor,
-                  subtitle: Text(
-                    '$champName',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        fontSize: 8,
-                        color: subColor,
-                        fontFamily: 'SegoeUI',
-                        fontStyle: FontStyle.italic),
+    return Container(
+      child: Scrollbar(
+        child: GridView.builder(
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 5,
+              childAspectRatio: displayHeight / 980, // here2
+            ),
+            itemCount: (_image.length),
+            itemBuilder: (context, index) => GridTile(
+                child: AbsorbPointer(
+                    absorbing: false,
+                    child: LongPressDraggable(
+                        data: _image[index],
+                        feedback: feedbackContainer(_image[index]),
+                        childWhenDragging: greyOutChampContainer(_image[index]),
+                        onDragCompleted: () {
+                          draggableState = true;
+                          provider.GridAdd();
+                        },
+                        onDragEnd: (data) {},
+                        onDragStarted: () {
+                          trigger = 3;
+                          dragging1 = _image[index];
+                          dragging2 = _image2[index];
+                          dragging3 = _image[index];
+                        },
+                        onDragUpdate: (data) {},
+                        child: gridContainer(_image[index]))),
+                footer: Container(
+                  child: GridTileBar(
+                    backgroundColor: mainColor,
+                    subtitle: Text(
+                      '$champName',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontSize: 8,
+                          color: subColor,
+                          fontFamily: 'SegoeUI',
+                          fontStyle: FontStyle.italic),
+                    ),
                   ),
-                ),
-                height: 18,
-                decoration: myBoxDecoration(),
-              ))),
+                  height: 18,
+                  decoration: myBoxDecoration(),
+                ))),
+      ),
+      color: mainColor,
     );
   });
 }
@@ -499,7 +500,7 @@ BoxDecoration myBoxDecoration() {
 }
 
 BoxDecoration myTabBoxDecoration() {
-  return BoxDecoration(border: Border.all(color: subColor));
+  return BoxDecoration(border: Border.all(color: subColor), color: mainColor);
 }
 
 // ignore: non_constant_identifier_names
