@@ -5,6 +5,7 @@ import 'package:flutter_application_1/src/list.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_application_1/src/provider/pickban_provider.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_application_1/src/ui/Widget/Widget.dart';
 import 'package:get/get.dart';
 
 class Home extends StatefulWidget {
@@ -13,15 +14,13 @@ class Home extends StatefulWidget {
 }
 
 class _Home extends State<StatefulWidget> {
-  PickBanProvider _PickBanProvider;
   @override
   Widget build(BuildContext context) {
-    _PickBanProvider = Provider.of<PickBanProvider>(context, listen: false);
     displayHeight = MediaQuery.of(context).size.height;
     displayWidth = MediaQuery.of(context).size.width;
     displayRatio = displayHeight / displayWidth;
-
     debugPrint(displayRatio.toString());
+
     return GestureDetector(
         onTap: () {
           FocusScopeNode currentFocus = FocusScope.of(context);
@@ -33,11 +32,7 @@ class _Home extends State<StatefulWidget> {
         },
         child: Scaffold(
           resizeToAvoidBottomInset: false,
-          appBar: AppBar(
-              toolbarHeight: displayHeight * 0.05,
-              title: Text("PICK BAN SIMULATOR"),
-              brightness: Brightness.dark,
-              backgroundColor: mainColor),
+          appBar: basicAppBar(),
           drawer: Drawer(
             child: ListView(
               padding: EdgeInsets.zero,
@@ -233,248 +228,241 @@ class _Home extends State<StatefulWidget> {
 }
 
 Widget banContainer(List banList, String team, int n) {
-  return Consumer<PickBanProvider>(builder: (context, provider, child) {
-    return Container(
-      width: displayWidth * 0.0853,
-      height: displayHeight * 0.05,
-      alignment: Alignment.center,
-      decoration: myBoxDecoration(),
-      child: DragTarget<String>(
-        onWillAccept: (value) {
-          banTemp = value;
-          return true;
-        },
-        onAccept: (value) {
-          targetTeam = team;
-          if (trigger == 1) {
-            if (draggingTeam == targetTeam) {
-              banList[tempNum] = banList[n];
-            } else {
-              if (team == 'red') {
-                blueBan[tempNum] = banList[n];
-              } else {
-                redBan[tempNum] = banList[n];
-              }
-            }
-            ;
-            banList[n] = dragging1;
-            provider.BanAdd();
-          } else if (trigger == 2) {
-            if (draggingTeam == targetTeam) {
-              if (team == 'red') {
-                redPlayer[tempNum] = banList[n];
-              } else {
-                bluPlayer[tempNum] = banList[n];
-              }
-            } else {
-              if (team == 'red') {
-                bluPlayer[tempNum] = banList[n];
-              } else {
-                redPlayer[tempNum] = banList[n];
-              }
-            }
-            ;
-            banList[n] = dragging1;
-            provider.BanAdd();
-          } else if (trigger == 3) {
-            banList[n] = dragging1;
-            provider.BanAdd();
-          }
-        },
-        builder: (_, candidateData, rejectedData) {
-          return Stack(children: [
-            Container(
-              width: displayWidth * 0.0853,
-              height: displayHeight * 0.05,
-              alignment: Alignment.center,
-              child: banList[n] != null
-                  ? Image.asset(
-                      banList[n],
-                      fit: BoxFit.cover,
-                    )
-                  : Container(),
-            ),
-            Container(
-              child: LongPressDraggable(
-                data: banList[n],
-                feedback: feedbackContainer(banList[n]),
-                childWhenDragging: ChampContainer2(),
-                onDragUpdate: (update) {},
-                onDragCompleted: () {},
-                onDraggableCanceled: (v, f) =>
-                    {banList[n] = champIcon, provider.BanAdd()},
-                onDragStarted: () {
-                  draggingTeam = team;
-                  trigger = 1;
-                  dragging1 = banList[n];
-                  tempNum = n;
-                },
-                child: Container(
-                    child: Image.asset(banList[n], //3)
-                        fit: BoxFit.cover,
-                        width: displayWidth * 0.0853,
-                        height: displayHeight * 0.05)),
-              ),
-            ),
-          ]);
-        },
-      ),
-    );
-  });
-}
-
-Widget playerContainer(List playerList, String team, int n) {
-  return Consumer<PickBanProvider>(builder: (context, provider, child) {
-    return Container(
-      width: displayWidth * 0.17,
-      height: displayHeight * 0.086,
-      child: DragTarget<String>(onWillAccept: (value) {
+  return Container(
+    width: displayWidth * 0.0853,
+    height: displayHeight * 0.05,
+    alignment: Alignment.center,
+    decoration: myBoxDecoration(),
+    child: DragTarget<String>(
+      onWillAccept: (value) {
+        banTemp = value;
         return true;
-      }, onAccept: (value) {
+      },
+      onAccept: (value) {
         targetTeam = team;
         if (trigger == 1) {
           if (draggingTeam == targetTeam) {
-            if (team == 'red') {
-              redBan[tempNum] = playerList[n];
-            } else {
-              blueBan[tempNum] = playerList[n];
-            }
+            banList[tempNum] = banList[n];
           } else {
             if (team == 'red') {
-              blueBan[tempNum] = playerList[n];
+              blueBan[tempNum] = banList[n];
             } else {
-              redBan[tempNum] = playerList[n];
+              redBan[tempNum] = banList[n];
             }
           }
           ;
-          playerList[n] = dragging1;
-          provider.PlayerAdd();
+          banList[n] = dragging1;
+          //add Update
         } else if (trigger == 2) {
           if (draggingTeam == targetTeam) {
-            playerList[tempNum] = playerList[n];
+            if (team == 'red') {
+              redPlayer[tempNum] = banList[n];
+            } else {
+              bluPlayer[tempNum] = banList[n];
+            }
           } else {
             if (team == 'red') {
-              bluPlayer[tempNum] = playerList[n];
+              bluPlayer[tempNum] = banList[n];
             } else {
-              redPlayer[tempNum] = playerList[n];
+              redPlayer[tempNum] = banList[n];
             }
           }
           ;
-          playerList[n] = dragging1;
-          provider.PlayerAdd();
+          banList[n] = dragging1;
+          //add Update
         } else if (trigger == 3) {
-          playerList[n] = dragging1;
-          provider.PlayerAdd();
+          banList[n] = dragging1;
+          //add Update
         }
-      }, builder: (_, candidateData, rejectedData) {
-        return Stack(
-          children: [
-            Container(alignment: Alignment.center, child: Container()),
-            Container(
-              child: LongPressDraggable(
-                data: playerList[n],
-                feedback: feedbackContainer(playerList[n]),
-                childWhenDragging: ChampContainer2(),
-                onDragUpdate: (team) {},
-                onDragCompleted: () {},
-                onDraggableCanceled: (v, f) =>
-                    {playerList[n] = champIcon, provider.PlayerAdd()},
-                onDragEnd: (data) {},
-                onDragStarted: () {
-                  draggingTeam = team;
-                  trigger = 2;
-                  dragging1 = playerList[n];
-                  tempNum = n;
-                },
-                child: Container(
-                    child: Image.asset(
-                  playerList[n], //3)
-                  fit: BoxFit.cover,
-                  width: displayWidth * 0.17,
-                  height: displayHeight * 0.086,
-                )),
-              ),
-            ),
-            Positioned(
-              top: 1,
-              child: IgnorePointer(
-                  child: Container(
-                      child: Opacity(
-                          opacity: 1,
-                          child: SvgPicture.asset(
-                              'assets/images/player_background.svg', //3)
-                              fit: BoxFit.cover,
-                              width: displayWidth * 0.17,
-                              height: displayHeight * 0.086)))),
-            ),
-            Positioned(right: 0, bottom: 0, child: playerName("PLAYER")),
-            Positioned(
-              right: 5,
-              bottom: 15,
+      },
+      builder: (_, candidateData, rejectedData) {
+        return Stack(children: [
+          Container(
+            width: displayWidth * 0.0853,
+            height: displayHeight * 0.05,
+            alignment: Alignment.center,
+            child: banList[n] != null
+                ? Image.asset(
+                    banList[n],
+                    fit: BoxFit.cover,
+                  )
+                : Container(),
+          ),
+          Container(
+            child: LongPressDraggable(
+              data: banList[n],
+              feedback: feedbackContainer(banList[n]),
+              childWhenDragging: ChampContainer2(),
+              onDragUpdate: (update) {},
+              onDragCompleted: () {},
+              onDraggableCanceled: (v, f) => {
+                banList[n] = champIcon, //add Update
+              },
+              onDragStarted: () {
+                draggingTeam = team;
+                trigger = 1;
+                dragging1 = banList[n];
+                tempNum = n;
+              },
               child: Container(
-                height: 15,
-                width: 15,
-                child: SvgPicture.asset(lines[n]),
-              ),
+                  child: Image.asset(banList[n], //3)
+                      fit: BoxFit.cover,
+                      width: displayWidth * 0.0853,
+                      height: displayHeight * 0.05)),
             ),
-          ],
-        );
-      }),
-      decoration: myBoxDecoration(),
-    );
-  });
+          ),
+        ]);
+      },
+    ),
+  );
+}
+
+Widget playerContainer(List playerList, String team, int n) {
+  return Container(
+    width: displayWidth * 0.17,
+    height: displayHeight * 0.086,
+    child: DragTarget<String>(onWillAccept: (value) {
+      return true;
+    }, onAccept: (value) {
+      targetTeam = team;
+      if (trigger == 1) {
+        if (draggingTeam == targetTeam) {
+          if (team == 'red') {
+            redBan[tempNum] = playerList[n];
+          } else {
+            blueBan[tempNum] = playerList[n];
+          }
+        } else {
+          if (team == 'red') {
+            blueBan[tempNum] = playerList[n];
+          } else {
+            redBan[tempNum] = playerList[n];
+          }
+        }
+        ;
+        playerList[n] = dragging1; //add Update
+      } else if (trigger == 2) {
+        if (draggingTeam == targetTeam) {
+          playerList[tempNum] = playerList[n];
+        } else {
+          if (team == 'red') {
+            bluPlayer[tempNum] = playerList[n];
+          } else {
+            redPlayer[tempNum] = playerList[n];
+          }
+        }
+        ;
+        playerList[n] = dragging1; //add Update
+      } else if (trigger == 3) {
+        playerList[n] = dragging1; //add Update
+      }
+    }, builder: (_, candidateData, rejectedData) {
+      return Stack(
+        children: [
+          Container(alignment: Alignment.center, child: Container()),
+          Container(
+            child: LongPressDraggable(
+              data: playerList[n],
+              feedback: feedbackContainer(playerList[n]),
+              childWhenDragging: ChampContainer2(),
+              onDragUpdate: (team) {},
+              onDragCompleted: () {},
+              onDraggableCanceled: (v, f) => {
+                playerList[n] = champIcon, //add Update
+              },
+              onDragEnd: (data) {},
+              onDragStarted: () {
+                draggingTeam = team;
+                trigger = 2;
+                dragging1 = playerList[n];
+                tempNum = n;
+              },
+              child: Container(
+                  child: Image.asset(
+                playerList[n], //3)
+                fit: BoxFit.cover,
+                width: displayWidth * 0.17,
+                height: displayHeight * 0.086,
+              )),
+            ),
+          ),
+          Positioned(
+            top: 1,
+            child: IgnorePointer(
+                child: Container(
+                    child: Opacity(
+                        opacity: 1,
+                        child: SvgPicture.asset(
+                            'assets/images/player_background.svg', //3)
+                            fit: BoxFit.cover,
+                            width: displayWidth * 0.17,
+                            height: displayHeight * 0.086)))),
+          ),
+          Positioned(right: 0, bottom: 0, child: playerName("PLAYER")),
+          Positioned(
+            right: 5,
+            bottom: 15,
+            child: Container(
+              height: 15,
+              width: 15,
+              child: SvgPicture.asset(lines[n]),
+            ),
+          ),
+        ],
+      );
+    }),
+    decoration: myBoxDecoration(),
+  );
 }
 
 Widget championGrid(List _image, List _image2) {
-  return Consumer<PickBanProvider>(builder: (context, provider, child) {
-    return Container(
-      child: Scrollbar(
-        child: GridView.builder(
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 5,
-              childAspectRatio: displayHeight / 980, // here2
-            ),
-            itemCount: (_image.length),
-            itemBuilder: (context, index) => GridTile(
-                child: AbsorbPointer(
-                    absorbing: false,
-                    child: LongPressDraggable(
-                        data: _image[index],
-                        feedback: feedbackContainer(_image[index]),
-                        childWhenDragging: greyOutChampContainer(_image[index]),
-                        onDragCompleted: () {
-                          draggableState = true;
-                          provider.GridAdd();
-                        },
-                        onDragEnd: (data) {},
-                        onDragStarted: () {
-                          trigger = 3;
-                          dragging1 = _image[index];
-                          dragging2 = _image2[index];
-                          dragging3 = _image[index];
-                        },
-                        onDragUpdate: (data) {},
-                        child: gridContainer(_image[index]))),
-                footer: Container(
-                  child: GridTileBar(
-                    backgroundColor: mainColor,
-                    subtitle: Text(
-                      '$champName',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontSize: 8,
-                          color: subColor,
-                          fontFamily: 'SegoeUI',
-                          fontStyle: FontStyle.italic),
-                    ),
+  return Container(
+    child: Scrollbar(
+      child: GridView.builder(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 5,
+            childAspectRatio: displayHeight / 980, // here2
+          ),
+          itemCount: (_image.length),
+          itemBuilder: (context, index) => GridTile(
+              child: AbsorbPointer(
+                  absorbing: false,
+                  child: LongPressDraggable(
+                      data: _image[index],
+                      feedback: feedbackContainer(_image[index]),
+                      childWhenDragging: greyOutChampContainer(_image[index]),
+                      onDragCompleted: () {
+                        draggableState = true;
+                        //add Update
+                      },
+                      onDragEnd: (data) {},
+                      onDragStarted: () {
+                        trigger = 3;
+                        dragging1 = _image[index];
+                        dragging2 = _image2[index];
+                        dragging3 = _image[index];
+                      },
+                      onDragUpdate: (data) {},
+                      child: gridContainer(_image[index]))),
+              footer: Container(
+                child: GridTileBar(
+                  backgroundColor: mainColor,
+                  subtitle: Text(
+                    '$champName',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: 8,
+                        color: subColor,
+                        fontFamily: 'SegoeUI',
+                        fontStyle: FontStyle.italic),
                   ),
-                  height: 18,
-                  decoration: myBoxDecoration(),
-                ))),
-      ),
-      color: mainColor,
-    );
-  });
+                ),
+                height: 18,
+                decoration: myBoxDecoration(),
+              ))),
+    ),
+    color: mainColor,
+  );
 }
 
 TextStyle teamColor(Color selectedColor) {
@@ -538,15 +526,6 @@ Widget playerName(String text) {
   );
 }
 
-TextStyle nameTextField() {
-  return TextStyle(
-      fontFamily: 'SegoeUI',
-      fontWeight: FontWeight.bold,
-      fontStyle: FontStyle.italic,
-      fontSize: displayRatio * 4,
-      color: subColor);
-}
-
 Widget feedbackContainer(dynamic com) {
   return Container(
       width: displayWidth * 0.2,
@@ -556,13 +535,6 @@ Widget feedbackContainer(dynamic com) {
         border: Border.all(color: subColor, width: 3),
         image: DecorationImage(image: AssetImage(com), fit: BoxFit.cover),
       ));
-}
-
-BoxDecoration myBoxDecoration() {
-  return BoxDecoration(
-    color: mainColor,
-    border: Border.all(color: subColor),
-  );
 }
 
 BoxDecoration myTabBoxDecoration() {

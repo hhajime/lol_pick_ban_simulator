@@ -5,14 +5,14 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "flutter_application_1",
-            "cwd": "test\\flutter_application_1",
+            "name": "LOL E-Sports Manager",
+            "cwd": "test\\LOL E-Sports Manager",
             "request": "launch",
             "type": "dart"
         },
         {
-            "name": "flutter_application_1 (profile mode)",
-            "cwd": "test\\flutter_application_1",
+            "name": "LOL E-Sports Manager (profile mode)",
+            "cwd": "test\\LOL E-Sports Manager",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"

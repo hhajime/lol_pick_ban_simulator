@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 ScrollController scrollController;
 
-Color mainColor = Color(0xff060F14);
+Color mainColor = Color(0xFF063039);
 Color subColor = Color(0xFFC8AA6E);
 Color caughtColor = Colors.red;
 

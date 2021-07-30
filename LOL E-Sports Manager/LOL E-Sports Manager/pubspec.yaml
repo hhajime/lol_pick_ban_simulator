@@ -11,7 +11,8 @@ dependencies:
     sdk: flutter
   flutter_svg: ^0.22.0
   cupertino_icons: ^1.0.2
-  provider: ^5.0.0
+  provider: ^5.0.0  
+  convex_bottom_bar: ^3.0.0
   get: ^4.3.0
   
 dev_dependencies:
@@ -34,6 +35,10 @@ flutter:
         - asset: fonts/Segoe-UI-Bold.ttf
         - asset: fonts/Segoe-UI-Italic.ttf
         - asset: fonts/Segoe-UI-Bold-Italic.ttf
+    - family:  LogoIcons
+      fonts:
+      - asset: fonts/LogoIcons.ttf
+
   assets:
     - assets/images/lines/top.svg
     - assets/images/lines/jug.svg
@@ -41,6 +46,7 @@ flutter:
     - assets/images/lines/bot.svg
     - assets/images/lines/sup.svg
     - assets/images/player_background.svg
+    - assets/images/SVG/
     - assets/images/map.jpg
     - assets/images/champion_icon.jpg
     - assets/images/champion_icon2.png
