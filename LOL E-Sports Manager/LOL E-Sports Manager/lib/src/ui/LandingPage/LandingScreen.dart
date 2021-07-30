@@ -102,6 +102,7 @@ class LandingState extends State<StatefulWidget> {
               backgroundColor: subColor,
               style: TabStyle.flip,
               color: mainColor,
+              activeColor: Colors.black,
               items: [
                 TabItem(
                     icon: Icon(Icons.home, size: displayRatio * 15),
