@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:ffi';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 ScrollController scrollController;
 
@@ -8,7 +9,9 @@ Color mainColor = Color(0xFF063039);
 Color subColor = Color(0xFFC8AA6E);
 Color caughtColor = Colors.red;
 
+RxBool pressAttention = false.obs;
 bool draggableState = false;
+
 String champIcon = "assets/images/champion_icon.jpg";
 String dragging1;
 String dragging2;

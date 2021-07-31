@@ -1,11 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/src/list.dart';
+import 'package:flutter_application_1/src/ui/LandingPage/SelectLeague.dart';
 import 'package:flutter_application_1/src/ui/Widget/Widget.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:flutter_application_1/src/ui/BanPick.dart';
+import 'package:flutter_application_1/src/ui/LandingPage/SelectLeague.dart';
 
 class LandingScreen extends StatefulWidget {
   @override
@@ -15,7 +16,6 @@ class LandingScreen extends StatefulWidget {
 class LandingState extends State<StatefulWidget> {
   @override
   Widget build(BuildContext context) {
-    int _page = 0;
     return GestureDetector(
         onTap: () {
           FocusScopeNode currentFocus = FocusScope.of(context);
@@ -29,42 +29,13 @@ class LandingState extends State<StatefulWidget> {
           backgroundColor: mainColor,
           resizeToAvoidBottomInset: false,
           appBar: basicAppBar(),
-          drawer: Drawer(
-            child: ListView(
-              padding: EdgeInsets.zero,
-              children: [
-                DrawerHeader(
-                    child: Text('Drawer Header'),
-                    decoration: BoxDecoration(color: mainColor)),
-                ListTile(
-                  leading: Icon(
-                    Icons.delete_forever_outlined,
-                    size: displayRatio * 20,
-                    color: mainColor,
-                  ),
-                  title: Text(
-                    'Delete All',
-                  ),
-                  trailing: Icon(
-                    Icons.drag_handle,
-                    size: displayRatio * 20,
-                    color: mainColor,
-                  ),
-                  dense: true,
-                  onTap: () {
-                    Navigator.pop(context);
-                    setState(() {});
-                  },
-                ),
-              ],
-            ),
-          ),
+          drawer: basicDrawer(),
           body: Container(
             margin: EdgeInsets.fromLTRB(displayWidth * 0.05,
                 displayHeight * 0.2, displayWidth * 0.05, displayHeight * 0.2),
             padding: EdgeInsets.fromLTRB(displayWidth * 0.05,
                 displayWidth * 0.05, displayWidth * 0.05, displayWidth * 0.05),
-            decoration: myTextBoxDecoration(),
+            decoration: myTextBoxDecoration(displayWidth * 0.01, 20),
             alignment: Alignment.center,
             child: SingleChildScrollView(
               scrollDirection: Axis.vertical,
@@ -94,7 +65,7 @@ class LandingState extends State<StatefulWidget> {
                           Icon(Icons.check)
                         ]),
                         onPressed: () {
-                          Get.to(() => Home());
+                          Get.to(() => SelectLeagueScreen());
                           debugPrint("click");
                         },
                       )),
@@ -116,7 +87,7 @@ class LandingState extends State<StatefulWidget> {
                     title: 'Tactic'),
                 TabItem(
                     icon: Icon(Icons.sports_esports, size: displayRatio * 15),
-                    title: 'Play'),
+                    title: 'Game'),
                 TabItem(
                     icon: Icon(Icons.manage_accounts, size: displayRatio * 15),
                     title: 'Manage'),
