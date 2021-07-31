@@ -8,6 +8,7 @@
 - 밴 테이블, 팀 테이블에 올려진 카드는 비활성화(그레이 이펙트)*
  → 제자리 되돌려 놓을시/erase시 , 해당 카드 재활성화(이펙트제거)*
  → grid List 신규 생성, ban,player 옮겨질때 기존 List 활용
+
 [필요개선점]
 - Provider Pattern 적용
 - 외부데이터 구성(Provider)
@@ -42,8 +43,29 @@
   구단에 명성에 걸맞는 스폰서와 계약을 체결하는 등의 방식으로 구단에 필요한 예산을 확보할 수 있습니다.
   이외에도 다양한 컨텐츠를 준비하고 지속적인 업데이트로 발전하는 게임을 보여드림을 약속드리며
   감사의 인사를 마칩니다. 
-  
+  - 자동 뉴스 제목 생성기
+  ex)'리브, 젠지·T1 꺾고 3연승' 플옵 윤곽 잡혔다…LCK 서머 7주차 / [LPL 노트] 신인 미드 내세운 RNG, 파죽의 7연승 행진
 
+성향
+
+[코칭]                                             
+(선수관리에 영향)                           
+게임실력  (선수들이 의견을 수용할 확률 증가)                                                 
+전술         (인게임시, 전술 능력치 보정에 영향)                                   
+선수훈련   (선수 능력치 보정에 영향)            
+피드백       (경기전후 선수들 능력치 보정에 영향)       
+
+[기타 능력]
+지도력 (구단관리 능력영향)
+멘탈 (연패시 디버프 확률 감소)
+임기응변 (특정 이벤트시 대처 확률 영향)
+관리 (선수 관리 능력 영향-생활방면)
+사회성 (스폰서 계약 파트너쉽 체결 확률, 프론트 업무에 영향)
+
+- 인게임 시간은 현실과 동일하게, 스크림 및 훈련, 생활 코칭, 구단관리 등 컨텐츠 -> 일일 업무
+- 시즌/비시즌 구분
+- 롤드컵/ MSI / (올스타전-> 해당선수 구단에서 임시 제외)
+- 샌드박스요소? -> 현실 시간에 구분없이 자유롭게 진행
 
 LOL Manager is not endorsed by Riot Games and does not reflect the views or opinions of those who produce or manage Riot
 Games or the League of Legends officially. League of Legends and Riot Games are trademarks or registered trademarks of Riot Games. Inc.

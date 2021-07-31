@@ -16,9 +16,6 @@ class Home extends StatefulWidget {
 class _Home extends State<StatefulWidget> {
   @override
   Widget build(BuildContext context) {
-    displayHeight = MediaQuery.of(context).size.height;
-    displayWidth = MediaQuery.of(context).size.width;
-    displayRatio = displayHeight / displayWidth;
     debugPrint(displayRatio.toString());
 
     return GestureDetector(
@@ -109,11 +106,12 @@ class _Home extends State<StatefulWidget> {
                         height: displayHeight * 0.05,
                         decoration: myBoxDecoration(),
                         child: Container(
-                          margin: EdgeInsets.fromLTRB(
-                              0, displayHeight * 0.035, 0, 0),
+                          alignment: Alignment.bottomCenter,
                           child: Text(
                             'Patch 11.12',
-                            style: TextStyle(fontSize: 8, color: Colors.white),
+                            style: TextStyle(
+                                fontSize: displayRatio * 3,
+                                color: Colors.white54),
                             textAlign: TextAlign.center,
                           ),
                         ),
@@ -134,8 +132,7 @@ class _Home extends State<StatefulWidget> {
                           height: displayHeight * 0.05,
                           decoration: myBoxDecoration(),
                           child: Container(
-                            margin: EdgeInsets.fromLTRB(
-                                0, displayHeight * 0.01, 0, 0),
+                            alignment: Alignment.center,
                             child: Text(
                               'BANS',
                               style: teamColor(subColor),
@@ -465,15 +462,6 @@ Widget championGrid(List _image, List _image2) {
   );
 }
 
-TextStyle teamColor(Color selectedColor) {
-  return TextStyle(
-      fontFamily: 'SegoeUI',
-      fontWeight: FontWeight.bold,
-      fontStyle: FontStyle.italic,
-      fontSize: displayRatio * 9,
-      color: selectedColor);
-}
-
 Widget gridContainer(con) {
   if (con != champIcon) {
     champName = con.substring(47).replaceAll('.jpg', '');
@@ -492,6 +480,7 @@ Widget teamName(Color selectColors, String hintText) {
   return Container(
     width: displayWidth * 0.427,
     height: displayHeight * 0.05,
+    alignment: Alignment.center,
     decoration: myBoxDecoration(),
     child: TextField(
       textAlign: TextAlign.center,

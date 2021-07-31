@@ -47,24 +47,33 @@ class LoadingState extends State<StatefulWidget> {
                   flex: 3,
                   child: Stack(children: [
                     Container(
-                      padding: EdgeInsets.only(top: 10),
+                      alignment: Alignment.topCenter,
+                      padding:
+                          EdgeInsets.fromLTRB(0, displayHeight * 0.03, 0, 0),
                       child: Text(
                         'LEAGUE OF LEGENDS',
-                        style: titleLogo(16, subColor, FontStyle.italic),
+                        style: titleLogo(
+                            displayRatio * 7, subColor, FontStyle.italic),
                       ),
                     ),
                     Container(
-                      padding: EdgeInsets.fromLTRB(65, 50, 0, 0),
+                      alignment: Alignment.center,
+                      padding:
+                          EdgeInsets.fromLTRB(0, 0, 0, displayHeight * 0.03),
                       child: Text(
                         'E-SPORTS',
-                        style: titleLogo(20, subColor, FontStyle.italic),
+                        style: titleLogo(
+                            displayRatio * 8, subColor, FontStyle.italic),
                       ),
                     ),
                     Container(
-                        padding: EdgeInsets.fromLTRB(10, 90, 0, 0),
+                        alignment: Alignment.bottomCenter,
+                        padding:
+                            EdgeInsets.fromLTRB(0, 0, 0, displayHeight * 0.02),
                         child: Text(
                           'MANAGER',
-                          style: titleLogo(30, subColor, FontStyle.italic),
+                          style: titleLogo(
+                              displayRatio * 14, subColor, FontStyle.italic),
                         ))
                   ]),
                 ),
@@ -72,14 +81,20 @@ class LoadingState extends State<StatefulWidget> {
                   flex: 1,
                   child: Column(children: [
                     Container(
-                        padding: EdgeInsets.fromLTRB(0, 0, 340, 0),
+                        padding:
+                            EdgeInsets.fromLTRB(0, 0, displayWidth * 0.8, 0),
                         child: Text(
                           'Loading..',
-                          style: titleLogo(5, subColor, FontStyle.italic),
+                          style: titleLogo(
+                              displayRatio * 2.5, subColor, FontStyle.italic),
                         )),
                     Container(
-                        height: 30,
-                        padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+                        height: displayHeight * 0.042,
+                        padding: EdgeInsets.fromLTRB(
+                            displayWidth * 0.03,
+                            displayWidth * 0.03,
+                            displayWidth * 0.03,
+                            displayWidth * 0.03),
                         child: TweenAnimationBuilder(
                           tween: Tween(begin: 0.0, end: 1.0),
                           duration: Duration(seconds: 4),
@@ -96,10 +111,13 @@ class LoadingState extends State<StatefulWidget> {
                 Expanded(
                   flex: 2,
                   child: Container(
-                    padding: EdgeInsets.only(top: 30),
+                    alignment: Alignment.bottomCenter,
+                    padding: EdgeInsets.only(bottom: displayHeight * 0.02),
                     child: Text(
-                        "LOL E-Sports Manager IS NOT endorsed by Riot Games and does not reflect the views or opinions of those who produce or manage Riot Games or the League of Legends officially. League of Legends and Riot Games are trademarks or registered trademarks of Riot Games. Inc. League of Legends © Riot Games. Inc. v1.00",
-                        style: TextStyle(color: Colors.white54)),
+                      "LOL E-Sports Manager IS NOT endorsed by Riot Games and does not reflect the views or opinions of those who produce or manage Riot Games or the League of Legends officially. League of Legends and Riot Games are trademarks or registered trademarks of Riot Games. Inc. League of Legends © Riot Games. Inc. v1.00",
+                      style: TextStyle(
+                          color: Colors.white54, fontSize: displayRatio * 4),
+                    ),
                   ),
                 ),
               ],
