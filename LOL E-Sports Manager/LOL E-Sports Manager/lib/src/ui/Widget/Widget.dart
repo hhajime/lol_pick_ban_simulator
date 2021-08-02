@@ -86,38 +86,128 @@ Widget basicDrawer() {
   ));
 }
 
-Widget leagueContainer(String league) {
+Widget gridContainer(con) {
+  if (con != champIcon) {
+    champName = con.substring(47).replaceAll('.jpg', '');
+  }
+  return Stack(children: [
+    greyOutChampContainer(con),
+    Container(
+        width: displayWidth * 0.2,
+        height: displayHeight * 0.1,
+        child: Image.asset(con, fit: BoxFit.cover),
+        decoration: myBoxDecoration())
+  ]);
+}
+
+Widget teamName(Color selectColors, String hintText) {
   return Container(
-    decoration: myTextBoxDecoration(displayRatio * 2, 30),
-    margin: EdgeInsets.fromLTRB(displayWidth * 0.1, displayHeight * 0.02,
-        displayWidth * 0.1, displayHeight * 0.01),
-    child: ElevatedButton(
-      style: ElevatedButton.styleFrom(
-          primary: mainColor,
-          onPrimary: subColor,
-          shape: RoundedRectangleBorder(
-            borderRadius: new BorderRadius.circular(30.0),
-          )),
-      child: Row(children: [
-        Container(
-          width: displayWidth * 0.2,
-          height: displayHeight * 0.13,
-          child: SvgPicture.asset(
-            'assets/images/SVG/${league}.svg',
-            color: subColor,
-            fit: BoxFit.contain,
-          ),
-        )
-      ]),
-      onPressed: () {
-        debugPrint("click");
-        Get.put(UpdateController());
-      },
+    width: displayWidth * 0.427,
+    height: displayHeight * 0.05,
+    alignment: Alignment.center,
+    decoration: myBoxDecoration(),
+    child: TextField(
+      textAlign: TextAlign.center,
+      decoration: InputDecoration(
+          isCollapsed: true,
+          border: InputBorder.none,
+          hintStyle: teamColor(selectColors),
+          hintText: hintText,
+          contentPadding: EdgeInsets.all(7)),
+      style: teamColor(selectColors),
     ),
   );
 }
 
+Widget playerName(String text) {
+  return Container(
+    height: 11,
+    width: displayRatio * 40,
+    child: TextField(
+      decoration: new InputDecoration(
+        border: InputBorder.none,
+        focusedBorder: InputBorder.none,
+        enabledBorder: InputBorder.none,
+        errorBorder: InputBorder.none,
+        disabledBorder: InputBorder.none,
+        hintText: text,
+        hintStyle: nameTextField(),
+      ),
+      textAlign: TextAlign.right,
+      style: nameTextField(),
+    ),
+  );
+}
+
+Widget feedbackContainer(dynamic com) {
+  return Container(
+      width: displayWidth * 0.2,
+      height: displayHeight * 0.12,
+      decoration: new BoxDecoration(
+        color: mainColor,
+        border: Border.all(color: subColor, width: 3),
+        image: DecorationImage(image: AssetImage(com), fit: BoxFit.cover),
+      ));
+}
+
+BoxDecoration myTabBoxDecoration() {
+  return BoxDecoration(border: Border.all(color: subColor), color: mainColor);
+}
+
+// ignore: non_constant_identifier_names
+Widget ChampContainer2() {
+  return Container(
+      decoration: BoxDecoration(
+          color: mainColor,
+          image: DecorationImage(
+            image: new AssetImage(champIcon),
+            fit: BoxFit.scaleDown,
+          )));
+}
+
+Widget greyOutChampContainer(dynamic champ) {
+  return Container(
+      foregroundDecoration: BoxDecoration(
+        color: Colors.grey,
+        backgroundBlendMode: BlendMode.saturation,
+      ),
+      decoration: BoxDecoration(
+          color: mainColor,
+          image: DecorationImage(
+            image: new AssetImage(champ),
+            fit: BoxFit.cover,
+          )));
+}
+
+DecorationImage imageMaker(dynamic champ) {
+  return DecorationImage(image: new AssetImage(champ), fit: BoxFit.cover);
+}
+
 Widget countryTextContainer(String country) {
+  if (country == 'lck') {
+    country = "한국";
+  } else if (country == 'lpl') {
+    country = '중국';
+  } else if (country == 'lec') {
+    country = '유럽';
+  } else if (country == 'lcs') {
+    country = '북미';
+  } else if (country == 'ljl') {
+    country = '일본';
+  } else if (country == 'tcl') {
+    country = '터키';
+  } else if (country == 'tcl') {
+    country = '터키';
+  } else if (country == 'cblol') {
+    country = '브라질';
+  } else if (country == 'lco') {
+    country = '오세아니아';
+  } else if (country == 'lla') {
+    country = '라틴아메리카';
+  } else if (country == 'lcl') {
+    country = '독립국가연합';
+  }
+
   return Container(
     alignment: Alignment.center,
     margin: EdgeInsets.fromLTRB(

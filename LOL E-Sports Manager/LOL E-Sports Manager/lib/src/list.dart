@@ -400,3 +400,16 @@ List<String> lines = [
   'assets/images/lines/bot.svg',
   'assets/images/lines/sup.svg'
 ];
+
+List<String> leaguesPng = [
+  'assets/images/SVG/league2/lck.png',
+  'assets/images/SVG/league2/lpl.png',
+  'assets/images/SVG/league2/lec.png',
+  'assets/images/SVG/league2/lcs.png',
+  'assets/images/SVG/league2/ljl.png',
+  'assets/images/SVG/league2/tcl.png',
+  'assets/images/SVG/league2/cblol.png',
+  'assets/images/SVG/league2/lco.png',
+  'assets/images/SVG/league2/lla.png',
+  'assets/images/SVG/league2/lcl.png'
+];

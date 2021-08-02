@@ -47,6 +47,7 @@ flutter:
     - assets/images/lines/sup.svg
     - assets/images/player_background.svg
     - assets/images/SVG/
+    - assets/images/SVG/league2/
     - assets/images/map.jpg
     - assets/images/champion_icon.jpg
     - assets/images/champion_icon2.png
