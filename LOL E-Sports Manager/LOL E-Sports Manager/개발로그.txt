@@ -1,6 +1,6 @@
 21.8.2//
-- league 선택 페이지 성능개선 o
-- managerMaking 페이지 구성
+- league 선택 페이지 성능개선 ○
+- managerMaking 페이지 구성 △
 
 
 [필수기능구현 리스트]
