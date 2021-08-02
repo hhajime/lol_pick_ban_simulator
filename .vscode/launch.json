@@ -15,7 +15,6 @@
             "cwd": "LOL E-Sports Manager\\LOL E-Sports Manager",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "profile"
         },
         {
             "name": "s9",

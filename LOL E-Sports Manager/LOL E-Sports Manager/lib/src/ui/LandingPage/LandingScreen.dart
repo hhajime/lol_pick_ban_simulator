@@ -35,7 +35,7 @@ class LandingState extends State<StatefulWidget> {
                 displayHeight * 0.2, displayWidth * 0.05, displayHeight * 0.2),
             padding: EdgeInsets.fromLTRB(displayWidth * 0.05,
                 displayWidth * 0.05, displayWidth * 0.05, displayWidth * 0.05),
-            decoration: myTextBoxDecoration(displayWidth * 0.01, 20),
+            decoration: myTextBoxDecoration(displayWidth * 0.01, mainColor, 20),
             alignment: Alignment.center,
             child: SingleChildScrollView(
               scrollDirection: Axis.vertical,

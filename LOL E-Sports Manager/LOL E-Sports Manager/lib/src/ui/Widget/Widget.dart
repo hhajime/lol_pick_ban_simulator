@@ -41,9 +41,9 @@ Widget basicAppBar() {
       backgroundColor: mainColor);
 }
 
-BoxDecoration myTextBoxDecoration(double width, double radius) {
+BoxDecoration myTextBoxDecoration(double width, Color colors, double radius) {
   return BoxDecoration(
-      color: mainColor,
+      color: colors,
       border: Border.all(color: subColor, width: width),
       borderRadius: BorderRadius.all(Radius.circular(radius)));
 }
@@ -209,11 +209,43 @@ Widget countryTextContainer(String country) {
   }
 
   return Container(
-    alignment: Alignment.center,
+    alignment: Alignment.bottomCenter,
     margin: EdgeInsets.fromLTRB(
-        displayWidth * 0.04, 0, displayWidth * 0.05, displayHeight * 0.01),
+        displayWidth * 0.04, 0, displayWidth * 0.05, displayHeight * 0.002),
     child: Text(
       country,
+      style: titleLogo(displayRatio * 4, subColor, FontStyle.normal),
+    ),
+  );
+}
+
+Widget nameTextFieldForm(int _maxlength) {
+  return Container(
+    height: displayHeight * 0.05,
+    margin: EdgeInsets.fromLTRB(displayWidth * 0.1, displayHeight * 0.01,
+        displayWidth * 0.1, displayHeight * 0.01),
+    decoration: myTextBoxDecoration(3, mainColor, 30),
+    child: Container(
+        margin: EdgeInsets.fromLTRB(
+            displayWidth * 0.04, 0, displayWidth * 0.04, displayHeight * 0.005),
+        child: TextFormField(
+          style: titleLogo(displayRatio * 4, subColor, FontStyle.normal),
+          maxLines: 1,
+          maxLength: _maxlength,
+          decoration: InputDecoration(
+              counterText: '',
+              focusedBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Colors.white, width: 2.0))),
+          textAlignVertical: TextAlignVertical.center,
+        )),
+  );
+}
+
+Widget nameText(String _hint) {
+  return Container(
+    margin: EdgeInsets.only(right: displayWidth * 0.7),
+    child: Text(
+      _hint,
       style: titleLogo(displayRatio * 4, subColor, FontStyle.normal),
     ),
   );
