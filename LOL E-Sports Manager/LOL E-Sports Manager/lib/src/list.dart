@@ -11,6 +11,7 @@ Color caughtColor = Colors.red;
 
 RxBool pressAttention = false.obs;
 bool draggableState = false;
+DateTime date = DateTime.now();
 
 String champIcon = "assets/images/champion_icon.jpg";
 String dragging1;
@@ -20,6 +21,7 @@ String champName;
 String banTemp;
 String targetTeam;
 String draggingTeam;
+String dropdownValue = null;
 
 int tempNum;
 int trigger;
@@ -413,3 +415,24 @@ List<String> leaguesPng = [
   'assets/images/SVG/league2/lla.png',
   'assets/images/SVG/league2/lcl.png'
 ];
+
+List<String> selectYear = [
+  '1950',
+  '1901',
+  '1930',
+  '1921',
+  '1910',
+  '1921',
+  '1930',
+  '1941',
+  '1970',
+  '1908',
+  '1956',
+  '1905',
+  '1954',
+  '1903',
+  '1952',
+  '1904',
+];
+List<String> selectMonth = ['1900', '1901'];
+List<String> selectDay = ['1900', '1901'];

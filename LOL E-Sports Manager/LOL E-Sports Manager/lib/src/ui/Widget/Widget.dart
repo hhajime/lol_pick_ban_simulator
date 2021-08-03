@@ -250,3 +250,22 @@ Widget nameText(String _hint) {
     ),
   );
 }
+
+Widget birth(List date, String catagory) {
+  String _selectedDate;
+  return Container(
+    child: DropdownButton(
+      hint: Text(catagory),
+      value: _selectedDate,
+      onChanged: (newValue) {
+        _selectedDate = newValue;
+      },
+      items: date.map((data) {
+        return DropdownMenuItem(
+          child: new Text(data),
+          value: data,
+        );
+      }).toList(),
+    ),
+  );
+}

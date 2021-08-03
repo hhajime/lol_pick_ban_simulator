@@ -38,7 +38,8 @@ class SelectLeagueState extends State<StatefulWidget> {
                 color: mainColor,
               ),
               onPressed: () {
-                Get.to(() => managerMakingScreen());
+                Get.to(() => managerMakingScreen(),
+                    transition: Transition.rightToLeft);
               },
               backgroundColor: subColor,
               shape: RoundedRectangleBorder(
@@ -47,12 +48,15 @@ class SelectLeagueState extends State<StatefulWidget> {
             backgroundColor: mainColor,
             resizeToAvoidBottomInset: false,
             appBar: basicAppBar(),
-            drawer: basicDrawer(),
             body: Container(
                 child: Column(children: [
               Expanded(
                 flex: 1,
                 child: Container(
+                  decoration: BoxDecoration(
+                      border: Border(
+                          bottom: BorderSide(
+                              color: subColor, width: displayRatio * 2))),
                   margin: EdgeInsets.fromLTRB(
                       displayWidth * 0.15,
                       displayHeight * 0.05,
@@ -68,7 +72,9 @@ class SelectLeagueState extends State<StatefulWidget> {
               ),
               Expanded(
                   flex: 4,
-                  child: Scrollbar(
+                  child: RawScrollbar(
+                      thickness: displayRatio * 2,
+                      thumbColor: subColor,
                       child: GridView.builder(
                           padding: EdgeInsets.fromLTRB(displayWidth * 0.05, 0,
                               displayWidth * 0.05, displayWidth * 0.05),

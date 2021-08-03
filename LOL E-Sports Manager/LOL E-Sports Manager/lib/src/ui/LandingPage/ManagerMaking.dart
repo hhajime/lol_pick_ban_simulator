@@ -28,7 +28,6 @@ class managerMakingState extends State<StatefulWidget> {
             backgroundColor: mainColor,
             resizeToAvoidBottomInset: false,
             appBar: basicAppBar(),
-            drawer: basicDrawer(),
             body: Container(
                 margin: EdgeInsets.fromLTRB(1, displayHeight * 0.05, 0, 1),
                 decoration: myTextBoxDecoration(5, mainColor, 30),
@@ -60,6 +59,11 @@ class managerMakingState extends State<StatefulWidget> {
                                 nameText('닉네임'),
                                 nameTextFieldForm(8),
                                 nameText('생년월일'),
+                                Row(children: [
+                                  birth(selectYear, '년'),
+                                  birth(selectMonth, '월'),
+                                  birth(selectDay, '일')
+                                ]),
                               ],
                             )
                           ],
