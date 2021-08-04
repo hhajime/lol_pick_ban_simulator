@@ -253,23 +253,29 @@ Widget nameText(String _hint) {
 Widget birth(List date, String catagory) {
   String _selectedDate;
   return Container(
-    child: DropdownButton(
-      dropdownColor: subColor,
-      isDense: true,
-      hint: Text(
-        catagory,
-        style: titleLogo(displayRatio * 4, subColor, FontStyle.normal),
-      ),
-      value: _selectedDate,
-      onChanged: (newValue) {
-        _selectedDate = newValue;
-      },
-      items: date.map((data) {
-        return DropdownMenuItem(
-          child: new Text(data),
-          value: data,
-        );
-      }).toList(),
-    ),
-  );
+      margin: EdgeInsets.fromLTRB(0, 5, 5, 5),
+      child: DropdownButtonHideUnderline(
+        child: DropdownButton(
+          icon: Icon(
+            Icons.arrow_drop_down_circle_outlined,
+            color: subColor,
+          ),
+          dropdownColor: subColor,
+          isDense: true,
+          hint: Text(
+            catagory,
+            style: titleLogo(displayRatio * 4, subColor, FontStyle.normal),
+          ),
+          value: _selectedDate,
+          onChanged: (newValue) {
+            _selectedDate = newValue;
+          },
+          items: date.map((data) {
+            return DropdownMenuItem(
+              child: Text(data, style: TextStyle(color: mainColor)),
+              value: data,
+            );
+          }).toList(),
+        ),
+      ));
 }

@@ -60,9 +60,9 @@ class managerMakingState extends State<StatefulWidget> {
                               children: [
                                 nameText('이름'),
                                 nameTextFieldForm(35),
-                                nameText('닉네임'),
+                                nameText('별명'),
                                 nameTextFieldForm(8),
-                                nameText('생년월일'),
+                                nameText('나이'),
                                 Container(
                                     padding: EdgeInsets.only(
                                         left: displayWidth * 0.05),
@@ -74,15 +74,176 @@ class managerMakingState extends State<StatefulWidget> {
                                     decoration:
                                         myTextBoxDecoration(3, mainColor, 30),
                                     child: Row(children: [
-                                      birth(selectYear, '년'),
-                                      birth(selectMonth, '월'),
-                                      birth(selectDay, '일'),
+                                      birth(selectYear, '1997'),
+                                      birth(selectMonth, '04'),
+                                      birth(selectDay, '23'),
                                       Text('세',
                                           style: titleLogo(displayRatio * 4,
                                               subColor, FontStyle.normal))
                                     ])),
                                 nameText('성별'),
-                                birth(sex, '남성'),
+                                Container(
+                                    padding: EdgeInsets.only(
+                                        left: displayWidth * 0.05),
+                                    margin: EdgeInsets.fromLTRB(
+                                        displayWidth * 0.0,
+                                        displayHeight * 0.01,
+                                        displayWidth * 0.57,
+                                        displayHeight * 0.01),
+                                    decoration:
+                                        myTextBoxDecoration(3, mainColor, 30),
+                                    child: birth(sex, '남성')),
+                                nameText('국적'),
+                                Container(
+                                    padding: EdgeInsets.only(
+                                        left: displayWidth * 0.05),
+                                    margin: EdgeInsets.fromLTRB(
+                                        displayWidth * 0.05,
+                                        displayHeight * 0.01,
+                                        displayWidth * 0.55,
+                                        displayHeight * 0.01),
+                                    decoration:
+                                        myTextBoxDecoration(3, mainColor, 30),
+                                    child: birth(country, '대한민국')),
+                                nameText('선호팀'),
+                                Container(
+                                    padding: EdgeInsets.only(
+                                        left: displayWidth * 0.05),
+                                    margin: EdgeInsets.fromLTRB(
+                                        displayWidth * 0.08,
+                                        displayHeight * 0.01,
+                                        displayWidth * 0.55,
+                                        displayHeight * 0.01),
+                                    decoration:
+                                        myTextBoxDecoration(3, mainColor, 30),
+                                    child: birth(favTeam, 'T1')),
+                                nameText('성향'),
+                                Container(
+                                    padding: EdgeInsets.only(
+                                        left: displayWidth * 0.05),
+                                    margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                    decoration:
+                                        myTextBoxDecoration(3, mainColor, 30),
+                                    child: Row(
+                                      children: [
+                                        Expanded(
+                                          child: Column(
+                                            children: [
+                                              Container(
+                                                  child: Text(
+                                                '코칭',
+                                                style: titleLogo(
+                                                    displayRatio * 4,
+                                                    Color(0x90C8AA6E),
+                                                    FontStyle.normal),
+                                              )),
+                                              Row(
+                                                children: [
+                                                  Text('게임실력',
+                                                      style: titleLogo(
+                                                          displayRatio * 4,
+                                                          Color(0xFFC8AA6E),
+                                                          FontStyle.normal)),
+                                                ],
+                                              ),
+                                              Row(
+                                                children: [
+                                                  Text('전술',
+                                                      style: titleLogo(
+                                                          displayRatio * 4,
+                                                          Color(0xFFC8AA6E),
+                                                          FontStyle.normal))
+                                                ],
+                                              ),
+                                              Row(
+                                                children: [
+                                                  Text('선수훈련',
+                                                      style: titleLogo(
+                                                          displayRatio * 4,
+                                                          Color(0xFFC8AA6E),
+                                                          FontStyle.normal))
+                                                ],
+                                              ),
+                                              Row(
+                                                children: [
+                                                  Text('피드백',
+                                                      style: titleLogo(
+                                                          displayRatio * 4,
+                                                          Color(0xFFC8AA6E),
+                                                          FontStyle.normal))
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: Column(
+                                            children: [
+                                              Text('기타',
+                                                  style: titleLogo(
+                                                      displayRatio * 4,
+                                                      Color(0x90C8AA6E),
+                                                      FontStyle.normal)),
+                                              Row(
+                                                children: [
+                                                  Text(
+                                                    '지도력',
+                                                    style: titleLogo(
+                                                        displayRatio * 4,
+                                                        subColor,
+                                                        FontStyle.normal),
+                                                  ),
+                                                ],
+                                              ),
+                                              Row(
+                                                children: [
+                                                  Text(
+                                                    '멘탈',
+                                                    style: titleLogo(
+                                                        displayRatio * 4,
+                                                        subColor,
+                                                        FontStyle.normal),
+                                                  ),
+                                                ],
+                                              ),
+                                              Row(
+                                                children: [
+                                                  Text(
+                                                    '임기응변',
+                                                    style: titleLogo(
+                                                        displayRatio * 4,
+                                                        subColor,
+                                                        FontStyle.normal),
+                                                  ),
+                                                ],
+                                              ),
+                                              Row(
+                                                children: [
+                                                  Text(
+                                                    '관리',
+                                                    style: titleLogo(
+                                                        displayRatio * 4,
+                                                        subColor,
+                                                        FontStyle.normal),
+                                                  )
+                                                ],
+                                              ),
+                                              Row(
+                                                children: [
+                                                  Text(
+                                                    '사회성',
+                                                    style: titleLogo(
+                                                        displayRatio * 4,
+                                                        subColor,
+                                                        FontStyle.normal),
+                                                  )
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ))
                               ],
                             )
                           ],
