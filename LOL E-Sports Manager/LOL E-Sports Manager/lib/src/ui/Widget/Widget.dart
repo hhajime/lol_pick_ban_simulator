@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/src/list.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:flutter_application_1/src/getx/getx.dart';
 
@@ -255,7 +254,12 @@ Widget birth(List date, String catagory) {
   String _selectedDate;
   return Container(
     child: DropdownButton(
-      hint: Text(catagory),
+      dropdownColor: subColor,
+      isDense: true,
+      hint: Text(
+        catagory,
+        style: titleLogo(displayRatio * 4, subColor, FontStyle.normal),
+      ),
       value: _selectedDate,
       onChanged: (newValue) {
         _selectedDate = newValue;

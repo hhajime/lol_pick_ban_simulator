@@ -1,9 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_application_1/src/list.dart';
 import 'package:flutter_application_1/src/ui/Widget/Widget.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:flutter_application_1/src/getx/getx.dart';
 
@@ -32,6 +30,12 @@ class managerMakingState extends State<StatefulWidget> {
                 margin: EdgeInsets.fromLTRB(1, displayHeight * 0.05, 0, 1),
                 decoration: myTextBoxDecoration(5, mainColor, 30),
                 child: Column(children: [
+                  Container(
+                    child: Image.asset(
+                      'assets/images/customUi_managerMaking.png',
+                      fit: BoxFit.cover,
+                    ),
+                  ),
                   Expanded(
                       flex: 1,
                       child: Container(
@@ -59,11 +63,26 @@ class managerMakingState extends State<StatefulWidget> {
                                 nameText('닉네임'),
                                 nameTextFieldForm(8),
                                 nameText('생년월일'),
-                                Row(children: [
-                                  birth(selectYear, '년'),
-                                  birth(selectMonth, '월'),
-                                  birth(selectDay, '일')
-                                ]),
+                                Container(
+                                    padding: EdgeInsets.only(
+                                        left: displayWidth * 0.05),
+                                    margin: EdgeInsets.fromLTRB(
+                                        displayWidth * 0.1,
+                                        displayHeight * 0.01,
+                                        displayWidth * 0.1,
+                                        displayHeight * 0.01),
+                                    decoration:
+                                        myTextBoxDecoration(3, mainColor, 30),
+                                    child: Row(children: [
+                                      birth(selectYear, '년'),
+                                      birth(selectMonth, '월'),
+                                      birth(selectDay, '일'),
+                                      Text('세',
+                                          style: titleLogo(displayRatio * 4,
+                                              subColor, FontStyle.normal))
+                                    ])),
+                                nameText('성별'),
+                                birth(sex, '남성'),
                               ],
                             )
                           ],
