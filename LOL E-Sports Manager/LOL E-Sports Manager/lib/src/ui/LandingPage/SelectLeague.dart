@@ -28,6 +28,7 @@ class SelectLeagueState extends State<StatefulWidget> {
             floatingActionButtonLocation:
                 FloatingActionButtonLocation.centerFloat,
             floatingActionButton: FloatingActionButton.extended(
+              elevation: 8,
               label: Text(
                 '확인',
                 style: titleLogo(displayRatio * 5, mainColor, FontStyle.normal),
