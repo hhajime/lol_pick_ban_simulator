@@ -74,10 +74,10 @@ class managerMakingState extends State<StatefulWidget> {
                                     decoration:
                                         myTextBoxDecoration(3, mainColor, 30),
                                     child: Row(children: [
-                                      birth(selectYear, '1997'),
-                                      birth(selectMonth, '04'),
-                                      birth(selectDay, '23'),
-                                      Text('세',
+                                      dropDownBtn(selectYear, '1997'),
+                                      dropDownBtn(selectMonth, '04'),
+                                      dropDownBtn(selectDay, '23'),
+                                      Text('   :  25세',
                                           style: titleLogo(displayRatio * 4,
                                               subColor, FontStyle.normal))
                                     ])),
@@ -92,7 +92,7 @@ class managerMakingState extends State<StatefulWidget> {
                                         displayHeight * 0.01),
                                     decoration:
                                         myTextBoxDecoration(3, mainColor, 30),
-                                    child: birth(sex, '남성')),
+                                    child: dropDownBtn(sex, '남성')),
                                 nameText('국적'),
                                 Container(
                                     padding: EdgeInsets.only(
@@ -104,7 +104,7 @@ class managerMakingState extends State<StatefulWidget> {
                                         displayHeight * 0.01),
                                     decoration:
                                         myTextBoxDecoration(3, mainColor, 30),
-                                    child: birth(country, '대한민국')),
+                                    child: dropDownBtn(country, '대한민국')),
                                 nameText('선호팀'),
                                 Container(
                                     padding: EdgeInsets.only(
@@ -116,12 +116,16 @@ class managerMakingState extends State<StatefulWidget> {
                                         displayHeight * 0.01),
                                     decoration:
                                         myTextBoxDecoration(3, mainColor, 30),
-                                    child: birth(favTeam, 'T1')),
+                                    child: dropDownBtn(favTeam, 'T1')),
                                 nameText('성향'),
                                 Container(
                                     padding: EdgeInsets.only(
                                         left: displayWidth * 0.05),
-                                    margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                    margin: EdgeInsets.fromLTRB(
+                                        displayWidth * 0.1,
+                                        displayHeight * 0.01,
+                                        displayWidth * 0.1,
+                                        displayHeight * 0.01),
                                     decoration:
                                         myTextBoxDecoration(3, mainColor, 30),
                                     child: Row(
@@ -141,7 +145,7 @@ class managerMakingState extends State<StatefulWidget> {
                                                 children: [
                                                   Text('게임실력',
                                                       style: titleLogo(
-                                                          displayRatio * 4,
+                                                          displayRatio * 3,
                                                           Color(0xFFC8AA6E),
                                                           FontStyle.normal)),
                                                 ],
@@ -150,7 +154,7 @@ class managerMakingState extends State<StatefulWidget> {
                                                 children: [
                                                   Text('전술',
                                                       style: titleLogo(
-                                                          displayRatio * 4,
+                                                          displayRatio * 3,
                                                           Color(0xFFC8AA6E),
                                                           FontStyle.normal))
                                                 ],
@@ -159,7 +163,7 @@ class managerMakingState extends State<StatefulWidget> {
                                                 children: [
                                                   Text('선수훈련',
                                                       style: titleLogo(
-                                                          displayRatio * 4,
+                                                          displayRatio * 3,
                                                           Color(0xFFC8AA6E),
                                                           FontStyle.normal))
                                                 ],
@@ -168,7 +172,7 @@ class managerMakingState extends State<StatefulWidget> {
                                                 children: [
                                                   Text('피드백',
                                                       style: titleLogo(
-                                                          displayRatio * 4,
+                                                          displayRatio * 3,
                                                           Color(0xFFC8AA6E),
                                                           FontStyle.normal))
                                                 ],
@@ -179,17 +183,18 @@ class managerMakingState extends State<StatefulWidget> {
                                         Expanded(
                                           child: Column(
                                             children: [
-                                              Text('기타',
-                                                  style: titleLogo(
-                                                      displayRatio * 4,
-                                                      Color(0x90C8AA6E),
-                                                      FontStyle.normal)),
+                                              Container(
+                                                  child: Text('기타',
+                                                      style: titleLogo(
+                                                          displayRatio * 4,
+                                                          Color(0x90C8AA6E),
+                                                          FontStyle.normal))),
                                               Row(
                                                 children: [
                                                   Text(
                                                     '지도력',
                                                     style: titleLogo(
-                                                        displayRatio * 4,
+                                                        displayRatio * 3,
                                                         subColor,
                                                         FontStyle.normal),
                                                   ),
@@ -200,7 +205,7 @@ class managerMakingState extends State<StatefulWidget> {
                                                   Text(
                                                     '멘탈',
                                                     style: titleLogo(
-                                                        displayRatio * 4,
+                                                        displayRatio * 3,
                                                         subColor,
                                                         FontStyle.normal),
                                                   ),
@@ -211,7 +216,7 @@ class managerMakingState extends State<StatefulWidget> {
                                                   Text(
                                                     '임기응변',
                                                     style: titleLogo(
-                                                        displayRatio * 4,
+                                                        displayRatio * 3,
                                                         subColor,
                                                         FontStyle.normal),
                                                   ),
@@ -222,7 +227,7 @@ class managerMakingState extends State<StatefulWidget> {
                                                   Text(
                                                     '관리',
                                                     style: titleLogo(
-                                                        displayRatio * 4,
+                                                        displayRatio * 3,
                                                         subColor,
                                                         FontStyle.normal),
                                                   )
@@ -233,7 +238,7 @@ class managerMakingState extends State<StatefulWidget> {
                                                   Text(
                                                     '사회성',
                                                     style: titleLogo(
-                                                        displayRatio * 4,
+                                                        displayRatio * 3,
                                                         subColor,
                                                         FontStyle.normal),
                                                   )

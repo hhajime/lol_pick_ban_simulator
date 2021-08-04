@@ -112,6 +112,7 @@ class SelectLeagueState extends State<StatefulWidget> {
                                           ),
                                           onPressed: () {
                                             Get.put(UpdateController());
+                                            mainColor = Color(0xFF063039);
                                             debugPrint(
                                                 '${leaguesPng[index].substring(26).replaceAll('.png', '')}');
                                           },

@@ -250,7 +250,7 @@ Widget nameText(String _hint) {
   );
 }
 
-Widget birth(List date, String catagory) {
+Widget dropDownBtn(List date, String catagory) {
   String _selectedDate;
   return Container(
       margin: EdgeInsets.fromLTRB(0, 5, 5, 5),
