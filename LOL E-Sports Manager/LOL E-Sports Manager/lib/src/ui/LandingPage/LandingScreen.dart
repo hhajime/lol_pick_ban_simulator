@@ -5,8 +5,6 @@ import 'package:flutter_application_1/src/ui/LandingPage/SelectLeague.dart';
 import 'package:flutter_application_1/src/ui/Widget/Widget.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:get/get.dart';
-import 'package:flutter_application_1/src/ui/BanPick.dart';
-import 'package:flutter_application_1/src/ui/LandingPage/SelectLeague.dart';
 
 class LandingScreen extends StatefulWidget {
   @override

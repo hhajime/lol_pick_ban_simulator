@@ -5,7 +5,6 @@ import 'package:flutter_application_1/src/ui/LandingPage/LandingScreen.dart';
 import 'package:flutter_application_1/src/ui/Widget/Widget.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import '../BanPick.dart';
 
 class LoadingScreen extends StatefulWidget {
   @override

@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_application_1/src/list.dart';
-import 'package:provider/provider.dart';
-import 'package:flutter_application_1/src/provider/pickban_provider.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_application_1/src/ui/Widget/Widget.dart';
-import 'package:get/get.dart';
 
 class Home extends StatefulWidget {
   @override

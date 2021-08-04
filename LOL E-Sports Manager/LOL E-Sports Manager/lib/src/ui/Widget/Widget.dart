@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/src/list.dart';
-import 'package:get/get.dart';
 import 'package:flutter_application_1/src/getx/getx.dart';
 
 BoxDecoration myBoxDecoration() {
