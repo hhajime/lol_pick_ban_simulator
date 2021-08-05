@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/src/list.dart';
 import 'package:flutter_application_1/src/ui/LandingPage/SelectLeague.dart';
+import 'package:flutter_application_1/src/ui/BanPick.dart';
 import 'package:flutter_application_1/src/ui/Widget/Widget.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:get/get.dart';
@@ -87,12 +88,22 @@ class LandingState extends State<StatefulWidget> {
           bottomNavigationBar: ConvexAppBar(
               backgroundColor: subColor,
               style: TabStyle.flip,
+              onTap: (index) {
+                switch (index) {
+                  case 0:
+                    break;
+                  case 1:
+                    Get.to(() => Home());
+                    break;
+                }
+              },
               color: mainColor,
               activeColor: Colors.black,
               items: [
                 TabItem(
-                    icon: Icon(Icons.home, size: displayRatio * 15),
-                    title: 'Home'),
+                  icon: Icon(Icons.home, size: displayRatio * 15),
+                  title: 'Home',
+                ),
                 TabItem(
                     icon: Icon(Icons.paste, size: displayRatio * 15),
                     title: 'Tactic'),

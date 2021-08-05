@@ -22,9 +22,22 @@ String banTemp;
 String targetTeam;
 String draggingTeam;
 String dropdownValue = null;
+RxString testStr = ''.obs;
+String playerSex;
+String playerCountry;
+String hopeTeam;
+String playerSex2;
+String playerCountry2;
+String hopeTeam2;
 
 int tempNum;
 int trigger;
+int birthYear;
+int birthMonth;
+int birthDay;
+int birthYear2;
+int birthMonth2;
+int birthDay2;
 
 double width;
 double height;
@@ -32,10 +45,10 @@ double displayHeight;
 double displayWidth;
 double displayRatio;
 
-List bluPlayer = List<String>.filled(5, champIcon, growable: false);
-List redPlayer = List<String>.filled(5, champIcon, growable: false);
-List blueBan = List<String>.filled(5, champIcon, growable: false);
-List redBan = List<String>.filled(5, champIcon, growable: false);
+List bluPlayer = List<String>.filled(5, champIcon, growable: false).obs;
+List redPlayer = List<String>.filled(5, champIcon, growable: false).obs;
+List blueBan = List<String>.filled(5, champIcon, growable: false).obs;
+List redBan = List<String>.filled(5, champIcon, growable: false).obs;
 List topList = Champions.top;
 List jugList = Champions.jug;
 List midList = Champions.mid;

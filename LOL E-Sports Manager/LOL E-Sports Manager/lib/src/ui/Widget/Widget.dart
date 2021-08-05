@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/src/list.dart';
+import 'package:get/get.dart';
 import 'package:flutter_application_1/src/getx/getx.dart';
 
 BoxDecoration myBoxDecoration() {
@@ -247,34 +248,4 @@ Widget nameText(String _hint) {
       style: titleLogo(displayRatio * 4, subColor, FontStyle.normal),
     ),
   );
-}
-
-Widget dropDownBtn(List date, String catagory) {
-  String _selectedDate;
-  return Container(
-      margin: EdgeInsets.fromLTRB(0, 5, 5, 5),
-      child: DropdownButtonHideUnderline(
-        child: DropdownButton(
-          icon: Icon(
-            Icons.arrow_drop_down_circle_outlined,
-            color: subColor,
-          ),
-          dropdownColor: subColor,
-          isDense: true,
-          hint: Text(
-            catagory,
-            style: titleLogo(displayRatio * 4, subColor, FontStyle.normal),
-          ),
-          value: _selectedDate,
-          onChanged: (newValue) {
-            _selectedDate = newValue;
-          },
-          items: date.map((data) {
-            return DropdownMenuItem(
-              child: Text(data, style: TextStyle(color: mainColor)),
-              value: data,
-            );
-          }).toList(),
-        ),
-      ));
 }
