@@ -3,6 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_application_1/src/list.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:flutter_application_1/src/getx/getx.dart';
 import 'package:flutter_application_1/src/ui/Widget/Widget.dart';
 
 class Home extends StatefulWidget {
@@ -11,6 +12,7 @@ class Home extends StatefulWidget {
 }
 
 class _Home extends State<StatefulWidget> {
+  final upController = Get.put(UpdateController());
   @override
   Widget build(BuildContext context) {
     debugPrint(displayRatio.toString());
@@ -53,10 +55,10 @@ class _Home extends State<StatefulWidget> {
                   onTap: () {
                     Navigator.pop(context);
                     for (int i = 0; i < 5; i++) {
-                      bluPlayer[i] = champIcon;
-                      blueBan[i] = champIcon;
-                      redPlayer[i] = champIcon;
-                      redBan[i] = champIcon;
+                      upController.bluPlayer[i].value = champIcon;
+                      upController.blueBan[i].value = champIcon;
+                      upController.redPlayer[i].value = champIcon;
+                      upController.redBan[i].value = champIcon;
                     }
                     setState(() {});
                   },
@@ -80,10 +82,10 @@ class _Home extends State<StatefulWidget> {
                   onTap: () {
                     Navigator.pop(context);
                     for (int i = 0; i < 5; i++) {
-                      bluPlayer[i] = champIcon;
-                      blueBan[i] = champIcon;
-                      redPlayer[i] = champIcon;
-                      redBan[i] = champIcon;
+                      upController.bluPlayer[i].value = champIcon;
+                      upController.blueBan[i].value = champIcon;
+                      upController.redPlayer[i].value = champIcon;
+                      upController.redBan[i].value = champIcon;
                     }
                     setState(() {});
                   },
@@ -119,11 +121,11 @@ class _Home extends State<StatefulWidget> {
                   ),
                   Row(
                     children: [
-                      banContainer(blueBan, 'blue', 0),
-                      banContainer(blueBan, 'blue', 1),
-                      banContainer(blueBan, 'blue', 2),
-                      banContainer(blueBan, 'blue', 3),
-                      banContainer(blueBan, 'blue', 4),
+                      banContainer(upController.blueBan, 'blue', 0),
+                      banContainer(upController.blueBan, 'blue', 1),
+                      banContainer(upController.blueBan, 'blue', 2),
+                      banContainer(upController.blueBan, 'blue', 3),
+                      banContainer(upController.blueBan, 'blue', 4),
                       Container(
                           width: displayWidth * 0.1465,
                           height: displayHeight * 0.05,
@@ -136,22 +138,22 @@ class _Home extends State<StatefulWidget> {
                               textAlign: TextAlign.center,
                             ),
                           )),
-                      banContainer(redBan, 'red', 0),
-                      banContainer(redBan, 'red', 1),
-                      banContainer(redBan, 'red', 2),
-                      banContainer(redBan, 'red', 3),
-                      banContainer(redBan, 'red', 4),
+                      banContainer(upController.redBan, 'red', 0),
+                      banContainer(upController.redBan, 'red', 1),
+                      banContainer(upController.redBan, 'red', 2),
+                      banContainer(upController.redBan, 'red', 3),
+                      banContainer(upController.redBan, 'red', 4),
                     ],
                   ),
                   Row(
                     children: [
                       Column(
                         children: [
-                          playerContainer(bluPlayer, 'blue', 0),
-                          playerContainer(bluPlayer, 'blue', 1),
-                          playerContainer(bluPlayer, 'blue', 2),
-                          playerContainer(bluPlayer, 'blue', 3),
-                          playerContainer(bluPlayer, 'blue', 4)
+                          playerContainer(upController.bluPlayer, 'blue', 0),
+                          playerContainer(upController.bluPlayer, 'blue', 1),
+                          playerContainer(upController.bluPlayer, 'blue', 2),
+                          playerContainer(upController.bluPlayer, 'blue', 3),
+                          playerContainer(upController.bluPlayer, 'blue', 4)
                         ],
                       ),
                       Container(
@@ -171,11 +173,11 @@ class _Home extends State<StatefulWidget> {
                       ),
                       Column(
                         children: [
-                          playerContainer(redPlayer, 'red', 0),
-                          playerContainer(redPlayer, 'red', 1),
-                          playerContainer(redPlayer, 'red', 2),
-                          playerContainer(redPlayer, 'red', 3),
-                          playerContainer(redPlayer, 'red', 4)
+                          playerContainer(upController.redPlayer, 'red', 0),
+                          playerContainer(upController.redPlayer, 'red', 1),
+                          playerContainer(upController.redPlayer, 'red', 2),
+                          playerContainer(upController.redPlayer, 'red', 3),
+                          playerContainer(upController.redPlayer, 'red', 4)
                         ],
                       )
                     ],
@@ -222,6 +224,7 @@ class _Home extends State<StatefulWidget> {
 }
 
 Widget banContainer(List banList, String team, int n) {
+  final upController = Get.put(UpdateController());
   return Container(
     width: displayWidth * 0.0853,
     height: displayHeight * 0.05,
@@ -239,9 +242,9 @@ Widget banContainer(List banList, String team, int n) {
             banList[tempNum] = banList[n];
           } else {
             if (team == 'red') {
-              blueBan[tempNum] = banList[n];
+              upController.blueBan[tempNum].value = banList[n];
             } else {
-              redBan[tempNum] = banList[n];
+              upController.redBan[tempNum].value = banList[n];
             }
           }
           ;
@@ -250,15 +253,15 @@ Widget banContainer(List banList, String team, int n) {
         } else if (trigger == 2) {
           if (draggingTeam == targetTeam) {
             if (team == 'red') {
-              redPlayer[tempNum] = banList[n];
+              upController.redPlayer[tempNum].value = banList[n];
             } else {
-              bluPlayer[tempNum] = banList[n];
+              upController.bluPlayer[tempNum].value = banList[n];
             }
           } else {
             if (team == 'red') {
-              bluPlayer[tempNum] = banList[n];
+              upController.bluPlayer[tempNum].value = banList[n];
             } else {
-              redPlayer[tempNum] = banList[n];
+              upController.redPlayer[tempNum].value = banList[n];
             }
           }
           ;
@@ -299,10 +302,10 @@ Widget banContainer(List banList, String team, int n) {
                 tempNum = n;
               },
               child: Container(
-                  child: Image.asset(banList[n], //3)
+                  child: Obx(() => Image.asset(banList[n], //3)
                       fit: BoxFit.cover,
                       width: displayWidth * 0.0853,
-                      height: displayHeight * 0.05)),
+                      height: displayHeight * 0.05))),
             ),
           ),
         ]);
@@ -312,6 +315,7 @@ Widget banContainer(List banList, String team, int n) {
 }
 
 Widget playerContainer(List playerList, String team, int n) {
+  final upController = Get.put(UpdateController());
   return Container(
     width: displayWidth * 0.17,
     height: displayHeight * 0.086,
@@ -322,15 +326,15 @@ Widget playerContainer(List playerList, String team, int n) {
       if (trigger == 1) {
         if (draggingTeam == targetTeam) {
           if (team == 'red') {
-            redBan[tempNum] = playerList[n];
+            upController.redBan[tempNum].value = playerList[n];
           } else {
-            blueBan[tempNum] = playerList[n];
+            upController.blueBan[tempNum].value = playerList[n];
           }
         } else {
           if (team == 'red') {
-            blueBan[tempNum] = playerList[n];
+            upController.blueBan[tempNum].value = playerList[n];
           } else {
-            redBan[tempNum] = playerList[n];
+            upController.redBan[tempNum].value = playerList[n];
           }
         }
         ;
@@ -340,9 +344,9 @@ Widget playerContainer(List playerList, String team, int n) {
           playerList[tempNum] = playerList[n];
         } else {
           if (team == 'red') {
-            bluPlayer[tempNum] = playerList[n];
+            upController.bluPlayer[tempNum].value = playerList[n];
           } else {
-            redPlayer[tempNum] = playerList[n];
+            upController.redPlayer[tempNum].value = playerList[n];
           }
         }
         ;
@@ -372,12 +376,12 @@ Widget playerContainer(List playerList, String team, int n) {
                 tempNum = n;
               },
               child: Container(
-                  child: Image.asset(
-                playerList[n], //3)
-                fit: BoxFit.cover,
-                width: displayWidth * 0.17,
-                height: displayHeight * 0.086,
-              )),
+                  child: Obx(() => Image.asset(
+                        playerList[n], //3)
+                        fit: BoxFit.cover,
+                        width: displayWidth * 0.17,
+                        height: displayHeight * 0.086,
+                      ))),
             ),
           ),
           Positioned(

@@ -45,10 +45,6 @@ double displayHeight;
 double displayWidth;
 double displayRatio;
 
-List bluPlayer = List<String>.filled(5, champIcon, growable: false).obs;
-List redPlayer = List<String>.filled(5, champIcon, growable: false).obs;
-List blueBan = List<String>.filled(5, champIcon, growable: false).obs;
-List redBan = List<String>.filled(5, champIcon, growable: false).obs;
 List topList = Champions.top;
 List jugList = Champions.jug;
 List midList = Champions.mid;
