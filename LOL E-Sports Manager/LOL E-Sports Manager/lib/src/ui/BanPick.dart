@@ -417,6 +417,7 @@ Widget championGrid(List _image, List _image2) {
   return Container(
     child: Scrollbar(
       child: GridView.builder(
+          physics: BouncingScrollPhysics(),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 5,
             childAspectRatio: displayHeight / 980, // here2

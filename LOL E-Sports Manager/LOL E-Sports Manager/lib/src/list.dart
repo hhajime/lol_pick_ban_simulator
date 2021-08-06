@@ -32,12 +32,12 @@ String hopeTeam2;
 
 int tempNum;
 int trigger;
-int birthYear;
-int birthMonth;
-int birthDay;
-int birthYear2;
-int birthMonth2;
-int birthDay2;
+String birthYear = 'birthYear';
+String birthMonth = 'birthMonth';
+String birthDay = 'birthDay';
+String birthYear2;
+String birthMonth2;
+String birthDay2;
 
 double width;
 double height;

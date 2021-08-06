@@ -80,12 +80,12 @@ class managerMakingState extends State<StatefulWidget> {
                                       decoration:
                                           myTextBoxDecoration(3, mainColor, 30),
                                       child: Row(children: [
-                                        dropDownBtn(selectYear, '1997',
-                                            birthYear, birthYear2),
-                                        dropDownBtn(selectMonth, '04',
-                                            birthMonth, birthMonth2),
-                                        dropDownBtn(selectDay, '23', birthDay,
-                                            birthDay2),
+                                        dropDownBtn(selectYear, '1997년',
+                                            'birthYear', birthYear2),
+                                        dropDownBtn(selectMonth, '04월',
+                                            'birthMonth', birthMonth2),
+                                        dropDownBtn(selectDay, '23일',
+                                            'birthDay', birthDay2),
                                         Obx(() => Text(
                                             '   :  ${upController.testInt.value}세',
                                             style: titleLogo(displayRatio * 4,
@@ -235,11 +235,11 @@ class managerMakingState extends State<StatefulWidget> {
             ),
             onChanged: (value) {
               catagory2 = value;
-              upController.testInt.value++;
-              if (catagory == birthYear) {
-                testStr = (2022 - int.parse(catagory2)).toString().obs;
-              } else
-                testStr = catagory2.toString().obs;
+              if (catagory == 'birthYear') {
+                upController.testInt.value = (2022 - int.parse(catagory2));
+              }
+
+              print(catagory2);
             },
             value: catagory2,
             items: date.map((value) {
