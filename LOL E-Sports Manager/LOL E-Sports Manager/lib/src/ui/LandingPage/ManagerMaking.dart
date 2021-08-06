@@ -216,7 +216,8 @@ class managerMakingState extends State<StatefulWidget> {
     );
   }
 
-  Widget dropDownBtn(List date, String hint, catagory, catagory2) {
+  Widget dropDownBtn(
+      List date, String hint, String catagory, String catagory2) {
     final upController = Get.put(UpdateController());
     return Container(
         margin: EdgeInsets.fromLTRB(0, displayHeight * 0.006,
@@ -229,12 +230,14 @@ class managerMakingState extends State<StatefulWidget> {
             ),
             dropdownColor: subColor,
             isDense: true,
-            hint: Text(
-              hint,
-              style: titleLogo(displayRatio * 4, subColor, FontStyle.normal),
-            ),
+            hint: Obx(() => Text(
+                  upController.catagory2.value,
+                  style:
+                      titleLogo(displayRatio * 4, subColor, FontStyle.normal),
+                )),
             onChanged: (value) {
               catagory2 = value;
+              upController.catagory2.value = value;
               if (catagory == 'birthYear') {
                 upController.testInt.value = (2022 - int.parse(catagory2));
               }
