@@ -49,81 +49,84 @@ class SelectLeagueState extends State<StatefulWidget> {
             resizeToAvoidBottomInset: false,
             appBar: basicAppBar(),
             body: Container(
+                margin: EdgeInsets.fromLTRB(1, displayHeight * 0.00, 0, 1),
+                decoration: myTextBoxDecoration(5, mainColor, 20),
                 child: Column(children: [
-              Expanded(
-                flex: 1,
-                child: Container(
-                  decoration: BoxDecoration(
-                      border: Border(
-                          bottom: BorderSide(
-                              color: subColor, width: displayRatio * 2))),
-                  margin: EdgeInsets.fromLTRB(
-                      displayWidth * 0.15,
-                      displayHeight * 0.05,
-                      displayWidth * 0.15,
-                      displayHeight * 0.05),
-                  alignment: Alignment.center,
-                  child: Text(
-                    '리그 선택',
-                    style:
-                        titleLogo(displayRatio * 8, subColor, FontStyle.normal),
+                  Expanded(
+                    flex: 1,
+                    child: Container(
+                      decoration: BoxDecoration(
+                          border: Border(
+                              bottom: BorderSide(
+                                  color: subColor, width: displayRatio * 2))),
+                      margin: EdgeInsets.fromLTRB(
+                          displayWidth * 0.15,
+                          displayHeight * 0.05,
+                          displayWidth * 0.15,
+                          displayHeight * 0.05),
+                      alignment: Alignment.center,
+                      child: Text(
+                        '리그 선택',
+                        style: titleLogo(
+                            displayRatio * 8, subColor, FontStyle.normal),
+                      ),
+                    ),
                   ),
-                ),
-              ),
-              Expanded(
-                  flex: 4,
-                  child: RawScrollbar(
-                      thickness: displayRatio * 2,
-                      thumbColor: subColor,
-                      child: GridView.builder(
-                          padding: EdgeInsets.fromLTRB(displayWidth * 0.05, 0,
-                              displayWidth * 0.05, displayWidth * 0.05),
-                          physics: BouncingScrollPhysics(),
-                          gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            crossAxisSpacing: 10,
-                            mainAxisSpacing: 10,
-                            childAspectRatio: displayRatio / 2, // here2
-                          ),
-                          itemCount: (leaguesPng.length),
-                          itemBuilder: (context, index) => GridTile(
-                                child: AbsorbPointer(
-                                    absorbing: false,
-                                    child: Container(
-                                        child: ElevatedButton(
-                                          style: ElevatedButton.styleFrom(
-                                              shadowColor: Colors.black,
-                                              primary: mainColor,
-                                              onPrimary: subColor,
-                                              shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    new BorderRadius.circular(
-                                                        30.0),
-                                              )),
-                                          child: Container(
-                                            padding: EdgeInsets.only(bottom: 5),
-                                            height: displayHeight * 0.15,
-                                            child: Image.asset(
-                                              leaguesPng[index],
-                                              color: subColor,
-                                              fit: BoxFit.contain,
+                  Expanded(
+                      flex: 4,
+                      child: RawScrollbar(
+                          thickness: displayRatio * 2,
+                          thumbColor: subColor,
+                          child: GridView.builder(
+                              padding: EdgeInsets.fromLTRB(displayWidth * 0.05,
+                                  0, displayWidth * 0.05, displayWidth * 0.05),
+                              physics: BouncingScrollPhysics(),
+                              gridDelegate:
+                                  SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
+                                crossAxisSpacing: 10,
+                                mainAxisSpacing: 10,
+                                childAspectRatio: displayRatio / 2, // here2
+                              ),
+                              itemCount: (leaguesPng.length),
+                              itemBuilder: (context, index) => GridTile(
+                                    child: AbsorbPointer(
+                                        absorbing: false,
+                                        child: Container(
+                                            child: ElevatedButton(
+                                              style: ElevatedButton.styleFrom(
+                                                  shadowColor: Colors.black,
+                                                  primary: mainColor,
+                                                  onPrimary: subColor,
+                                                  shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        new BorderRadius
+                                                            .circular(30.0),
+                                                  )),
+                                              child: Container(
+                                                padding:
+                                                    EdgeInsets.only(bottom: 5),
+                                                height: displayHeight * 0.15,
+                                                child: Image.asset(
+                                                  leaguesPng[index],
+                                                  color: subColor,
+                                                  fit: BoxFit.contain,
+                                                ),
+                                              ),
+                                              onPressed: () {
+                                                Get.put(UpdateController());
+                                                mainColor = Color(0xFF063039);
+                                                debugPrint(
+                                                    '${leaguesPng[index].substring(26).replaceAll('.png', '')}');
+                                              },
                                             ),
-                                          ),
-                                          onPressed: () {
-                                            Get.put(UpdateController());
-                                            mainColor = Color(0xFF063039);
-                                            debugPrint(
-                                                '${leaguesPng[index].substring(26).replaceAll('.png', '')}');
-                                          },
-                                        ),
-                                        decoration: myTextBoxDecoration(
-                                            displayWidth * 0.006,
-                                            mainColor,
-                                            25))),
-                                footer: countryTextContainer(
-                                    '${leaguesPng[index].substring(26).replaceAll('.png', '')}'),
-                              ))))
-            ]))));
+                                            decoration: myTextBoxDecoration(
+                                                displayWidth * 0.006,
+                                                mainColor,
+                                                25))),
+                                    footer: countryTextContainer(
+                                        '${leaguesPng[index].substring(26).replaceAll('.png', '')}'),
+                                  ))))
+                ]))));
   }
 }

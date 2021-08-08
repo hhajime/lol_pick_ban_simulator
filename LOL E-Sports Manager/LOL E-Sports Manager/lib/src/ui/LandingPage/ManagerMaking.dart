@@ -49,12 +49,16 @@ class managerMakingState extends State<StatefulWidget> {
                               displayHeight * 0.03,
                               displayWidth * 0.1,
                               displayHeight * 0.03),
-                          decoration: myTextBoxDecoration(4, mainColor, 10),
+                          decoration: BoxDecoration(
+                              border: Border(
+                                  bottom: BorderSide(
+                                      color: subColor,
+                                      width: displayRatio * 2))),
                           alignment: Alignment.center,
                           child: Text(
                             '감독 프로필 생성',
-                            style: titleLogo(
-                                displayRatio * 8, subColor, FontStyle.normal),
+                            style: titleLogo(displayHeight * 0.02, subColor,
+                                FontStyle.normal),
                           ))),
                   Expanded(
                       flex: 5,
@@ -130,14 +134,15 @@ class managerMakingState extends State<StatefulWidget> {
                                                 package: 'country_list_pick',
                                               ),
                                               Container(
-                                                margin: EdgeInsets.fromLTRB(
-                                                    10, 0, 0, 0),
+                                                margin: EdgeInsets.only(
+                                                  left: displayWidth * 0.03,
+                                                ),
                                                 child: Text(
                                                   countryCode.name,
                                                   style: TextStyle(
                                                       color: subColor,
-                                                      fontSize:
-                                                          displayHeight * 0.02),
+                                                      fontSize: displayHeight *
+                                                          0.017),
                                                 ),
                                               ),
                                             ],

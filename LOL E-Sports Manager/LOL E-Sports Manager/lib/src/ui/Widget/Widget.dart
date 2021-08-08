@@ -210,7 +210,7 @@ Widget countryTextContainer(String country) {
   return Container(
     alignment: Alignment.bottomCenter,
     margin: EdgeInsets.fromLTRB(
-        displayWidth * 0.04, 0, displayWidth * 0.05, displayHeight * 0.002),
+        displayWidth * 0.04, 0, displayWidth * 0.05, displayHeight * 0.005),
     child: Text(
       country,
       style: titleLogo(displayRatio * 4, subColor, FontStyle.normal),
