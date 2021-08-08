@@ -220,10 +220,9 @@ Widget countryTextContainer(String country) {
 
 Widget nameTextFieldForm(int _maxlength) {
   return Container(
-    height: displayHeight * 0.05,
-    margin: EdgeInsets.fromLTRB(displayWidth * 0.1, displayHeight * 0.01,
-        displayWidth * 0.1, displayHeight * 0.01),
-    decoration: myTextBoxDecoration(3, mainColor, 30),
+    height: displayHeight * 0.04,
+    margin: EdgeInsets.fromLTRB(displayWidth * 0.1, displayHeight * 0.005,
+        displayWidth * 0.1, displayHeight * 0.015),
     child: Container(
         margin: EdgeInsets.fromLTRB(
             displayWidth * 0.04, 0, displayWidth * 0.04, displayHeight * 0.005),
@@ -240,12 +239,47 @@ Widget nameTextFieldForm(int _maxlength) {
   );
 }
 
-Widget nameText(String _hint) {
+Widget nameText(String _hint, double margin) {
   return Container(
-    margin: EdgeInsets.only(right: displayWidth * 0.7),
+    margin: EdgeInsets.only(right: displayWidth * margin),
     child: Text(
       _hint,
       style: titleLogo(displayRatio * 4, subColor, FontStyle.normal),
     ),
+  );
+}
+
+Widget genderButton(String gender) {
+  Color tempConlor;
+  return ElevatedButton(
+    style: ElevatedButton.styleFrom(
+        shadowColor: Colors.black,
+        primary: mainColor,
+        onPrimary: subColor,
+        shape: RoundedRectangleBorder(
+          side: BorderSide(width: 2, color: subColor),
+          borderRadius: new BorderRadius.circular(30.0),
+        )),
+    onPressed: () {
+      debugPrint('hello');
+    },
+    child: Text(gender),
+  );
+}
+
+Widget traitButton(String trait) {
+  return ElevatedButton(
+    style: ElevatedButton.styleFrom(
+        shadowColor: Colors.black,
+        primary: mainColor,
+        onPrimary: subColor,
+        shape: RoundedRectangleBorder(
+          side: BorderSide(width: 2, color: subColor),
+          borderRadius: new BorderRadius.circular(30.0),
+        )),
+    onPressed: () {
+      debugPrint('hello');
+    },
+    child: Text(trait),
   );
 }
