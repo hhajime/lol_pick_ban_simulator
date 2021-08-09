@@ -55,10 +55,10 @@ class _Home extends State<StatefulWidget> {
                   onTap: () {
                     Navigator.pop(context);
                     for (int i = 0; i < 5; i++) {
-                      upController.bluPlayer[i].value = champIcon;
-                      upController.blueBan[i].value = champIcon;
-                      upController.redPlayer[i].value = champIcon;
-                      upController.redBan[i].value = champIcon;
+                      upController.bluPlayer[i] = champIcon;
+                      upController.blueBan[i] = champIcon;
+                      upController.redPlayer[i] = champIcon;
+                      upController.redBan[i] = champIcon;
                     }
                     setState(() {});
                   },
@@ -82,10 +82,10 @@ class _Home extends State<StatefulWidget> {
                   onTap: () {
                     Navigator.pop(context);
                     for (int i = 0; i < 5; i++) {
-                      upController.bluPlayer[i].value = champIcon;
-                      upController.blueBan[i].value = champIcon;
-                      upController.redPlayer[i].value = champIcon;
-                      upController.redBan[i].value = champIcon;
+                      upController.bluPlayer[i] = champIcon;
+                      upController.blueBan[i] = champIcon;
+                      upController.redPlayer[i] = champIcon;
+                      upController.redBan[i] = champIcon;
                     }
                     setState(() {});
                   },
@@ -238,36 +238,42 @@ Widget banContainer(List banList, String team, int n) {
       onAccept: (value) {
         targetTeam = team;
         if (trigger == 1) {
+          //ban->other ban
           if (draggingTeam == targetTeam) {
+            debugPrint('ban->same team ban');
             banList[tempNum] = banList[n];
           } else {
             if (team == 'red') {
-              upController.blueBan[tempNum].value = banList[n];
+              upController.blueBan[tempNum] = banList[n];
             } else {
-              upController.redBan[tempNum].value = banList[n];
+              upController.redBan[tempNum] = banList[n];
             }
           }
           ;
           banList[n] = dragging1;
           //add Update
         } else if (trigger == 2) {
+          //ban->player
           if (draggingTeam == targetTeam) {
+            debugPrint('ban->player');
             if (team == 'red') {
-              upController.redPlayer[tempNum].value = banList[n];
+              upController.redPlayer[tempNum] = banList[n];
             } else {
-              upController.bluPlayer[tempNum].value = banList[n];
+              upController.bluPlayer[tempNum] = banList[n];
             }
           } else {
             if (team == 'red') {
-              upController.bluPlayer[tempNum].value = banList[n];
+              upController.bluPlayer[tempNum] = banList[n];
             } else {
-              upController.redPlayer[tempNum].value = banList[n];
+              upController.redPlayer[tempNum] = banList[n];
             }
           }
           ;
           banList[n] = dragging1;
           //add Update
         } else if (trigger == 3) {
+          debugPrint('champ->ban');
+          //ban->ban
           banList[n] = dragging1;
           //add Update
         }
@@ -326,15 +332,15 @@ Widget playerContainer(List playerList, String team, int n) {
       if (trigger == 1) {
         if (draggingTeam == targetTeam) {
           if (team == 'red') {
-            upController.redBan[tempNum].value = playerList[n];
+            upController.redBan[tempNum] = playerList[n];
           } else {
-            upController.blueBan[tempNum].value = playerList[n];
+            upController.blueBan[tempNum] = playerList[n];
           }
         } else {
           if (team == 'red') {
-            upController.blueBan[tempNum].value = playerList[n];
+            upController.blueBan[tempNum] = playerList[n];
           } else {
-            upController.redBan[tempNum].value = playerList[n];
+            upController.redBan[tempNum] = playerList[n];
           }
         }
         ;
@@ -344,9 +350,9 @@ Widget playerContainer(List playerList, String team, int n) {
           playerList[tempNum] = playerList[n];
         } else {
           if (team == 'red') {
-            upController.bluPlayer[tempNum].value = playerList[n];
+            upController.bluPlayer[tempNum] = playerList[n];
           } else {
-            upController.redPlayer[tempNum].value = playerList[n];
+            upController.redPlayer[tempNum] = playerList[n];
           }
         }
         ;
