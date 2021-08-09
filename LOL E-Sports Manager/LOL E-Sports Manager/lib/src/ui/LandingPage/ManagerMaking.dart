@@ -6,13 +6,9 @@ import 'package:flutter_holo_date_picker/flutter_holo_date_picker.dart';
 import 'package:country_list_pick/country_list_pick.dart';
 import 'package:get/get.dart';
 import 'package:flutter_application_1/src/getx/getx.dart';
+import 'package:flutter_application_1/src/ui/LandingPage/teamMaking.dart';
 
-class managerMakingScreen extends StatefulWidget {
-  @override
-  State createState() => managerMakingState();
-}
-
-class managerMakingState extends State<StatefulWidget> {
+class managerMakingScreen extends StatelessWidget {
   DateTime _selectedDate;
   @override
   Widget build(BuildContext context) {
@@ -30,7 +26,6 @@ class managerMakingState extends State<StatefulWidget> {
             backgroundColor: mainColor,
             resizeToAvoidBottomInset: false,
             appBar: basicAppBar(),
-            drawer: basicDrawer(),
             body: Container(
                 margin: EdgeInsets.fromLTRB(1, displayHeight * 0.00, 0, 1),
                 decoration: myTextBoxDecoration(5, mainColor, 20),
@@ -45,9 +40,9 @@ class managerMakingState extends State<StatefulWidget> {
                       flex: 1,
                       child: Container(
                           margin: EdgeInsets.fromLTRB(
-                              displayWidth * 0.1,
+                              displayWidth * 0.17,
                               displayHeight * 0.03,
-                              displayWidth * 0.1,
+                              displayWidth * 0.17,
                               displayHeight * 0.03),
                           decoration: BoxDecoration(
                               border: Border(
@@ -74,7 +69,7 @@ class managerMakingState extends State<StatefulWidget> {
                                   nameText('이름', 0.7),
                                   nameTextFieldForm(35),
                                   nameText('별명', 0.7),
-                                  nameTextFieldForm(8),
+                                  nameTextFieldForm(12),
                                   nameText('나이', 0.7),
                                   Container(
                                       margin: EdgeInsets.fromLTRB(
@@ -242,7 +237,9 @@ class managerMakingState extends State<StatefulWidget> {
                                           Icon(Icons.check)
                                         ]),
                                         onPressed: () {
-                                          debugPrint("click");
+                                          Get.to(() => teamMakingScreen(),
+                                              transition:
+                                                  Transition.rightToLeft);
                                         },
                                       ))
                                 ],

@@ -60,9 +60,9 @@ class SelectLeagueState extends State<StatefulWidget> {
                               bottom: BorderSide(
                                   color: subColor, width: displayRatio * 2))),
                       margin: EdgeInsets.fromLTRB(
-                          displayWidth * 0.15,
+                          displayWidth * 0.3,
                           displayHeight * 0.05,
-                          displayWidth * 0.15,
+                          displayWidth * 0.3,
                           displayHeight * 0.05),
                       alignment: Alignment.center,
                       child: Text(

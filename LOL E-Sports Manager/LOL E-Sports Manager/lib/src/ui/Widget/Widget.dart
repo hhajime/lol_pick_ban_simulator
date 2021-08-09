@@ -221,7 +221,7 @@ Widget countryTextContainer(String country) {
 Widget nameTextFieldForm(int _maxlength) {
   return Container(
     height: displayHeight * 0.04,
-    margin: EdgeInsets.fromLTRB(displayWidth * 0.1, displayHeight * 0.005,
+    margin: EdgeInsets.fromLTRB(displayWidth * 0.1, displayHeight * 0.025,
         displayWidth * 0.1, displayHeight * 0.015),
     child: Container(
         margin: EdgeInsets.fromLTRB(
@@ -231,9 +231,15 @@ Widget nameTextFieldForm(int _maxlength) {
           maxLines: 1,
           maxLength: _maxlength,
           decoration: InputDecoration(
-              counterText: '',
+              counterStyle: TextStyle(color: subColor),
               focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white, width: 2.0))),
+                borderSide: BorderSide(
+                    color: Colors.white, width: displayHeight * 0.002),
+              ),
+              enabledBorder: UnderlineInputBorder(
+                borderSide:
+                    BorderSide(color: subColor, width: displayHeight * 0.002),
+              )),
           textAlignVertical: TextAlignVertical.center,
         )),
   );
