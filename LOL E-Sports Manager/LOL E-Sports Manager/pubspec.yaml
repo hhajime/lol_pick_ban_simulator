@@ -16,6 +16,7 @@ dependencies:
   get: ^4.3.0
   flutter_holo_date_picker: ^0.3.4+1
   country_list_pick: ^1.0.1+5
+  marquee: ^2.2.0
   
 dev_dependencies:
   flutter_launcher_icons: "^0.9.0"
