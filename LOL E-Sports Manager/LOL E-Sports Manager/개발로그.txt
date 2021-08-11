@@ -98,3 +98,13 @@
 LOL Manager is not endorsed by Riot Games and does not reflect the views or opinions of those who produce or manage Riot
 Games or the League of Legends officially. League of Legends and Riot Games are trademarks or registered trademarks of Riot Games. Inc.
 League of Legends © Riot Games. Inc.
+
+- 선수 능력 목록
+[인게임] 스킬샷, 무빙, 포지셔닝, 포커싱, 라인관리, 맵리딩, 와딩 4
+[멘탈] 적극성, 소통능력, 리더쉽, 결정력, 전술이해력, 팀워크, 주목도(전 mvp)   4
+[신체] 반응속도, 회복력                                    2
+언어->소통능력,리더쉽,전술이해력 영향 / 나이->반응속도, 회복력 영향
+
+선수능력은 감독, 구단상태, 등급(트로피 여부)에 영향
+
+리그, 팀 결성 후 선수 뽑기(10장)

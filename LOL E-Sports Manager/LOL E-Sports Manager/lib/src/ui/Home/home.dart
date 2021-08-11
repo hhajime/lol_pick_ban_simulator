@@ -49,6 +49,62 @@ class HomeScreen extends StatelessWidget {
                     )
                   ],
                 ),
+                Container(
+                    width: displayWidth * 0.5,
+                    height: displayHeight * 0.2,
+                    decoration: myBoxDecoration(),
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 16.0, vertical: 24.0),
+                    child: Transform.rotate(
+                        angle: 3.141592 / 2,
+                        child: ListWheelScrollView(
+                          physics: BouncingScrollPhysics(),
+                          useMagnifier: true,
+                          magnification: 1.5,
+                          itemExtent: 30,
+                          children: [
+                            Container(
+                              height: displayHeight * 0.2,
+                              width: displayWidth * 0.2,
+                              color: Colors.white,
+                            ),
+                            Container(
+                              height: displayHeight * 0.4,
+                              width: displayWidth * 0.4,
+                              color: Colors.black,
+                            ),
+                            Container(
+                              height: displayHeight * 0.4,
+                              width: displayWidth * 0.4,
+                              color: Colors.black,
+                            ),
+                            Container(
+                              height: displayHeight * 0.4,
+                              width: displayWidth * 0.4,
+                              color: Colors.black,
+                            ),
+                            Container(
+                              height: displayHeight * 0.4,
+                              width: displayWidth * 0.4,
+                              color: Colors.black,
+                            ),
+                            Container(
+                              height: displayHeight * 0.4,
+                              width: displayWidth * 0.4,
+                              color: Colors.black,
+                            ),
+                            Container(
+                              height: displayHeight * 0.4,
+                              width: displayWidth * 0.4,
+                              color: Colors.black,
+                            ),
+                            Container(
+                              height: displayHeight * 0.4,
+                              width: displayWidth * 0.4,
+                              color: Colors.black,
+                            )
+                          ],
+                        )))
               ],
             ),
           ),
