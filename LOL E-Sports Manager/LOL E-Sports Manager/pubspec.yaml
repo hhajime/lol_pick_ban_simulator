@@ -65,5 +65,10 @@ flutter:
     - assets/images/champions_player/MID/
     - assets/images/champions_player/BOT/
     - assets/images/champions_player/SUP/
+    - assets/images/league_picture/lck/
+    - assets/images/league_picture/lck_challengers/
+    - assets/images/league_picture/lcs/
+    - assets/images/league_picture/lec/
+    - assets/images/league_picture/lpl/
 
 

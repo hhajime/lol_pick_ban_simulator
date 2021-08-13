@@ -289,3 +289,45 @@ Widget traitButton(String trait) {
     child: Text(trait),
   );
 }
+
+Widget Rot() {
+  return RotatedBox(
+    quarterTurns: 1,
+    child: Container(
+      padding: EdgeInsets.symmetric(horizontal: 5.0, vertical: 5.0),
+      height: displayHeight * 0.154,
+      decoration: BoxDecoration(
+          border: Border.all(color: subColor, width: displayHeight * 0.003)),
+      child: Column(
+        children: [
+          Container(
+            decoration: myBoxDecoration(),
+            child: Text(
+              '2021/1/10 10:30PM',
+              style: TextStyle(color: subColor),
+            ),
+          ),
+          Row(
+            children: [
+              Container(
+                  height: displayHeight * 0.1,
+                  width: displayWidth * 0.16,
+                  child: Image.asset(leagues.league_lck[9])),
+              Container(
+                  padding: EdgeInsets.fromLTRB(
+                      displayWidth * 0.04, 0, displayWidth * 0.04, 0),
+                  child: Text(
+                    'VS',
+                    style: titleLogo(10, subColor, FontStyle.normal),
+                  )),
+              Container(
+                  height: displayHeight * 0.1,
+                  width: displayWidth * 0.16,
+                  child: Image.asset(leagues.league_lck[2])),
+            ],
+          ),
+        ],
+      ),
+    ),
+  );
+}

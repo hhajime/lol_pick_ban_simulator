@@ -50,59 +50,23 @@ class HomeScreen extends StatelessWidget {
                   ],
                 ),
                 Container(
-                    width: displayWidth * 0.5,
+                    width: displayWidth * 1,
                     height: displayHeight * 0.2,
                     decoration: myBoxDecoration(),
                     padding:
-                        EdgeInsets.symmetric(horizontal: 16.0, vertical: 24.0),
-                    child: Transform.rotate(
-                        angle: 3.141592 / 2,
+                        EdgeInsets.symmetric(horizontal: 5.0, vertical: 5.0),
+                    child: RotatedBox(
+                        quarterTurns: -1,
                         child: ListWheelScrollView(
-                          physics: BouncingScrollPhysics(),
-                          useMagnifier: true,
-                          magnification: 1.5,
-                          itemExtent: 30,
+                          physics: FixedExtentScrollPhysics(),
+                          useMagnifier: false,
+                          magnification: 1.1,
+                          itemExtent: displayWidth * 0.5,
                           children: [
-                            Container(
-                              height: displayHeight * 0.2,
-                              width: displayWidth * 0.2,
-                              color: Colors.white,
-                            ),
-                            Container(
-                              height: displayHeight * 0.4,
-                              width: displayWidth * 0.4,
-                              color: Colors.black,
-                            ),
-                            Container(
-                              height: displayHeight * 0.4,
-                              width: displayWidth * 0.4,
-                              color: Colors.black,
-                            ),
-                            Container(
-                              height: displayHeight * 0.4,
-                              width: displayWidth * 0.4,
-                              color: Colors.black,
-                            ),
-                            Container(
-                              height: displayHeight * 0.4,
-                              width: displayWidth * 0.4,
-                              color: Colors.black,
-                            ),
-                            Container(
-                              height: displayHeight * 0.4,
-                              width: displayWidth * 0.4,
-                              color: Colors.black,
-                            ),
-                            Container(
-                              height: displayHeight * 0.4,
-                              width: displayWidth * 0.4,
-                              color: Colors.black,
-                            ),
-                            Container(
-                              height: displayHeight * 0.4,
-                              width: displayWidth * 0.4,
-                              color: Colors.black,
-                            )
+                            Rot(),
+                            Rot(),
+                            Rot(),
+                            Rot(),
                           ],
                         )))
               ],
@@ -114,6 +78,7 @@ class HomeScreen extends StatelessWidget {
               onTap: (index) {
                 switch (index) {
                   case 0:
+                    Get.to(() => HomeScreen());
                     break;
                   case 1:
                     Get.to(() => Home());

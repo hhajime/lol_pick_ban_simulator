@@ -404,6 +404,21 @@ class Champions {
   ];
 }
 
+class leagues {
+  static List<String> league_lck = [
+    "assets/images/league_picture/lck/Afreeca Freecs.png",
+    "assets/images/league_picture/lck/DRX.png",
+    "assets/images/league_picture/lck/DWG KIA.png",
+    "assets/images/league_picture/lck/Fredit BRION.png",
+    "assets/images/league_picture/lck/Gen.G.png",
+    "assets/images/league_picture/lck/Hanwha Life Esports.png",
+    "assets/images/league_picture/lck/kt Rolster.png",
+    "assets/images/league_picture/lck/Livv SANDBOX.png",
+    "assets/images/league_picture/lck/NongShim REDFORCE.png",
+    "assets/images/league_picture/lck/T1.png"
+  ];
+}
+
 List<String> lines = [
   'assets/images/lines/top.svg',
   'assets/images/lines/jug.svg',
