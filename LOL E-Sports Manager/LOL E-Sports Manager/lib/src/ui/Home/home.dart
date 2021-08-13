@@ -68,7 +68,50 @@ class HomeScreen extends StatelessWidget {
                             Rot(),
                             Rot(),
                           ],
-                        )))
+                        ))),
+                Container(
+                  padding: EdgeInsets.fromLTRB(
+                      displayWidth * 0.01,
+                      displayHeight * 0.01,
+                      displayWidth * 0.01,
+                      displayHeight * 0.01),
+                  height: displayHeight * 0.2,
+                  decoration: myBoxDecoration(),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        flex: 1,
+                        child: Container(
+                          decoration: myBoxDecoration(),
+                        ),
+                      ),
+                      Expanded(
+                        flex: 1,
+                        child: Container(
+                          decoration: myBoxDecoration(),
+                        ),
+                      ),
+                      Expanded(
+                        flex: 1,
+                        child: Container(
+                          decoration: myBoxDecoration(),
+                        ),
+                      ),
+                      Expanded(
+                        flex: 1,
+                        child: Container(
+                          decoration: myBoxDecoration(),
+                        ),
+                      ),
+                      Expanded(
+                        flex: 1,
+                        child: Container(
+                          decoration: myBoxDecoration(),
+                        ),
+                      )
+                    ],
+                  ),
+                )
               ],
             ),
           ),
