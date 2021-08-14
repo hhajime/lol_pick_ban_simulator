@@ -114,3 +114,6 @@ League of Legends © Riot Games. Inc.
 2. 로고 변경
 3. 테마 변경
 -> github 연동
+
+21/8/14
+1. 게임-> 팬 어플리케이션(경기 알림,일정,전략토론 등 기능)
