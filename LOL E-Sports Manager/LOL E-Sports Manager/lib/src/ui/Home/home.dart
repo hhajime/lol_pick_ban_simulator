@@ -82,33 +82,33 @@ class HomeScreen extends StatelessWidget {
                       Expanded(
                         flex: 1,
                         child: Container(
-                          decoration: myBoxDecoration(),
+                          child: playerCard(),
                         ),
                       ),
                       Expanded(
                         flex: 1,
                         child: Container(
-                          decoration: myBoxDecoration(),
+                          child: playerCard(),
                         ),
                       ),
                       Expanded(
                         flex: 1,
                         child: Container(
-                          decoration: myBoxDecoration(),
+                          child: playerCard(),
                         ),
                       ),
                       Expanded(
                         flex: 1,
                         child: Container(
-                          decoration: myBoxDecoration(),
+                          child: playerCard(),
                         ),
                       ),
                       Expanded(
                         flex: 1,
                         child: Container(
-                          decoration: myBoxDecoration(),
+                          child: playerCard(),
                         ),
-                      )
+                      ),
                     ],
                   ),
                 )

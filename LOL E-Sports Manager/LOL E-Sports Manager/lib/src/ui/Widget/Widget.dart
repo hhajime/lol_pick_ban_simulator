@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/src/list.dart';
 import 'package:get/get.dart';
 import 'package:flutter_application_1/src/getx/getx.dart';
+import 'package:flip_card/flip_card.dart';
 
 BoxDecoration myBoxDecoration() {
   return BoxDecoration(
@@ -327,6 +328,28 @@ Widget Rot() {
             ],
           ),
         ],
+      ),
+    ),
+  );
+}
+
+Widget playerCard() {
+  return Container(
+    child: FlipCard(
+      direction: FlipDirection.HORIZONTAL,
+      front: Container(
+        height: displayHeight * 0.18,
+        child: Image.asset(
+          'assets/images/player/card/player_empty.png',
+          fit: BoxFit.cover,
+        ),
+      ),
+      back: Container(
+        height: displayHeight * 0.18,
+        child: Image.asset(
+          'assets/images/player/card/player_empty.png',
+          fit: BoxFit.cover,
+        ),
       ),
     ),
   );
