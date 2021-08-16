@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/src/list.dart';
+import 'package:flutter_application_1/src/data/list.dart';
 import 'package:flutter_application_1/src/ui/Widget/Widget.dart';
 import 'package:get/get.dart';
 import 'package:flutter_application_1/src/getx/getx.dart';
@@ -68,7 +68,7 @@ class SelectLeagueState extends State<StatefulWidget> {
                       child: Text(
                         '리그 선택',
                         style: titleLogo(
-                            displayRatio * 8, subColor, FontStyle.normal),
+                            displayHeight * 0.016, subColor, FontStyle.normal),
                       ),
                     ),
                   ),

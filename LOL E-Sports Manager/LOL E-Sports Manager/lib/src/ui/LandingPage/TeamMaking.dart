@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/src/list.dart';
+import 'package:flutter_application_1/src/data/list.dart';
 import 'package:flutter_application_1/src/ui/Home/home.dart';
 import 'package:flutter_application_1/src/ui/Widget/Widget.dart';
 import 'package:get/get.dart';
@@ -83,14 +83,13 @@ class teamMakingScreen extends StatelessWidget {
                                                   new BorderRadius.circular(
                                                       30.0),
                                             )),
-                                        child: Row(children: [
-                                          Text(
+                                        child: Center(
+                                          child: Text(
                                             '팀 확정',
                                             style: titleLogo(displayRatio * 4,
                                                 mainColor, FontStyle.normal),
                                           ),
-                                          Icon(Icons.check)
-                                        ]),
+                                        ),
                                         onPressed: () {
                                           Get.to(() => HomeScreen(),
                                               transition:

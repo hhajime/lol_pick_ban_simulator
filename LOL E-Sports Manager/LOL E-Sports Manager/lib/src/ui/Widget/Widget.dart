@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/src/list.dart';
+import 'package:flutter_application_1/src/data/list.dart';
 import 'package:get/get.dart';
 import 'package:flutter_application_1/src/getx/getx.dart';
 import 'package:flip_card/flip_card.dart';
@@ -214,7 +214,7 @@ Widget countryTextContainer(String country) {
         displayWidth * 0.04, 0, displayWidth * 0.05, displayHeight * 0.005),
     child: Text(
       country,
-      style: titleLogo(displayRatio * 4, subColor, FontStyle.normal),
+      style: titleLogo(displayHeight * 0.009, subColor, FontStyle.normal),
     ),
   );
 }
@@ -248,7 +248,8 @@ Widget nameTextFieldForm(int _maxlength) {
 
 Widget nameText(String _hint, double margin) {
   return Container(
-    margin: EdgeInsets.only(right: displayWidth * margin),
+    margin:
+        EdgeInsets.fromLTRB(0, displayHeight * 0.02, displayWidth * margin, 0),
     child: Text(
       _hint,
       style: titleLogo(displayRatio * 4, subColor, FontStyle.normal),
@@ -274,21 +275,23 @@ Widget genderButton(String gender) {
   );
 }
 
-Widget traitButton(String trait) {
-  return ElevatedButton(
-    style: ElevatedButton.styleFrom(
-        shadowColor: Colors.black,
-        primary: mainColor,
-        onPrimary: subColor,
-        shape: RoundedRectangleBorder(
-          side: BorderSide(width: 2, color: subColor),
-          borderRadius: new BorderRadius.circular(30.0),
-        )),
-    onPressed: () {
-      debugPrint('hello');
-    },
-    child: Text(trait),
-  );
+Widget traitButton(String trait, double marginLeft) {
+  return Container(
+      margin: EdgeInsets.fromLTRB(marginLeft, 0, 0, 0),
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+            shadowColor: Colors.black,
+            primary: mainColor,
+            onPrimary: subColor,
+            shape: RoundedRectangleBorder(
+              side: BorderSide(width: 2, color: subColor),
+              borderRadius: new BorderRadius.circular(30.0),
+            )),
+        onPressed: () {
+          debugPrint('hello');
+        },
+        child: Text(trait),
+      ));
 }
 
 Widget Rot() {
@@ -338,14 +341,14 @@ Widget playerCard() {
     child: FlipCard(
       direction: FlipDirection.HORIZONTAL,
       front: Container(
-        height: displayHeight * 0.18,
+        height: displayHeight * 0.17,
         child: Image.asset(
           'assets/images/player/card/player_empty.png',
           fit: BoxFit.cover,
         ),
       ),
       back: Container(
-        height: displayHeight * 0.18,
+        height: displayHeight * 0.17,
         child: Image.asset(
           'assets/images/player/card/player_empty.png',
           fit: BoxFit.cover,

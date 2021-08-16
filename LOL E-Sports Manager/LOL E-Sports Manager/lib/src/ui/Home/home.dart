@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/src/list.dart';
+import 'package:flutter_application_1/src/data/list.dart';
 import 'package:flutter_application_1/src/ui/BanPick.dart';
 import 'package:flutter_application_1/src/ui/Widget/Widget.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';

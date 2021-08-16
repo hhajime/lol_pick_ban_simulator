@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/src/list.dart';
+import 'package:flutter_application_1/src/data/list.dart';
 import 'package:flutter_application_1/src/ui/LandingPage/SelectLeague.dart';
 import 'package:flutter_application_1/src/ui/BanPick.dart';
 import 'package:flutter_application_1/src/ui/Widget/Widget.dart';
@@ -58,23 +58,23 @@ class LandingState extends State<StatefulWidget> {
                                 displayRatio * 4, subColor, FontStyle.italic),
                           ),
                           Container(
-                              padding: EdgeInsets.fromLTRB(displayWidth * 0.56,
+                              padding: EdgeInsets.fromLTRB(displayWidth * 0.60,
                                   displayHeight * 0.02, 0, 0),
                               child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
-                                    primary: subColor,
+                                    primary: mainColor,
                                     onPrimary: mainColor,
                                     shape: RoundedRectangleBorder(
                                       borderRadius:
                                           new BorderRadius.circular(30.0),
                                     )),
                                 child: Row(children: [
-                                  Text(
-                                    '확인',
-                                    style: titleLogo(displayRatio * 4,
-                                        mainColor, FontStyle.normal),
-                                  ),
-                                  Icon(Icons.check)
+                                  Container(
+                                    child: Icon(
+                                      Icons.check,
+                                      color: subColor,
+                                    ),
+                                  )
                                 ]),
                                 onPressed: () {
                                   Get.to(() => SelectLeagueScreen());

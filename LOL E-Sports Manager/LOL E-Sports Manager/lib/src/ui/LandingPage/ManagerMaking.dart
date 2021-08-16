@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/src/list.dart';
+import 'package:flutter_application_1/src/data/list.dart';
 import 'package:flutter_application_1/src/ui/Widget/Widget.dart';
 import 'package:flutter_holo_date_picker/flutter_holo_date_picker.dart';
 import 'package:country_list_pick/country_list_pick.dart';
@@ -52,7 +52,7 @@ class managerMakingScreen extends StatelessWidget {
                           alignment: Alignment.center,
                           child: Text(
                             '감독 프로필 생성',
-                            style: titleLogo(displayHeight * 0.02, subColor,
+                            style: titleLogo(displayHeight * 0.017, subColor,
                                 FontStyle.normal),
                           ))),
                   Expanded(
@@ -97,6 +97,8 @@ class managerMakingScreen extends StatelessWidget {
                                       )),
                                   nameText('성별', 0.7),
                                   Container(
+                                    margin: EdgeInsets.fromLTRB(
+                                        0, displayHeight * 0.02, 0, 0),
                                     child: Row(
                                       children: [
                                         Container(
@@ -112,8 +114,11 @@ class managerMakingScreen extends StatelessWidget {
                                   ),
                                   nameText('국적', 0.7),
                                   Container(
-                                    margin: EdgeInsets.only(
-                                        left: displayWidth * 0.1),
+                                    margin: EdgeInsets.fromLTRB(
+                                        displayWidth * 0.1,
+                                        displayHeight * 0.01,
+                                        0,
+                                        0),
                                     child: CountryListPick(
                                         appBar: AppBar(
                                           backgroundColor: mainColor,
@@ -170,7 +175,7 @@ class managerMakingScreen extends StatelessWidget {
                                           left: displayWidth * 0.05),
                                       margin: EdgeInsets.fromLTRB(
                                           displayWidth * 0.1,
-                                          displayHeight * 0.01,
+                                          displayHeight * 0.02,
                                           displayWidth * 0.1,
                                           displayHeight * 0.01),
                                       decoration:
@@ -181,17 +186,22 @@ class managerMakingScreen extends StatelessWidget {
                                             child: Column(
                                               children: [
                                                 Container(
+                                                    margin: EdgeInsets.fromLTRB(
+                                                        0,
+                                                        displayHeight * 0.01,
+                                                        0,
+                                                        displayHeight * 0.015),
                                                     child: Text(
-                                                  '코칭',
-                                                  style: titleLogo(
-                                                      displayRatio * 4,
-                                                      Color(0x90C8AA6E),
-                                                      FontStyle.normal),
-                                                )),
-                                                traitButton('#포로 출신'),
-                                                traitButton('#전술가'),
-                                                traitButton('#숙련된 코칭'),
-                                                traitButton('#피드백'),
+                                                      '코칭',
+                                                      style: titleLogo(
+                                                          displayHeight * 0.01,
+                                                          Color(0x90C8AA6E),
+                                                          FontStyle.normal),
+                                                    )),
+                                                traitButton('#포로 출신', 0.00),
+                                                traitButton('#전술가', 0.01),
+                                                traitButton('#숙련된 코칭', 0.1),
+                                                traitButton('#피드백', 0.01),
                                               ],
                                             ),
                                           ),
@@ -199,15 +209,21 @@ class managerMakingScreen extends StatelessWidget {
                                             child: Column(
                                               children: [
                                                 Container(
+                                                    margin: EdgeInsets.fromLTRB(
+                                                        0,
+                                                        displayHeight * 0.01,
+                                                        0,
+                                                        displayHeight * 0.015),
                                                     child: Text('기타',
                                                         style: titleLogo(
-                                                            displayRatio * 4,
+                                                            displayHeight *
+                                                                0.01,
                                                             Color(0x90C8AA6E),
                                                             FontStyle.normal))),
-                                                traitButton('#지도자'),
-                                                traitButton('#강철 멘탈'),
-                                                traitButton('#관리자'),
-                                                traitButton('#인사이더'),
+                                                traitButton('#지도자', 0.01),
+                                                traitButton('#강철 멘탈', 0.01),
+                                                traitButton('#관리자', 0.01),
+                                                traitButton('#인사이더', 0.01),
                                               ],
                                             ),
                                           ),
@@ -217,8 +233,8 @@ class managerMakingScreen extends StatelessWidget {
                                       padding: EdgeInsets.fromLTRB(
                                           displayWidth * 0.32,
                                           displayHeight * 0.02,
-                                          displayWidth * 0.32,
-                                          0),
+                                          displayWidth * 0.33,
+                                          displayHeight * 0.02),
                                       child: ElevatedButton(
                                         style: ElevatedButton.styleFrom(
                                             primary: subColor,
@@ -228,14 +244,15 @@ class managerMakingScreen extends StatelessWidget {
                                                   new BorderRadius.circular(
                                                       30.0),
                                             )),
-                                        child: Row(children: [
-                                          Text(
+                                        child: Center(
+                                          child: Text(
                                             '프로필 확정',
-                                            style: titleLogo(displayRatio * 4,
-                                                mainColor, FontStyle.normal),
+                                            style: titleLogo(
+                                                displayHeight * 0.01,
+                                                mainColor,
+                                                FontStyle.normal),
                                           ),
-                                          Icon(Icons.check)
-                                        ]),
+                                        ),
                                         onPressed: () {
                                           Get.to(() => teamMakingScreen(),
                                               transition:

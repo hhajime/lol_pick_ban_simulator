@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/src/list.dart';
+import 'package:flutter_application_1/src/data/list.dart';
 import 'package:flutter_application_1/src/ui/LandingPage/LandingScreen.dart';
 import 'package:flutter_application_1/src/ui/Widget/Widget.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -51,7 +51,7 @@ class LoadingState extends State<StatefulWidget> {
                       child: Text(
                         'LEAGUE OF LEGENDS',
                         style: titleLogo(
-                            displayRatio * 7, subColor, FontStyle.italic),
+                            displayHeight * 0.015, subColor, FontStyle.italic),
                       ),
                     ),
                     Container(
@@ -61,7 +61,7 @@ class LoadingState extends State<StatefulWidget> {
                       child: Text(
                         'E-SPORTS',
                         style: titleLogo(
-                            displayRatio * 8, subColor, FontStyle.italic),
+                            displayHeight * 0.016, subColor, FontStyle.italic),
                       ),
                     ),
                     Container(
@@ -71,7 +71,7 @@ class LoadingState extends State<StatefulWidget> {
                         child: Text(
                           'MANAGER',
                           style: titleLogo(
-                              displayRatio * 14, subColor, FontStyle.italic),
+                              displayHeight * 0.03, subColor, FontStyle.italic),
                         ))
                   ]),
                 ),
