@@ -19,11 +19,11 @@ class lck_players {
     16, //적극성*2
     15, //팀워크*1.5
     20, //명성
-    17, //반응속도
+    18, //반응속도
     17, //회복력
   ];
   static List canna = [
-    'faker',
+    'canna',
     'Lee Sang Hyeok',
     'south korea',
     'T1',
