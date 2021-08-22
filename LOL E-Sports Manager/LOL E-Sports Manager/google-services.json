@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "895413856723",
+    "project_id": "lol-e-sports",
+    "storage_bucket": "lol-e-sports.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:895413856723:android:df2bd2f38c7fb94b856726",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "895413856723-cd9aukm7v3qiolp3b261l0050kduuksj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.flutter_application_1",
+            "certificate_hash": "f37e9facc76c4a9086dcadb67a81b24d2023a73f"
+          }
+        },
+        {
+          "client_id": "895413856723-23adc96rcftl41don28ffiroqgjsfb0h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBillAshEFNvS2n3qNrV_AC0WCaF0TnM6Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "895413856723-23adc96rcftl41don28ffiroqgjsfb0h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
