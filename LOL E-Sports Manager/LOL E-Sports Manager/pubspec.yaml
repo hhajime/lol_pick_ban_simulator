@@ -44,6 +44,7 @@ flutter:
       - asset: fonts/LogoIcons.ttf
 
   assets:
+    - assets/images/lines/
     - assets/images/lines/top.svg
     - assets/images/lines/jug.svg
     - assets/images/lines/mid.svg
@@ -72,5 +73,6 @@ flutter:
     - assets/images/league_picture/lec/
     - assets/images/league_picture/lpl/
     - assets/images/player/card/
+    - assets/images/test/
 
 

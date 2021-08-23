@@ -41,7 +41,7 @@ class HomeScreen extends StatelessWidget {
                     Container(
                       decoration: myBoxDecoration(),
                       height: 25,
-                      width: displayWidth - 30,
+                      width: displayWidth * 0.925,
                       child: Marquee(
                           style: TextStyle(color: subColor),
                           text:
@@ -52,9 +52,7 @@ class HomeScreen extends StatelessWidget {
                 Container(
                     width: displayWidth * 1,
                     height: displayHeight * 0.2,
-                    decoration: myBoxDecoration(),
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 5.0, vertical: 5.0),
+                    padding: EdgeInsets.symmetric(horizontal: 5.0),
                     child: RotatedBox(
                         quarterTurns: -1,
                         child: ListWheelScrollView(
@@ -75,8 +73,7 @@ class HomeScreen extends StatelessWidget {
                       displayHeight * 0.01,
                       displayWidth * 0.01,
                       displayHeight * 0.01),
-                  height: displayHeight * 0.2,
-                  decoration: myBoxDecoration(),
+                  height: displayHeight * 0.15,
                   child: Row(
                     children: [
                       Expanded(
@@ -85,11 +82,8 @@ class HomeScreen extends StatelessWidget {
                           child: playerCard(),
                         ),
                       ),
-                      Expanded(
-                        flex: 1,
-                        child: Container(
-                          child: playerCard(),
-                        ),
+                      Container(
+                        width: 1,
                       ),
                       Expanded(
                         flex: 1,
@@ -97,11 +91,26 @@ class HomeScreen extends StatelessWidget {
                           child: playerCard(),
                         ),
                       ),
+                      Container(
+                        width: 1,
+                      ),
                       Expanded(
                         flex: 1,
                         child: Container(
                           child: playerCard(),
                         ),
+                      ),
+                      Container(
+                        width: 1,
+                      ),
+                      Expanded(
+                        flex: 1,
+                        child: Container(
+                          child: playerCard(),
+                        ),
+                      ),
+                      Container(
+                        width: 1,
                       ),
                       Expanded(
                         flex: 1,
@@ -111,43 +120,94 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ],
                   ),
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Container(
+                        height: displayHeight * 0.4487,
+                        decoration: myBoxDecoration(),
+                        /*child: Text(
+                          '정규 순위',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: subColor,
+                              fontSize: displayHeight * 0.04,
+                              fontFamily: 'SegoeUI',
+                              fontWeight: FontWeight.w700),
+                        ),*/
+                      ),
+                    ),
+                    Expanded(
+                      child: Container(
+                        height: displayHeight * 0.4487,
+                        decoration: myBoxDecoration(),
+                      ),
+                    ),
+                  ],
                 )
               ],
             ),
           ),
           bottomNavigationBar: ConvexAppBar(
-              backgroundColor: subColor,
-              style: TabStyle.flip,
-              onTap: (index) {
-                switch (index) {
-                  case 0:
-                    Get.to(() => HomeScreen());
-                    break;
-                  case 1:
-                    Get.to(() => Home());
-                    break;
-                }
-              },
-              color: mainColor,
-              activeColor: Colors.black,
-              items: [
-                TabItem(
-                  icon: Icon(Icons.home, size: displayRatio * 15),
-                  title: 'Home',
+            backgroundColor: subColor,
+            style: TabStyle.flip,
+            onTap: (index) {
+              switch (index) {
+                case 0:
+                  Get.to(() => HomeScreen());
+                  break;
+                case 1:
+                  Get.to(() => Home());
+                  break;
+              }
+            },
+            color: mainColor,
+            activeColor: Colors.white,
+            items: [
+              TabItem(
+                icon: Icon(
+                  Icons.home,
+                  size: displayRatio * 15,
+                  color: mainColor,
                 ),
-                TabItem(
-                    icon: Icon(Icons.paste, size: displayRatio * 15),
-                    title: 'Tactic'),
-                TabItem(
-                    icon: Icon(Icons.sports_esports, size: displayRatio * 15),
-                    title: 'Game'),
-                TabItem(
-                    icon: Icon(Icons.manage_accounts, size: displayRatio * 15),
-                    title: 'Manage'),
-                TabItem(
-                    icon: Icon(Icons.work, size: displayRatio * 15),
-                    title: 'Work'),
-              ]),
+                activeIcon: Icon(
+                  Icons.home,
+                  size: displayRatio * 15,
+                  color: Colors.white,
+                ),
+                title: 'Home',
+              ),
+              TabItem(
+                  icon: Icon(
+                    Icons.paste,
+                    size: displayRatio * 15,
+                    color: mainColor,
+                  ),
+                  title: 'Tactic'),
+              TabItem(
+                  icon: Icon(
+                    Icons.sports_esports,
+                    size: displayRatio * 15,
+                    color: mainColor,
+                  ),
+                  title: 'Game'),
+              TabItem(
+                  icon: Icon(
+                    Icons.manage_accounts,
+                    size: displayRatio * 15,
+                    color: mainColor,
+                  ),
+                  title: 'Manage'),
+              TabItem(
+                  icon: Icon(
+                    Icons.work,
+                    size: displayRatio * 15,
+                    color: mainColor,
+                  ),
+                  title: 'Work'),
+            ],
+          ),
         ));
   }
 }

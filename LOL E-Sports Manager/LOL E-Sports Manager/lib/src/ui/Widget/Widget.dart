@@ -33,10 +33,23 @@ Widget basicAppBar() {
   return AppBar(
       iconTheme: IconThemeData(color: subColor),
       toolbarHeight: displayHeight * 0.05,
-      title: Text(
-        "LOL: E-Sports Manager",
-        style: TextStyle(color: subColor, fontSize: displayRatio * 8),
-      ),
+      title: Row(children: [
+        Text(
+          "LOL: E-Sports Manager",
+          style: TextStyle(color: subColor, fontSize: displayRatio * 8),
+        ),
+        Spacer(),
+        RotatedBox(quarterTurns: 3, child: Icon(Icons.battery_alert_outlined)),
+        Text(
+          " 95% ",
+          style: TextStyle(color: subColor, fontSize: displayRatio * 8),
+        ),
+        Icon(Icons.attach_money_outlined),
+        Text(
+          "48,200",
+          style: TextStyle(color: subColor, fontSize: displayRatio * 8),
+        )
+      ]),
       brightness: Brightness.dark,
       backgroundColor: mainColor);
 }
@@ -305,7 +318,6 @@ Widget Rot() {
       child: Column(
         children: [
           Container(
-            decoration: myBoxDecoration(),
             child: Text(
               '2021/1/10 10:30PM',
               style: TextStyle(color: subColor),
@@ -341,12 +353,74 @@ Widget playerCard() {
     child: FlipCard(
       direction: FlipDirection.HORIZONTAL,
       front: Container(
-        height: displayHeight * 0.17,
-        child: Image.asset(
-          'assets/images/player/card/player_empty.png',
-          fit: BoxFit.cover,
-        ),
-      ),
+          height: displayHeight * 0.17,
+          child: Stack(
+            children: [
+              Container(
+                height: displayHeight * 0.17,
+                child: Image.asset(
+                  'assets/images/player/card/player_gold.png',
+                  fit: BoxFit.cover,
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.fromLTRB(
+                    displayWidth * 0.023, displayHeight * 0.04, 0, 0),
+                child: Image.asset(
+                  'assets/images/test/faker.png',
+                  fit: BoxFit.cover,
+                ),
+              ),
+              Container(
+                  padding: EdgeInsets.fromLTRB(
+                      displayWidth * 0.01, displayHeight * 0.015, 0, 0),
+                  child: Container(
+                    height: displayHeight * 0.018,
+                    child: Image.asset(
+                      'assets/images/test/south korea.png',
+                    ),
+                  )),
+              Container(
+                  padding: EdgeInsets.fromLTRB(
+                      displayWidth * 0.08, displayHeight * 0.01, 0, 0),
+                  child: Text(
+                    'Faker',
+                    style: TextStyle(
+                        fontSize: displayHeight * 0.02,
+                        color: Colors.white,
+                        fontFamily: 'SegoeUI',
+                        fontWeight: FontWeight.w700),
+                  )),
+              Container(
+                  padding: EdgeInsets.fromLTRB(
+                      displayWidth * 0.01, displayHeight * 0.028, 0, 0),
+                  child: Container(
+                    height: displayHeight * 0.03,
+                    child: Image.asset(
+                      'assets/images/league_picture/lck/T1.png',
+                    ),
+                  )),
+              Container(
+                height: displayHeight * 0.074,
+                padding: EdgeInsets.fromLTRB(
+                    displayWidth * 0.016, displayHeight * 0.054, 0, 0),
+                child: Image.asset(
+                  'assets/images/lines/mid.png',
+                ),
+              ),
+              Container(
+                  padding: EdgeInsets.fromLTRB(
+                      displayWidth * 0.01, displayHeight * 0.075, 0, 0),
+                  child: Text(
+                    '99',
+                    style: TextStyle(
+                        fontSize: displayHeight * 0.023,
+                        color: Colors.white,
+                        fontFamily: 'SegoeUI',
+                        fontWeight: FontWeight.w600),
+                  )),
+            ],
+          )),
       back: Container(
         height: displayHeight * 0.17,
         child: Image.asset(
