@@ -15,8 +15,10 @@ class _Home extends State<StatefulWidget> {
   final upController = Get.put(UpdateController());
   @override
   Widget build(BuildContext context) {
+    displayHeight = MediaQuery.of(context).size.height;
+    displayWidth = MediaQuery.of(context).size.width;
+    displayRatio = displayHeight / displayWidth;
     debugPrint(displayRatio.toString());
-
     return GestureDetector(
         onTap: () {
           FocusScopeNode currentFocus = FocusScope.of(context);

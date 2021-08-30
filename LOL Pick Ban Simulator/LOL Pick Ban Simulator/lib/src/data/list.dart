@@ -439,19 +439,3 @@ List<String> leaguesPng = [
   'assets/images/SVG/league2/lla.png',
   'assets/images/SVG/league2/lcl.png'
 ];
-
-List<String> sex = [
-  '남성',
-  '여성',
-];
-
-List<String> country = [
-  '대한민국',
-  '중국',
-  '일본',
-  '미국',
-  '캐나다',
-  '영국',
-];
-
-List<String> favTeam = ['T1', 'DAMWON', 'RNG'];

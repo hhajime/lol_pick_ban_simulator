@@ -35,20 +35,9 @@ Widget basicAppBar() {
       toolbarHeight: displayHeight * 0.05,
       title: Row(children: [
         Text(
-          "LOL: E-Sports Manager",
+          "LOL: Pick Ban Simulator",
           style: TextStyle(color: subColor, fontSize: displayRatio * 8),
         ),
-        Spacer(),
-        RotatedBox(quarterTurns: 3, child: Icon(Icons.battery_alert_outlined)),
-        Text(
-          " 95% ",
-          style: TextStyle(color: subColor, fontSize: displayRatio * 8),
-        ),
-        Icon(Icons.attach_money_outlined),
-        Text(
-          "48,200",
-          style: TextStyle(color: subColor, fontSize: displayRatio * 8),
-        )
       ]),
       brightness: Brightness.dark,
       backgroundColor: mainColor);

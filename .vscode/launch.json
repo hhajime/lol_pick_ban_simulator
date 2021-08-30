@@ -4,15 +4,16 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+      
         {
-            "name": "LOL E-Sports Manager",
-            "cwd": "LOL E-Sports Manager\\LOL E-Sports Manager",
+            "name": "LOL Pick Ban Simulator",
+            "cwd": "LOL Pick Ban Simulator\\LOL Pick Ban Simulator",
             "request": "launch",
             "type": "dart"
         },
         {
-            "name": "LOL E-Sports Manager (profile mode)",
-            "cwd": "LOL E-Sports Manager\\LOL E-Sports Manager",
+            "name": "LOL Pick Ban Simulator (profile mode)",
+            "cwd": "LOL Pick Ban Simulator\\LOL Pick Ban Simulator",
             "request": "launch",
             "type": "dart",
         },

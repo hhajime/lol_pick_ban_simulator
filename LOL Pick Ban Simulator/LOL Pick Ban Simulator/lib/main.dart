@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/src/ui/LandingPage/LoadingScreen.dart';
+import 'package:flutter_application_1/src/ui/Home/home.dart';
 import 'package:get/get.dart';
 
 void main() => runApp(MyApp());
@@ -13,8 +13,8 @@ class TestState extends State<MyApp> {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'LOL E-Sports Manager',
-      home: LoadingScreen(),
+      title: 'LOL Pick Ban Simulator',
+      home: Home(),
     );
   }
 }
