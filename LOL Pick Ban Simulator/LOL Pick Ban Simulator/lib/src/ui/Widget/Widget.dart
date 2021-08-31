@@ -3,6 +3,7 @@ import 'package:flutter_application_1/src/data/list.dart';
 import 'package:get/get.dart';
 import 'package:flutter_application_1/src/getx/getx.dart';
 import 'package:flip_card/flip_card.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 BoxDecoration myBoxDecoration() {
   return BoxDecoration(
@@ -86,6 +87,33 @@ Widget basicDrawer() {
       ),
     ],
   ));
+}
+
+Widget playerNameEditContainer(lineNum, hintText) {
+  return Row(
+    children: [
+      Container(
+        width: displayWidth * 0.08,
+        height: displayHeight * 0.04,
+        child: SvgPicture.asset(
+          lines[lineNum],
+          fit: BoxFit.cover,
+        ),
+      ),
+      Container(
+        padding: EdgeInsets.fromLTRB(displayWidth * 0.04, 5, 0, 0),
+        child: Container(
+          decoration: BoxDecoration(color: Colors.white),
+          height: displayHeight * 0.04,
+          width: displayWidth * 0.5,
+          child: TextField(
+            decoration: InputDecoration(
+                hintText: hintText, hintStyle: TextStyle(color: mainColor)),
+          ),
+        ),
+      )
+    ],
+  );
 }
 
 Widget gridContainer(con) {

@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_application_1/src/data/list.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -38,6 +41,103 @@ class _Home extends State<StatefulWidget> {
                 DrawerHeader(
                     child: Text('Drawer Header'),
                     decoration: BoxDecoration(color: mainColor)),
+                ExpansionPanelList(
+                  expansionCallback: (int index, bool isExpanded) {},
+                ),
+                /*ListTile(
+                  leading: Icon(
+                    Icons.edit,
+                    size: displayRatio * 20,
+                    color: mainColor,
+                  ),
+                  title: Text(
+                    'Player Name Edit',
+                    style: teamColor(mainColor),
+                  ),
+                  dense: true,
+                  onTap: () {
+                    showDialog(
+                        context: context,
+                        builder: (context) {
+                          return Dialog(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(40)),
+                              elevation: 16,
+                              child: SingleChildScrollView(
+                                child: Container(
+                                  decoration: myBoxDecoration(),
+                                  width: displayWidth * 0.8,
+                                  height: displayHeight * 0.8,
+                                  child: Column(
+                                    children: [
+                                      Container(
+                                          padding: EdgeInsets.only(
+                                              top: displayHeight * 0.01),
+                                          child: Text(
+                                            'Blue Team Player',
+                                            style: TextStyle(
+                                                fontSize: displayHeight * 0.02,
+                                                color: Colors.blueAccent),
+                                          )),
+                                      playerNameEditContainer(0, 'Player1'),
+                                      playerNameEditContainer(1, 'Player2'),
+                                      playerNameEditContainer(2, 'Player3'),
+                                      playerNameEditContainer(3, 'Player4'),
+                                      playerNameEditContainer(4, 'Player5'),
+                                      Container(
+                                          padding: EdgeInsets.only(
+                                              top: displayHeight * 0.01),
+                                          child: Text(
+                                            'Red Team Player',
+                                            style: TextStyle(
+                                                fontSize: displayHeight * 0.02,
+                                                color: Colors.redAccent),
+                                          )),
+                                      playerNameEditContainer(0, 'Player1'),
+                                      playerNameEditContainer(1, 'Player2'),
+                                      playerNameEditContainer(2, 'Player3'),
+                                      playerNameEditContainer(3, 'Player4'),
+                                      playerNameEditContainer(4, 'Player5'),
+                                      Container(
+                                        decoration: myBoxDecoration(),
+                                        child: Text(
+                                          'confirm',
+                                          style: TextStyle(
+                                              color: subColor,
+                                              fontSize: displayHeight * 0.05),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ));
+                        });
+                  },
+                ),*/
+                ListTile(
+                  leading: Icon(
+                    Icons.save,
+                    size: displayRatio * 20,
+                    color: mainColor,
+                  ),
+                  title: Text(
+                    'Save',
+                    style: teamColor(mainColor),
+                  ),
+                  dense: true,
+                ),
+                ListTile(
+                  leading: Icon(
+                    Icons.download,
+                    size: displayRatio * 20,
+                    color: mainColor,
+                  ),
+                  title: Text(
+                    'Load',
+                    style: teamColor(mainColor),
+                  ),
+                  dense: true,
+                ),
                 ListTile(
                   leading: Icon(
                     Icons.delete_forever_outlined,
@@ -45,14 +145,14 @@ class _Home extends State<StatefulWidget> {
                     color: mainColor,
                   ),
                   title: Text(
-                    'Delete All',
+                    'Delete Current Simulation',
                     style: teamColor(mainColor),
                   ),
-                  trailing: Icon(
+                  /*trailing: Icon(
                     Icons.drag_handle,
                     size: displayRatio * 20,
                     color: mainColor,
-                  ),
+                  ),*/
                   dense: true,
                   onTap: () {
                     Navigator.pop(context);
@@ -67,31 +167,31 @@ class _Home extends State<StatefulWidget> {
                 ),
                 ListTile(
                   leading: Icon(
-                    Icons.delete_forever_outlined,
+                    Icons.exit_to_app,
                     size: displayRatio * 20,
                     color: mainColor,
                   ),
                   title: Text(
-                    'Delete All',
+                    'Exit App',
                     style: teamColor(mainColor),
-                  ),
-                  trailing: Icon(
-                    Icons.drag_handle,
-                    size: displayRatio * 20,
-                    color: mainColor,
                   ),
                   dense: true,
                   onTap: () {
-                    Navigator.pop(context);
-                    for (int i = 0; i < 5; i++) {
-                      upController.bluPlayer[i] = champIcon;
-                      upController.blueBan[i] = champIcon;
-                      upController.redPlayer[i] = champIcon;
-                      upController.redBan[i] = champIcon;
-                    }
-                    setState(() {});
+                    if (Platform.isAndroid) {
+                      SystemNavigator.pop();
+                    } else
+                      exit(0);
+                    ;
                   },
-                )
+                ),
+                Align(
+                  alignment: AlignmentDirectional.bottomCenter,
+                  child: Text(
+                      "LOL: Pick Ban Simulator IS NOT endorsed by Riot Games and does not reflect the views or opinions of those who produce or manage Riot Games or the League of Legends officially. League of Legends and Riot Games are trademarks or registered trademarks of Riot Games. Inc. League of Legends © Riot Games. Inc. v1.00",
+                      style: TextStyle(
+                          color: Colors.black45,
+                          fontSize: displayHeight * 0.015)),
+                ),
               ],
             ),
           ),
@@ -169,7 +269,7 @@ class _Home extends State<StatefulWidget> {
                                 image: DecorationImage(
                                     image:
                                         new AssetImage('assets/images/map.jpg'),
-                                    fit: BoxFit.fitWidth)),
+                                    fit: BoxFit.fitHeight)),
                           ),
                         ),
                       ),
