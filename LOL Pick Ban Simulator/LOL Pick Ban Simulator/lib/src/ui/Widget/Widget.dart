@@ -30,8 +30,31 @@ TextStyle titleLogo(multiple, color, style) {
       color: color);
 }
 
-Widget basicAppBar() {
+Widget basicAppBar(context) {
   return AppBar(
+      actions: [
+        ElevatedButton(
+          style:
+              ElevatedButton.styleFrom(primary: mainColor, onPrimary: subColor),
+          child: Icon(Icons.info),
+          onPressed: () {
+            return showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return Dialog(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(40)),
+                      elevation: 16,
+                      child: SingleChildScrollView(
+                          child: Container(
+                              decoration: myBoxDecoration(),
+                              width: displayWidth * 0.8,
+                              height: displayHeight * 0.8,
+                              child: Column())));
+                });
+          },
+        ),
+      ],
       iconTheme: IconThemeData(color: subColor),
       toolbarHeight: displayHeight * 0.05,
       title: Row(children: [

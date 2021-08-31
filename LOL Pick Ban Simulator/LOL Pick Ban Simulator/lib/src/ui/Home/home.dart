@@ -33,7 +33,7 @@ class _Home extends State<StatefulWidget> {
         },
         child: Scaffold(
           resizeToAvoidBottomInset: false,
-          appBar: basicAppBar(),
+          appBar: basicAppBar(context),
           drawer: Drawer(
             child: ListView(
               padding: EdgeInsets.zero,
@@ -139,32 +139,57 @@ class _Home extends State<StatefulWidget> {
                   dense: true,
                 ),
                 ListTile(
-                  leading: Icon(
-                    Icons.delete_forever_outlined,
-                    size: displayRatio * 20,
-                    color: mainColor,
-                  ),
-                  title: Text(
-                    'Delete Current Simulation',
-                    style: teamColor(mainColor),
-                  ),
-                  /*trailing: Icon(
+                    leading: Icon(
+                      Icons.delete_forever_outlined,
+                      size: displayRatio * 20,
+                      color: mainColor,
+                    ),
+                    title: Text(
+                      'Delete Current Simulation',
+                      style: teamColor(mainColor),
+                    ),
+                    /*trailing: Icon(
                     Icons.drag_handle,
                     size: displayRatio * 20,
                     color: mainColor,
                   ),*/
-                  dense: true,
-                  onTap: () {
-                    Navigator.pop(context);
-                    for (int i = 0; i < 5; i++) {
-                      upController.bluPlayer[i] = champIcon;
-                      upController.blueBan[i] = champIcon;
-                      upController.redPlayer[i] = champIcon;
-                      upController.redBan[i] = champIcon;
-                    }
-                    setState(() {});
-                  },
-                ),
+                    dense: true,
+                    onTap: () {
+                      return showDialog<void>(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: const Text('Alert Before Progress'),
+                            content: SingleChildScrollView(
+                              child: ListBody(
+                                children: const <Widget>[
+                                  Text(
+                                      'Current data will be removed without saving it'),
+                                ],
+                              ),
+                            ),
+                            actions: <Widget>[
+                              TextButton(
+                                child: Text(
+                                  'Approve',
+                                  style: TextStyle(color: subColor),
+                                ),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                  for (int i = 0; i < 5; i++) {
+                                    upController.bluPlayer[i] = champIcon;
+                                    upController.blueBan[i] = champIcon;
+                                    upController.redPlayer[i] = champIcon;
+                                    upController.redBan[i] = champIcon;
+                                  }
+                                  setState(() {});
+                                },
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    }),
                 ListTile(
                   leading: Icon(
                     Icons.exit_to_app,
@@ -177,15 +202,41 @@ class _Home extends State<StatefulWidget> {
                   ),
                   dense: true,
                   onTap: () {
-                    if (Platform.isAndroid) {
-                      SystemNavigator.pop();
-                    } else
-                      exit(0);
-                    ;
+                    return showDialog<void>(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: const Text('Exit Alert'),
+                          content: SingleChildScrollView(
+                            child: ListBody(
+                              children: const <Widget>[
+                                Text(
+                                    'Current data will be removed without saving it.'),
+                              ],
+                            ),
+                          ),
+                          actions: <Widget>[
+                            TextButton(
+                              child: Text(
+                                'Approve',
+                                style: TextStyle(color: subColor),
+                              ),
+                              onPressed: () {
+                                if (Platform.isAndroid) {
+                                  SystemNavigator.pop();
+                                } else
+                                  exit(0);
+                                ;
+                              },
+                            ),
+                          ],
+                        );
+                      },
+                    );
                   },
                 ),
-                Align(
-                  alignment: AlignmentDirectional.bottomCenter,
+                Container(
+                  padding: EdgeInsets.only(top: displayHeight * 0.38),
                   child: Text(
                       "LOL: Pick Ban Simulator IS NOT endorsed by Riot Games and does not reflect the views or opinions of those who produce or manage Riot Games or the League of Legends officially. League of Legends and Riot Games are trademarks or registered trademarks of Riot Games. Inc. League of Legends © Riot Games. Inc. v1.00",
                       style: TextStyle(
