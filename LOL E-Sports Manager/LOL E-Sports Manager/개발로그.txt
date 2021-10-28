@@ -10,8 +10,8 @@
  → grid List 신규 생성, ban,player 옮겨질때 기존 List 활용
 
 [필요개선점]
-- Provider Pattern 적용
-- 외부데이터 구성(Provider)
+- MVVM Pattern 적용
+- GetX 상태관리 적용
 - responsive 최적화(Here 부분)
  -> expanded로 묶기?x -> 가로모드(윈도우 모드/ 웹)시 layoutBuilder 활용해서 리빌딩
 
